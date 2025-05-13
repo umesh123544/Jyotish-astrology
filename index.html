@@ -1,441 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional Vedic Astrology Services - Personalized Birth Chart Analysis, Horoscope Predictions, and Cosmic Guidance">
-    <title>Jotishi - Vedic Astrology & Horoscope Services</title>
-    <style>
-        :root {
-            --primary: #6d28d9;
-            --primary-light: #8b5cf6;
-            --secondary: #f59e0b;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --max-width: 1200px;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Authentic Vedic Astrology Services by Certified Astrologers. Personalized Birth Chart Analysis, Horoscope Predictions & Remedies.">
+  <title>Jotishi - Vedic Astrology & Horoscope Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
 
-        /* Enhanced Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: white;
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+    }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
 
-        .logo-icon {
-            font-size: 2rem;
-        }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
 
-        /* Enhanced Hero Section */
-        .hero {
-            text-align: center;
-            padding: 8rem 1rem 5rem;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-        /* New Features Section */
-        .features {
-            padding: 4rem 5%;
-            background: white;
-        }
+    .hero {
+      text-align: center;
+      padding: 10rem 1rem 6rem;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
 
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
+    .hero .cta-button {
+      padding: 0.75rem 2rem;
+      background: var(--secondary);
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+    section {
+      padding: 5rem 5%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
 
-        /* Testimonials Section */
-        .testimonials {
-            padding: 4rem 5%;
-            background: #f8fafc;
-        }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
+    }
 
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+    .section-title p {
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .client-info {
-            display: flex;
-            align-items: center;
-            margin-top: 1rem;
-            gap: 1rem;
-        }
+    .service-grid, .astrologer-grid, .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
 
-        .client-photo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    .service, .astrologer, .faq {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
 
-        /* Consultation Process */
-        .process {
-            padding: 4rem 5%;
-            text-align: center;
-        }
+    .astrologer img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
 
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: var(--max-width);
-            margin: 2rem auto;
-        }
+    .faq h4 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
 
-        .process-step {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            position: relative;
-        }
+    .newsletter {
+      background: var(--primary-light);
+      color: white;
+      padding: 3rem;
+      border-radius: 10px;
+      text-align: center;
+    }
 
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: -50px auto 1rem;
-            position: relative;
-            z-index: 1;
-        }
+    .newsletter input {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      width: 60%;
+      margin-right: 1rem;
+    }
 
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 6rem 1rem 3rem;
-                min-height: auto;
-            }
+    .newsletter button {
+      padding: 0.75rem 1.5rem;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
 
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: var(--primary);
-                flex-direction: column;
-                padding: 2rem;
-                transition: 0.3s;
-            }
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 5%;
+    }
 
-            .nav-links.active {
-                left: 0;
-            }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
 
-            .service-grid, .feature-grid, .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
+    .footer-section h4 {
+      margin-bottom: 1rem;
+    }
 
-            .process-steps {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-        }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #334155;
+      margin-top: 2rem;
+    }
 
-        /* Additional Enhancements */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #25D366;
-            color: white;
-            padding: 1rem;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            z-index: 1000;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .section-title p {
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Enhanced Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 4rem 5%;
-        }
-
-        .footer-content {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h4 {
-            margin-bottom: 1rem;
-            color: var(--light);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: opacity 0.3s;
-        }
-
-        .social-links a:hover {
-            opacity: 0.8;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    @media (max-width: 768px) {
+      .newsletter input {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <i class="fas fa-star-and-crescent logo-icon"></i>
-                Jotishi
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#process">Process</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fas fa-star-and-crescent"></i> Jotishi
+      </div>
+    </nav>
+  </header>
 
-    <!-- Add New Sections -->
-    <section class="features" id="features">
-        <div class="section-title">
-            <h2>Why Choose Us</h2>
-            <p>Experience authentic Vedic astrology with modern interpretation</p>
-        </div>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <i class="fas fa-clock feature-icon"></i>
-                <h3>24/7 Support</h3>
-                <p>Round-the-clock availability for urgent consultations</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-lock feature-icon"></i>
-                <h3>Confidential</h3>
-                <p>100% privacy guaranteed for all consultations</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-certificate feature-icon"></i>
-                <h3>Certified Experts</h3>
-                <p>Qualified astrologers with 10+ years experience</p>
-            </div>
-        </div>
-    </section>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1>Discover Your Cosmic Blueprint</h1>
+    <p>Vedic Astrology to Illuminate Your Path</p>
+    <a href="#services"><button class="cta-button">Explore Services</button></a>
+  </section>
 
-    <section class="process" id="process">
-        <div class="section-title">
-            <h2>Consultation Process</h2>
-            <p>Three simple steps to cosmic clarity</p>
-        </div>
-        <div class="process-steps">
-            <div class="process-step">
-                <div class="step-number">1</div>
-                <h3>Share Details</h3>
-                <p>Provide your birth information through our secure form</p>
-            </div>
-            <div class="process-step">
-                <div class="step-number">2</div>
-                <h3>Analysis</h3>
-                <p>Expert analysis of your birth chart and planetary positions</p>
-            </div>
-            <div class="process-step">
-                <div class="step-number">3</div>
-                <h3>Get Report</h3>
-                <p>Receive detailed report with predictions and remedies</p>
-            </div>
-        </div>
-    </section>
+  <!-- Services -->
+  <section id="services">
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Personalized astrology services tailored to your life path</p>
+    </div>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Birth Chart Reading</h3>
+        <p>Detailed analysis of your natal chart by certified astrologers.</p>
+      </div>
+      <div class="service">
+        <h3>Horoscope Matching</h3>
+        <p>Compatibility analysis for marriage or business partnership.</p>
+      </div>
+      <div class="service">
+        <h3>Remedial Guidance</h3>
+        <p>Solutions through mantras, gemstones, and rituals for dosha balancing.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="testimonials" id="testimonials">
-        <div class="section-title">
-            <h2>Client Experiences</h2>
-            <p>What our clients say about our services</p>
-        </div>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p>"The most accurate birth chart reading I've ever received. Truly life-changing guidance!"</p>
-                <div class="client-info">
-                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Client" class="client-photo">
-                    <div>
-                        <h4>Sarah Johnson</h4>
-                        <small>New York, USA</small>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more testimonials -->
-        </div>
-    </section>
+  <!-- Astrologers -->
+  <section id="team">
+    <div class="section-title">
+      <h2>Meet Our Astrologers</h2>
+      <p>Decades of experience in Vedic wisdom</p>
+    </div>
+    <div class="astrologer-grid">
+      <div class="astrologer">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Astrologer">
+        <h3>Pandit Raj Sharma</h3>
+        <p>15+ years experience, Vedic rituals & karma alignment expert.</p>
+      </div>
+      <div class="astrologer">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Astrologer">
+        <h3>Dr. Neeta Joshi</h3>
+        <p>Ph.D. in Jyotisha Shastra, focuses on remedial & marriage match analysis.</p>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Jotishi Astrology</h4>
-                <p>Empowering lives through Vedic wisdom since 2010</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>Email: contact@jotishi.com</p>
-                <p>Phone: +1 (555) 123-4567</p>
-                <p>Address: 123 Cosmic Lane, Astro City</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© <span id="currentYear"></span> Jotishi Astrology. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+      <p>Answers to some of your most common queries</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq">
+        <h4>How accurate is Vedic astrology?</h4>
+        <p>Our astrologers use traditional principles refined by years of practice for high accuracy.</p>
+      </div>
+      <div class="faq">
+        <h4>Is my data private?</h4>
+        <p>Absolutely. All birth details are 100% confidential and encrypted.</p>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Enhanced Mobile Navigation
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Subscribe for Weekly Insights</h2>
+    <p>Get planetary updates and tips straight to your inbox.</p>
+    <form>
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Jotishi</h4>
+        <p>Empowering lives through timeless Vedic wisdom.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <p>
+          <a href="#" style="color:white"><i class="fab fa-facebook"></i></a>
+          <a href="#" style="color:white"><i class="fab fa-instagram"></i></a>
+          <a href="#" style="color:white"><i class="fab fa-twitter"></i></a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
+    </div>
+  </footer>
 
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.process-step, .feature-card').forEach((el) => {
-            observer.observe(el);
-        });
-    </script>
+  <!-- Scripts -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
