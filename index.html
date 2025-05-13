@@ -7,29 +7,45 @@
     <style>
         :root {
             --primary: #6d28d9;
+            --primary-light: #8b5cf6;
             --secondary: #f59e0b;
             --dark: #1e293b;
             --light: #f8fafc;
+            --gray: #64748b;
+            --max-width: 1200px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--dark);
             background-color: var(--light);
-            margin: 0;
-            padding: 0;
+            line-height: 1.6;
         }
         
+        /* Header & Navigation */
         header {
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
             padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
         }
         
         .logo {
@@ -37,12 +53,42 @@
             font-weight: 700;
         }
         
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 5rem 1rem;
-            background: url('cosmic-bg.jpg') center/cover;
+            padding: 8rem 1rem 5rem;
+            background: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
             color: white;
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .hero::before {
@@ -60,8 +106,20 @@
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
+            padding: 2rem;
         }
         
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+        }
+        
+        /* CTA Button */
         .cta-button {
             background-color: var(--secondary);
             color: var(--dark);
@@ -72,11 +130,32 @@
             display: inline-block;
             margin-top: 1rem;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
         
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Services Section */
         .services {
             padding: 4rem 5%;
             text-align: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        
+        .services h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .services p {
+            color: var(--gray);
+            margin-bottom: 2rem;
         }
         
         .service-grid {
@@ -91,29 +170,144 @@
             border-radius: 10px;
             padding: 2rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
         }
         
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
             text-align: center;
             padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--gray);
+        }
+        
+        .modal h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">Jotishi</div>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="#">Home</a>
-                <a href="#">Services</a>
+                <a href="#services">Services</a>
                 <a href="#">Horoscope</a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
             </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
     
@@ -121,32 +315,106 @@
         <div class="hero-content">
             <h1>Discover Your Cosmic Blueprint</h1>
             <p>Authentic Vedic astrology readings to guide your life path with celestial wisdom</p>
-            <a href="#" class="cta-button">Get Your Free Horoscope</a>
+            <button class="cta-button" id="openModal">Get Your Free Horoscope</button>
         </div>
     </section>
     
-    <section class="services">
+    <section class="services" id="services">
         <h2>Our Astrology Services</h2>
         <p>Personalized guidance based on your unique birth chart</p>
         
         <div class="service-grid">
             <div class="service-card">
                 <h3>Birth Chart Analysis</h3>
-                <p>Detailed interpretation of your natal chart showing planetary positions and their influences.</p>
+                <p>Detailed interpretation of your natal chart showing planetary positions and their influences on your personality, career, and relationships.</p>
             </div>
             <div class="service-card">
                 <h3>Yearly Prediction</h3>
-                <p>Comprehensive forecast for the coming year based on planetary transits.</p>
+                <p>Comprehensive forecast for the coming year based on planetary transits with remedies for challenging periods.</p>
             </div>
             <div class="service-card">
                 <h3>Compatibility Reading</h3>
-                <p>Analyze relationship potential through synastry and compatibility charts.</p>
+                <p>Analyze relationship potential through synastry and compatibility charts for marriage, business, or family relationships.</p>
             </div>
         </div>
     </section>
     
     <footer>
-        <p>© 2023 Jotishi Astrology. All rights reserved.</p>
+        <p>© <span id="currentYear"></span> Jotishi Astrology. All rights reserved.</p>
     </footer>
+    
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <h3>Get Your Free Horoscope</h3>
+            <form id="horoscopeForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Date of Birth</label>
+                    <input type="date" id="birthdate" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthtime">Time of Birth</label>
+                    <input type="time" id="birthtime" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthplace">Place of Birth</label>
+                    <input type="text" id="birthplace" required>
+                </div>
+                <button type="submit" class="cta-button">Generate Horoscope</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Modal Functionality
+        const modal = document.getElementById('modal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Form Submission
+        const form = document.getElementById('horoscopeForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the data to a server
+            alert('Your horoscope request has been received! We will send it to your email shortly.');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            form.reset();
+        });
+        
+        // Update copyright year
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
