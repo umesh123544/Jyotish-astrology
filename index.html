@@ -139,30 +139,54 @@
       display: flex;
       gap: 2rem;
       align-items: center;
+      font-family: 'Cinzel Decorative', cursive;
+    }
+    
+
+     .nav-links a {
+    position: relative;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 1rem 2rem;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: all 0.3s ease;
+  }
+
+  .nav-links a:hover::before {
+    width: 100%;
+    left: 0;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links a {
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      position: relative;
-      font-size: 1.1rem;
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(15px);
     }
 
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: var(--secondary);
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+      content: '✦';
+      margin-left: 1rem;
+      opacity: 0.6;
     }
 
     /* Hero Section */
