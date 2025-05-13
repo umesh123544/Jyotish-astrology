@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jotishi - Vedic Astrology & Horoscope Services</title>
+    <style>
+        :root {
+            --primary: #6d28d9;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: white;
+            padding: 1rem 5%;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+            background: url('cosmic-bg.jpg') center/cover;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-button {
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .services {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Jotishi</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Services</a>
+                <a href="#">Horoscope</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Cosmic Blueprint</h1>
+            <p>Authentic Vedic astrology readings to guide your life path with celestial wisdom</p>
+            <a href="#" class="cta-button">Get Your Free Horoscope</a>
+        </div>
+    </section>
+    
+    <section class="services">
+        <h2>Our Astrology Services</h2>
+        <p>Personalized guidance based on your unique birth chart</p>
+        
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>Birth Chart Analysis</h3>
+                <p>Detailed interpretation of your natal chart showing planetary positions and their influences.</p>
+            </div>
+            <div class="service-card">
+                <h3>Yearly Prediction</h3>
+                <p>Comprehensive forecast for the coming year based on planetary transits.</p>
+            </div>
+            <div class="service-card">
+                <h3>Compatibility Reading</h3>
+                <p>Analyze relationship potential through synastry and compatibility charts.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2023 Jotishi Astrology. All rights reserved.</p>
+    </footer>
+</body>
+</html>
