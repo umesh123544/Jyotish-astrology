@@ -244,23 +244,28 @@
     }
     
 #youtube-background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-  }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100vh; /* Full viewport height */
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.1); /* Zoom in slightly */
+  z-index: 0;
+  overflow: hidden;
+}
 
-  iframe {
-    /* Ensure proper aspect ratio */
-    min-width: 100%;
-    min-height: 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+/* Add this new class */
+.youtube-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
     /* CTA Button */
     .cta-button {
       background-color: var(--secondary);
@@ -537,13 +542,13 @@
 <!-- Hero Section with YouTube Video -->
 <section class="hero" id="home">
   <div class="video-container">
-    <div id="youtube-background"></div>
+    <div class="youtube-wrapper">
+      <div id="youtube-background"></div>
+    </div>
     <div class="video-overlay"></div>
   </div>
   <div class="hero-content">
-    <h1>Discover Your Cosmic Blueprint</h1>
-    <p>Vedic Astrology to Illuminate Your Path</p>
-    <a href="#services"><button class="cta-button">Explore Services</button></a>
+    <!-- Your content -->
   </div>
 </section>
   
