@@ -242,7 +242,25 @@
       margin-bottom: 2.5rem;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
+    
+#youtube-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+  }
 
+  iframe {
+    /* Ensure proper aspect ratio */
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
     /* CTA Button */
     .cta-button {
       background-color: var(--secondary);
@@ -516,12 +534,10 @@
   </header>
 
 <!-- In the Hero Section -->
+<!-- Hero Section with YouTube Video -->
 <section class="hero" id="home">
   <div class="video-container">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-spinning-galaxy-3093.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
+    <div id="youtube-background"></div>
     <div class="video-overlay"></div>
   </div>
   <div class="hero-content">
@@ -661,7 +677,36 @@
         }
       });
     });
+// Load YouTube IFrame API
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-background', {
+      videoId: 'dQw4w9WgXcQ', // Replace with your YouTube video ID
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        controls: 0,
+        showinfo: 0,
+        loop: 1,
+        playlist: 'dQw4w9WgXcQ', // Same as videoId for looping
+        modestbranding: 1,
+        rel: 0
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    event.target.playVideo();
+    event.target.mute();
+    }
     // Update copyright year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
