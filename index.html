@@ -439,37 +439,6 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     }
-
-    /* Services Section */
-    section {
-      padding: 5rem 5%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      background: white;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: var(--dark);
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title h2::after {
-      content: '';
-      position: absolute;
-      width: 50%;
-      height: 4px;
-      background: var(--secondary);
-      bottom: -10px;
-      left: 25%;
-      border-radius: 2px;
-    }
   
 /* Services Section */
 #services {
@@ -478,18 +447,18 @@
   max-width: var(--max-width);
   margin: 0 auto;
   background: white;
-  z-index: 10; /* Ensure it's above any banner elements */
+  z-index: 10;
 }
 
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: -100px; /* Pull up slightly into the banner space */
+  gap: 2.5rem; /* Increased gap between service cards */
+  margin-top: -80px; /* Reduced overlap for better spacing */
   position: relative;
   z-index: 20;
   background: white;
-  padding: 2rem;
+  padding: 2.5rem; /* Increased padding */
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
@@ -503,28 +472,50 @@
   border: 1px solid rgba(0,0,0,0.05);
 }
 
+.service h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-decoration: underline; /* Added underline to headings */
+  text-decoration-color: var(--secondary); /* Underline color */
+  text-underline-offset: 6px; /* Space between text and underline */
+  text-decoration-thickness: 2px; /* Underline thickness */
+}
+
+.service p {
+  margin-bottom: 0;
+  line-height: 1.7; /* Improved line height */
+  color: var(--dark);
+  padding-top: 0.5rem; /* Added space between heading and paragraph */
+}
+
 .service:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
   border-color: var(--primary-light);
 }
 
+.service:hover h3 {
+  text-decoration-color: var(--primary); /* Change underline color on hover */
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .banner {
-    min-height: 700px;
-  }
-  
   .service-grid {
-    margin-top: -50px; /* Less overlap on mobile */
+    margin-top: -40px;
     padding: 1.5rem;
+    gap: 1.5rem;
   }
   
   .service {
     padding: 1.5rem;
-    
-    }
-
+  }
+  
+  .service h3 {
+    font-size: 1.3rem;
+    text-underline-offset: 4px; /* Smaller offset on mobile */
+  }
+  
     .sector-services {
       list-style: none;
       text-align: left;
