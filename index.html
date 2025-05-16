@@ -46,7 +46,7 @@
       overflow-x: hidden;
     }
 
-    /* Enhanced Header */
+    /* Header */
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       padding: 1rem 5%;
@@ -65,7 +65,6 @@
       margin: 0 auto;
     }
 
-    /* Brand Styling */
     .logo-container {
       display: flex;
       flex-direction: column;
@@ -100,7 +99,7 @@
       letter-spacing: 0.8px;
     }
 
-    /* Modern Hamburger Menu */
+    /* Hamburger Menu */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -195,7 +194,6 @@
       width: 100%;
     }
 
-    /* Mobile Menu */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -323,7 +321,7 @@
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     }
 
-    /* Main Content Sections */
+    /* Services Section */
     section {
       padding: 5rem 5%;
       max-width: var(--max-width);
@@ -354,7 +352,6 @@
       border-radius: 2px;
     }
 
-    /* Services Grid */
     .service-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -374,7 +371,67 @@
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
-    /* Consultation Form Modal */
+    /* Astrology Sectors Section */
+    .astro-sectors {
+      background: #f8fafc;
+      padding: 5rem 5%;
+    }
+
+    .sectors-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sector-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .sector-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .sector-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .sector-services {
+      list-style: none;
+      text-align: left;
+      margin-top: 1rem;
+    }
+
+    .sector-services li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .sector-services li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Consultation Form */
     .consultation-modal {
       display: none;
       position: fixed;
@@ -550,6 +607,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#services">Services</a>
+        <a href="#sectors">Sectors</a>
         <a href="#team">Astrologers</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
@@ -568,6 +626,85 @@
       <h1>Discover Your Cosmic Blueprint</h1>
       <p>Vedic Astrology to Illuminate Your Path</p>
       <button class="cta-button">Explore Services</button>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="section-title">
+      <h2>Our Services</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Birth Chart Reading</h3>
+        <p>Detailed analysis of your natal chart by certified astrologers.</p>
+      </div>
+      <div class="service">
+        <h3>Horoscope Matching</h3>
+        <p>Compatibility analysis for marriage or business partnership.</p>
+      </div>
+      <div class="service">
+        <h3>Remedial Guidance</h3>
+        <p>Solutions through mantras, gemstones, and rituals for dosha balancing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Astrology Sectors -->
+  <section id="sectors" class="astro-sectors">
+    <div class="section-title">
+      <h2>Astrology Sectors</h2>
+      <p>Specialized areas of Vedic astrological expertise</p>
+    </div>
+
+    <div class="sectors-container">
+      <div class="sector-card">
+        <div class="sector-icon">
+          <i class="fas fa-baby"></i>
+        </div>
+        <h3>Natal Astrology</h3>
+        <ul class="sector-services">
+          <li>Birth Chart Analysis</li>
+          <li>Planetary Position Analysis</li>
+          <li>Dasha Period Predictions</li>
+        </ul>
+      </div>
+
+      <div class="sector-card">
+        <div class="sector-icon">
+          <i class="fas fa-hand-holding-heart"></i>
+        </div>
+        <h3>Relationship Astrology</h3>
+        <ul class="sector-services">
+          <li>Marriage Compatibility</li>
+          <li>Love Horoscope Matching</li>
+          <li>Divorce Remediation</li>
+        </ul>
+      </div>
+
+      <div class="sector-card">
+        <div class="sector-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h3>Career Astrology</h3>
+        <ul class="sector-services">
+          <li>Career Path Analysis</li>
+          <li>Business Success Timing</li>
+          <li>Financial Growth Prediction</li>
+        </ul>
+      </div>
+
+      <div class="sector-card">
+        <div class="sector-icon">
+          <i class="fas fa-heartbeat"></i>
+        </div>
+        <h3>Medical Astrology</h3>
+        <ul class="sector-services">
+          <li>Health Issue Analysis</li>
+          <li>Remedial Health Solutions</li>
+          <li>Preventive Care Guidance</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -619,52 +756,28 @@
     </div>
   </div>
 
-  <!-- Main Content -->
-  <main>
-    <!-- Services -->
-    <section id="services">
-      <div class="section-title">
-        <h2>Our Services</h2>
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +977-9813197704</p>
+        <p>Kathmandu, Nepal</p>
       </div>
-      <div class="service-grid">
-        <div class="service">
-          <h3>Birth Chart Reading</h3>
-          <p>Detailed analysis of your natal chart by certified astrologers.</p>
-        </div>
-        <div class="service">
-          <h3>Horoscope Matching</h3>
-          <p>Compatibility analysis for marriage or business partnership.</p>
-        </div>
-        <div class="service">
-          <h3>Remedial Guidance</h3>
-          <p>Solutions through mantras, gemstones, and rituals for dosha balancing.</p>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>Contact Us</h4>
-          <p>Email: contact@jotishi.com</p>
-          <p>Phone: +977-9813197704</p>
-          <p>Kathmandu, Nepal</p>
-        </div>
-        <div class="footer-section">
-          <h4>Follow Us</h4>
-          <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
-      </div>
-    </footer>
-  </main>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
     // Mobile Menu Toggle
@@ -676,7 +789,7 @@
       navLinks.classList.toggle('active');
     });
 
-    // Consultation Form Handling
+    // Form Handling
     const consultationModal = document.getElementById('consultationModal');
     const closeModal = document.getElementById('closeModal');
     const ctaButton = document.querySelector('.cta-button');
