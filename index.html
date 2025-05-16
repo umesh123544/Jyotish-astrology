@@ -434,15 +434,14 @@
       border: 1px solid rgba(0,0,0,0.05);
     }
 
-    .service h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-      text-decoration: underline;
-      text-decoration-color: var(--secondary);
-      text-underline-offset: 6px;
-      text-decoration-thickness: 2px;
-    }
+.service h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  text-decoration: none; /* Remove underline */
+  border-bottom: 2px solid var(--secondary); /* Optional: Add a subtle border */
+  padding-bottom: 0.5rem;
+}
 
     .service p {
       margin-bottom: 0;
