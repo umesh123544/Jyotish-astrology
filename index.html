@@ -237,177 +237,68 @@
       .nav-links.active a {
         opacity: 1;
         transform: translateX(0);
-        transition: all 0.4s ease;
+        transition: all 0.4s ease 0.1s;
       }
-
-      .nav-links a:nth-child(1) { transition-delay: 0.1s; }
-      .nav-links a:nth-child(2) { transition-delay: 0.2s; }
-      .nav-links a:nth-child(3) { transition-delay: 0.3s; }
-      .nav-links a:nth-child(4) { transition-delay: 0.4s; }
-      .nav-links a:nth-child(5) { transition-delay: 0.5s; }
     }
-    
-  banner {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  min-height: 800px; /* Increased from 700px */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  margin-top: 70px;
-  overflow: hidden;
-}
 
-/* Background Image with Solid Overlay */
-.banner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(58, 28, 113, 0.9), rgba(215, 109, 119, 0.9)); /* Increased opacity */
-  z-index: 1;
-}
+    /* Banner Section */
+    .banner {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      min-height: 800px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 70px;
+      overflow: hidden;
+    }
 
-/* Desktop Banner Image - Full Screen */
-@media (min-width: 769px) {
-  .banner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    opacity: 0.8; /* Increased from 0.7 */
-  }
-  
-  .banner-content {
-    max-width: 1000px; /* Increased from 900px */
-    padding: 3rem; /* Increased from 2rem */
-  }
-  
-  .banner h1 {
-    font-size: clamp(3rem, 6vw, 5rem); /* Increased sizes */
-    margin-bottom: 2rem; /* Increased from 1.5rem */
-  }
-  
-  .banner p {
-    font-size: clamp(1.5rem, 3vw, 2.2rem); /* Increased sizes */
-    margin-bottom: 3rem; /* Increased from 2.5rem */
-  }
-  
-  .cta-button {
-    padding: 1.2rem 3rem; /* Larger button */
-    font-size: 1.3rem;
-  }
-}
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(58, 28, 113, 0.9), rgba(215, 109, 119, 0.9));
+      z-index: 1;
+    }
 
-/* Mobile Banner Image */
-@media (max-width: 768px) {
-  .banner {
-    min-height: 700px; /* Keep mobile height reasonable */
-  }
-  
-  .banner::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://images.unsplash.com/photo-1531517742687-0b6b254d4a88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-    opacity: 0.7;
-  }
-  
-  /* Banner Content */
-  .banner-content {
-    position: relative;
-    z-index: 2;
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 90%;
-  }
+    .banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 90%;
+    }
 
-  .banner h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    animation: float 6s ease-in-out infinite;
-    line-height: 1.2;
-  }
+    .banner h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      animation: float 6s ease-in-out infinite;
+      line-height: 1.2;
+    }
 
-  .banner p {
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    margin-bottom: 2.5rem;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-    animation: float 5s ease-in-out infinite 0.5s;
-  }
+    .banner p {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 3rem;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+      animation: float 5s ease-in-out infinite 0.5s;
+    }
 
-  /* Floating Elements */
-  .floating-element {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    animation: float 15s linear infinite;
-    z-index: 1;
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-  }
-
-  .element-1 { width: 150px; height: 150px; top: 20%; left: 10%; }
-  .element-2 { width: 100px; height: 100px; bottom: 30%; right: 15%; animation-delay: 2s; }
-  .element-3 { width: 80px; height: 80px; top: 60%; left: 25%; animation-delay: 4s; }
-  .element-4 { width: 120px; height: 120px; bottom: 20%; right: 25%; animation-delay: 6s; }
-
-  /* CTA Button */
-  .cta-button {
-    background-color: var(--secondary);
-    color: white;
-    border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  .cta-button:hover {
-    background-color: #e69009;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  }
-    
     /* Floating Elements */
     .floating-element {
       position: absolute;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(2px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       animation: float 15s linear infinite;
+      z-index: 1;
     }
 
     @keyframes float {
@@ -425,97 +316,209 @@
       background-color: var(--secondary);
       color: white;
       border: none;
-      padding: 0.8rem 2rem;
-      font-size: 1.1rem;
+      padding: 1.2rem 3rem;
+      font-size: 1.3rem;
       font-weight: 600;
       border-radius: 50px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .cta-button:hover {
       background-color: #e69009;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
-  
-/* Services Section */
-#services {
-  position: relative;
-  padding: 5rem 5%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  background: white;
-  z-index: 10;
-}
 
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem; /* Increased gap between service cards */
-  margin-top: -80px; /* Reduced overlap for better spacing */
-  position: relative;
-  z-index: 20;
-  background: white;
-  padding: 2.5rem; /* Increased padding */
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+    /* Desktop Banner Image */
+    @media (min-width: 769px) {
+      .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        opacity: 0.8;
+      }
+    }
 
-.service {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0,0,0,0.05);
-}
+    /* Mobile Banner Image */
+    @media (max-width: 768px) {
+      .banner {
+        min-height: 700px;
+      }
+      
+      .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1531517742687-0b6b254d4a88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        opacity: 0.7;
+      }
+      
+      .cta-button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+    }
 
-.service h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary);
-  text-decoration: underline; /* Added underline to headings */
-  text-decoration-color: var(--secondary); /* Underline color */
-  text-underline-offset: 6px; /* Space between text and underline */
-  text-decoration-thickness: 2px; /* Underline thickness */
-}
+    /* Services Section */
+    #services {
+      position: relative;
+      padding: 5rem 5%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      background: white;
+      z-index: 10;
+    }
 
-.service p {
-  margin-bottom: 0;
-  line-height: 1.7; /* Improved line height */
-  color: var(--dark);
-  padding-top: 0.5rem; /* Added space between heading and paragraph */
-}
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-.service:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-  border-color: var(--primary-light);
-}
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--dark);
+      position: relative;
+      display: inline-block;
+    }
 
-.service:hover h3 {
-  text-decoration-color: var(--primary); /* Change underline color on hover */
-}
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .service-grid {
-    margin-top: -40px;
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-  
-  .service {
-    padding: 1.5rem;
-  }
-  
-  .service h3 {
-    font-size: 1.3rem;
-    text-underline-offset: 4px; /* Smaller offset on mobile */
-  }
-  
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin-top: -80px;
+      position: relative;
+      z-index: 20;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .service {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .service h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-color: var(--secondary);
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
+
+    .service p {
+      margin-bottom: 0;
+      line-height: 1.7;
+      color: var(--dark);
+      padding-top: 0.5rem;
+    }
+
+    .service:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      border-color: var(--primary-light);
+    }
+
+    .service:hover h3 {
+      text-decoration-color: var(--primary);
+    }
+
+    /* Mobile Services */
+    @media (max-width: 768px) {
+      .service-grid {
+        margin-top: -40px;
+        padding: 1.5rem;
+        gap: 1.5rem;
+      }
+      
+      .service {
+        padding: 1.5rem;
+      }
+      
+      .service h3 {
+        font-size: 1.3rem;
+        text-underline-offset: 4px;
+      }
+    }
+
+    /* Astrology Sectors Section */
+    .astro-sectors {
+      background: #f8fafc;
+      padding: 5rem 5%;
+    }
+
+    .sectors-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sector-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .sector-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .sector-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
     .sector-services {
       list-style: none;
       text-align: left;
@@ -809,7 +812,6 @@
   <section id="sectors" class="astro-sectors">
     <div class="section-title">
       <h2>Astrology Sectors</h2>
-      <p></p>
     </div>
 
     <div class="sectors-container">
