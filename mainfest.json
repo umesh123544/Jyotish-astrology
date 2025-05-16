@@ -4,31 +4,18 @@
   "description": "Authentic Vedic Astrology Services by Certified Astrologers",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#6d28d9",
   "theme_color": "#6d28d9",
   "icons": [
     {
       "src": "https://i.ibb.co/sJ3vWsvz/Picsart-25-05-17-01-07-39-140.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "https://i.ibb.co/sJ3vWsvz/Picsart-25-05-17-01-07-39-140.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false,
-  "screenshots": [
-    {
-      "src": "https://e0.pxfuel.com/wallpapers/361/565/desktop-wallpaper-earth-nebula-3d-art-creative-abstract-earth-artwork-galaxy-for-with-resolution-high-quality.jpg",
-      "sizes": "1280x720",
-      "type": "image/jpeg"
-    }
-  ],
-  "categories": ["lifestyle", "astrology", "spirituality"]
+  ]
 }
