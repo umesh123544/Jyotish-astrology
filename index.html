@@ -5,14 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Authentic Vedic Astrology Services by Certified Astrologers">
   
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jotishi">
+  <meta name="theme-color" content="#6d28d9">
+  <meta name="mobile-web-app-capable" content="yes">
+
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/rRJGrZjS/images-1-removebg-preview.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/rRJGrZjS/images-1-removebg-preview.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://i.ibb.co/rRJGrZjS/images-1-removebg-preview.png">
-  <link rel="manifest" href="/site.webmanifest">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
 
   <title>Jotishi - Vedic Astrology</title>
   
@@ -582,6 +587,46 @@
       margin-top: 2rem;
       border-top: 1px solid #334155;
     }
+
+    /* Install Button */
+    .install-button {
+      position: fixed;
+      bottom: 7rem;
+      left: 1rem;
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      display: none;
+    }
+
+    .install-button:hover {
+      background-color: #e69009;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Offline Notification */
+    .offline-notification {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ef4444;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -589,6 +634,16 @@
   <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- Install Button -->
+  <button id="installButton" class="install-button">
+    <i class="fas fa-download"></i> Install App
+  </button>
+
+  <!-- Offline Notification -->
+  <div id="offlineNotification" class="offline-notification">
+    You are currently offline
+  </div>
 
   <!-- Header -->
   <header>
@@ -625,7 +680,7 @@
     <div class="banner-content">
       <h1>Discover Your Cosmic Blueprint</h1>
       <p>Vedic Astrology to Illuminate Your Path</p>
-      <button class="cta-button">Explore Services</button>
+      <button class="cta-button" id="consultationBtn">Explore Services</button>
     </div>
   </section>
 
@@ -792,9 +847,9 @@
     // Form Handling
     const consultationModal = document.getElementById('consultationModal');
     const closeModal = document.getElementById('closeModal');
-    const ctaButton = document.querySelector('.cta-button');
+    const consultationBtn = document.getElementById('consultationBtn');
 
-    ctaButton.addEventListener('click', () => {
+    consultationBtn.addEventListener('click', () => {
       consultationModal.style.display = 'block';
     });
 
@@ -831,6 +886,74 @@
         }
       });
     });
+
+    // PWA Installation
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      e.preventDefault();
+      // Stash the event so it can be triggered later
+      deferredPrompt = e;
+      // Show the install button
+      installButton.style.display = 'block';
+    });
+    
+    installButton.addEventListener('click', () => {
+      // Hide our user interface
+      installButton.style.display = 'none';
+      // Show the prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+    
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('App was installed');
+      installButton.style.display = 'none';
+    });
+
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch((err) => {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+
+    // Offline Detection
+    const offlineNotification = document.getElementById('offlineNotification');
+    
+    window.addEventListener('offline', () => {
+      console.log('You are offline');
+      offlineNotification.style.display = 'block';
+      setTimeout(() => {
+        offlineNotification.style.display = 'none';
+      }, 5000);
+    });
+
+    window.addEventListener('online', () => {
+      console.log('You are online');
+      offlineNotification.style.display = 'none';
+    });
+
+    // Check initial connection status
+    if (!navigator.onLine) {
+      offlineNotification.style.display = 'block';
+    }
   </script>
 </body>
 </html>
