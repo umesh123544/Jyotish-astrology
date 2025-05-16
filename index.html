@@ -470,64 +470,59 @@
       left: 25%;
       border-radius: 2px;
     }
+  
+/* Services Section */
+#services {
+  position: relative;
+  padding: 5rem 5%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: white;
+  z-index: 10; /* Ensure it's above any banner elements */
+}
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: -100px; /* Pull up slightly into the banner space */
+  position: relative;
+  z-index: 20;
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
 
-    .service {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
+.service {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
 
-    .service:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    }
+.service:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  border-color: var(--primary-light);
+}
 
-    /* Astrology Sectors Section */
-    .astro-sectors {
-      background: #f8fafc;
-      padding: 5rem 5%;
-    }
-
-    .sectors-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .sector-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .sector-card:hover {
-      transform: translateY(-10px);
-    }
-
-    .sector-icon {
-      width: 80px;
-      height: 80px;
-      background: var(--primary-light);
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: white;
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .banner {
+    min-height: 700px;
+  }
+  
+  .service-grid {
+    margin-top: -50px; /* Less overlap on mobile */
+    padding: 1.5rem;
+  }
+  
+  .service {
+    padding: 1.5rem;
+    
     }
 
     .sector-services {
