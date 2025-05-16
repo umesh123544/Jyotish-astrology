@@ -615,6 +615,52 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+    rashi-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .rashi-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.1);
+      transition: transform 0.3s ease;
+      border-left: 4px solid var(--primary);
+    }
+
+    .rashi-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .rashi-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rashi-date {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .rashi-container {
+        grid-template-columns: 1fr;
+      }
 
     /* WhatsApp Float */
     .whatsapp-float {
@@ -671,6 +717,7 @@
       transform: translateY(-2px) !important;
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     }
+    
 
     /* Footer */
     footer {
@@ -1004,6 +1051,19 @@
       </form>
     </div>
   </div>
+  
+  <section class="rashi-updates" id="rashi">
+    <div class="section-title">
+      <h2>Today's Rashi Bhavishya</h2>
+      <div class="rashi-date" id="currentDate"></div>
+    </div>
+    
+    <div class="rashi-container" id="rashiContainer">
+      <div class="loading">
+        <i class="fas fa-spinner fa-spin"></i> Loading Rashi predictions...
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer id="contact">
@@ -1237,6 +1297,139 @@
     if (!navigator.onLine) {
       offlineNotification.style.display = 'block';
     }
-  </script>
-</body>
-</html>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Display current Nepali date
+      const today = new Date();
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      document.getElementById('currentDate').textContent = today.toLocaleDateString('ne-NP', options);
+      
+      // Sample Rashi data (replace with API call)
+      const rashiData = [
+        {
+          name: "Mesh (Aries)",
+          symbol: "♈",
+          prediction: "Career opportunities may arise. Focus on important tasks.",
+          luckyNumber: "7",
+          luckyColor: "Red"
+        },
+        {
+          name: "Brish (Taurus)",
+          symbol: "♉",
+          prediction: "Financial gains expected. Avoid unnecessary arguments.",
+          luckyNumber: "6",
+          luckyColor: "White"
+        },
+        {
+          name: "Mithun (Gemini)",
+          symbol: "♊",
+          prediction: "Good day for communication. Travel plans favorable.",
+          luckyNumber: "5",
+          luckyColor: "Green"
+        },
+        {
+          name: "Karkat (Cancer)",
+          symbol: "♋",
+          prediction: "Emotional balance needed. Family time beneficial.",
+          luckyNumber: "2",
+          luckyColor: "Silver"
+        },
+        {
+          name: "Singha (Leo)",
+          symbol: "♌",
+          prediction: "Leadership skills shine. Avoid impulsive decisions.",
+          luckyNumber: "1",
+          luckyColor: "Gold"
+        },
+        {
+          name: "Kanya (Virgo)",
+          symbol: "♍",
+          prediction: "Health needs attention. Good for planning.",
+          luckyNumber: "5",
+          luckyColor: "Green"
+        },
+        {
+          name: "Tula (Libra)",
+          symbol: "♎",
+          prediction: "Relationships in focus. Balance work and personal life.",
+          luckyNumber: "6",
+          luckyColor: "Pink"
+        },
+        {
+          name: "Brischik (Scorpio)",
+          symbol: "♏",
+          prediction: "Transformation possible. Avoid risky ventures.",
+          luckyNumber: "9",
+          luckyColor: "Black"
+        },
+        {
+          name: "Dhanu (Sagittarius)",
+          symbol: "♐",
+          prediction: "Learning opportunities. Long-distance connections favorable.",
+          luckyNumber: "3",
+          luckyColor: "Purple"
+        },
+        {
+          name: "Makar (Capricorn)",
+          symbol: "♑",
+          prediction: "Career progress likely. Be patient with results.",
+          luckyNumber: "8",
+          luckyColor: "Brown"
+        },
+        {
+          name: "Kumbha (Aquarius)",
+          symbol: "♒",
+          prediction: "Innovative ideas flow. Social connections help.",
+          luckyNumber: "4",
+          luckyColor: "Blue"
+        },
+        {
+          name: "Meen (Pisces)",
+          symbol: "♓",
+          prediction: "Intuition strong today. Creative pursuits favored.",
+          luckyNumber: "7",
+          luckyColor: "Sea Green"
+        }
+      ];
+
+      // Display Rashi data
+      displayRashis(rashiData);
+      
+      // For real API implementation:
+      // fetchRashiFromAPI();
+    });
+
+    function displayRashis(rashis) {
+      const container = document.getElementById('rashiContainer');
+      
+      container.innerHTML = rashis.map(rashi => `
+        <div class="rashi-card">
+          <h3>${rashi.symbol} ${rashi.name}</h3>
+          <p>${rashi.prediction}</p>
+          <div style="margin-top: 10px; font-size: 0.9em;">
+            <span style="color: var(--primary);">Lucky Number: ${rashi.luckyNumber}</span> | 
+            <span style="color: ${rashi.luckyColor}">Color: ${rashi.luckyColor}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Example API function (replace with actual API)
+    async function fetchRashiFromAPI() {
+      try {
+        // This is a placeholder - use a real API endpoint
+        const response = await fetch('https://api.example.com/nepali-rashi');
+        const data = await response.json();
+        displayRashis(data);
+      } catch (error) {
+        console.error("Error fetching Rashi data:", error);
+        document.getElementById('rashiContainer').innerHTML = `
+          <div class="rashi-card" style="grid-column: 1/-1">
+            <h3>⚠️ Service Temporarily Unavailable</h3>
+            <p>We couldn't load today's predictions. Please check back later.</p>
+          </div>
+        `;
+        }
+     }
+      </script>
+       </body>
+       </html>
