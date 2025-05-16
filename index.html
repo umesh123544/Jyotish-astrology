@@ -641,6 +641,37 @@
       100% { transform: scale(1); }
     }
 
+    /* Install Button */
+    .install-button {
+      position: fixed;
+      bottom: 7rem;
+      right: 1rem;
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .install-button i {
+      margin-right: 8px;
+    }
+
+    .install-button:hover {
+      background-color: #e69009;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
     /* Footer */
     footer {
       background: var(--dark);
@@ -694,31 +725,6 @@
       border-top: 1px solid #334155;
     }
 
-    /* Install Button */
-    .install-button {
-      position: fixed;
-      bottom: 7rem;
-      left: 1rem;
-      background-color: var(--secondary);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-      display: none;
-    }
-
-    .install-button:hover {
-      background-color: #e69009;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    }
-
     /* Offline Notification */
     .offline-notification {
       position: fixed;
@@ -732,6 +738,51 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 999;
       display: none;
+    }
+
+    /* iOS Install Modal */
+    .ios-install-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ios-install-modal.active {
+      display: flex;
+    }
+
+    .ios-install-modal h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .ios-install-steps {
+      text-align: left;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      line-height: 2;
+    }
+
+    .ios-install-close {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1rem;
     }
 
     /* PWA Specific Styles */
@@ -770,6 +821,19 @@
   <button id="installButton" class="install-button">
     <i class="fas fa-download"></i> Install App
   </button>
+
+  <!-- iOS Install Instructions Modal -->
+  <div class="ios-install-modal" id="iosInstallModal">
+    <h2>Install Jotishi App</h2>
+    <div class="ios-install-steps">
+      <p>1. Tap the <strong>Share</strong> button <i class="fas fa-share-square"></i></p>
+      <p>2. Select <strong>"Add to Home Screen"</strong></p>
+      <p>3. Tap <strong>"Add"</strong> in the top right</p>
+    </div>
+    <img src="https://i.ibb.co/sJ3vWsvz/Picsart-25-05-17-01-07-39-140.png" width="80" height="80" style="border-radius: 16px; margin-bottom: 1rem;">
+    <p>Jotishi - Vedic Astrology</p>
+    <button class="ios-install-close" id="iosInstallClose">Got It!</button>
+  </div>
 
   <!-- Offline Notification -->
   <div id="offlineNotification" class="offline-notification">
@@ -1020,51 +1084,108 @@
     // PWA Installation
     let deferredPrompt;
     const installButton = document.getElementById('installButton');
+    const iosInstallModal = document.getElementById('iosInstallModal');
+    const iosInstallClose = document.getElementById('iosInstallClose');
+    
+    // Check if iOS
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
                 (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    
+    // Check if already installed
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                       window.navigator.standalone;
+
+    // Don't show install button if already installed
+    if (isStandalone) {
+      installButton.style.display = 'none';
+    }
 
     // Show install prompt for Android
     window.addEventListener('beforeinstallprompt', (e) => {
-      if (isIOS) return; // Skip for iOS
+      if (isIOS || isStandalone) return;
       
       e.preventDefault();
       deferredPrompt = e;
+      
+      // Show install button with animation
       installButton.style.display = 'block';
+      setTimeout(() => {
+        installButton.style.opacity = '1';
+        installButton.style.transform = 'translateY(0)';
+      }, 100);
+      
+      // Automatically hide after 15 seconds
+      setTimeout(() => {
+        if (installButton.style.display !== 'none') {
+          installButton.style.opacity = '0';
+          installButton.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            installButton.style.display = 'none';
+          }, 300);
+        }
+      }, 15000);
     });
 
     // iOS-specific installation instructions
-    if (isIOS) {
-      installButton.style.display = 'block';
-      installButton.textContent = 'Install App (Tap Share → Add to Home Screen)';
+    if (isIOS && !isStandalone) {
+      // Show install button after 5 seconds
+      setTimeout(() => {
+        installButton.style.display = 'block';
+        setTimeout(() => {
+          installButton.style.opacity = '1';
+          installButton.style.transform = 'translateY(0)';
+        }, 100);
+      }, 5000);
     }
 
-    installButton.addEventListener('click', () => {
+    // Install button click handler
+    installButton.addEventListener('click', async () => {
       if (isIOS) {
         // Show iOS installation instructions
-        alert('To install this app:\n1. Tap the Share button\n2. Select "Add to Home Screen"\n3. Tap "Add" in the top right');
+        iosInstallModal.classList.add('active');
         return;
       }
       
       if (deferredPrompt) {
-        installButton.style.display = 'none';
+        installButton.style.opacity = '0';
+        installButton.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          installButton.style.display = 'none';
+        }, 300);
+        
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted install');
-          } else {
-            console.log('User dismissed install');
-          }
-          deferredPrompt = null;
-        });
+        const { outcome } = await deferredPrompt.userChoice;
+        
+        if (outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+          // You can track installations here
+        } else {
+          console.log('User dismissed the install prompt');
+          // Show the button again after 1 minute if dismissed
+          setTimeout(() => {
+            installButton.style.display = 'block';
+            setTimeout(() => {
+              installButton.style.opacity = '1';
+              installButton.style.transform = 'translateY(0)';
+            }, 100);
+          }, 60000);
+        }
+        deferredPrompt = null;
       }
     });
 
-    window.addEventListener('appinstalled', () => {
-      installButton.style.display = 'none';
-      console.log('App installed successfully');
+    // Close iOS install modal
+    iosInstallClose.addEventListener('click', () => {
+      iosInstallModal.classList.remove('active');
     });
 
-    // Enhanced Service Worker Registration
+    // Track app installation
+    window.addEventListener('appinstalled', () => {
+      console.log('PWA was installed');
+      installButton.style.display = 'none';
+    });
+
+    // Service Worker Registration
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
@@ -1095,15 +1216,6 @@
         window.location.reload();
       }
     }
-
-    // Check for updates on navigation
-    window.addEventListener('load', () => {
-      if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-        navigator.serviceWorker.controller.postMessage({
-          type: 'CHECK_FOR_UPDATES'
-        });
-      }
-    });
 
     // Offline Detection
     const offlineNotification = document.getElementById('offlineNotification');
