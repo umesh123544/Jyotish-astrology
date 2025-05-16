@@ -248,63 +248,112 @@
     }
 
     /* Banner Section */
-    .banner {
+ .banner {
       position: relative;
+      width: 100vw;
       height: 100vh;
-      min-height: 700px; /* Minimum height for desktop */
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
       margin-top: 70px;
-      background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85));
-      background-size: cover;
-      background-position: center;
       overflow: hidden;
     }
 
-    /* Desktop Banner Image */
+    /* Background Image with Gradient Overlay */
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85));
+      z-index: 1;
+    }
+
+    /* Desktop Banner Image - Full Screen */
     @media (min-width: 769px) {
-      .banner {
-        background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85)),
-                    url('https://i.ibb.co/SDZXdRvQ/horoscope-infographic-set-with-zodiac-planet-symbols-flat-vector-illustration-1284-83597.jpg');
+      .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
       }
     }
 
     /* Mobile Banner Image */
     @media (max-width: 768px) {
-      .banner {
-        min-height: 100vh;
-        background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85)),
-                    url('https://i.ibb.co/xSmqkpV3/hand-drawn-numerology-illustration-23-2150034727.jpg');
+      .banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://images.unsplash.com/photo-1531517742687-0b6b254d4a88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
       }
     }
 
+    /* Banner Content with Transparent Background */
     .banner-content {
       position: relative;
       z-index: 2;
-      padding: 0 1rem;
-      max-width: 800px;
+      padding: 2rem;
+      max-width: 900px;
       margin: 0 auto;
+      width: 90%;
+      background-color: transparent; /* Ensures no background */
     }
 
     .banner h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
+      font-size: clamp(2.5rem, 5vw, 4rem);
       margin-bottom: 1.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Stronger shadow for better readability */
       animation: float 6s ease-in-out infinite;
+      line-height: 1.2;
+      background-color: transparent; /* No background */
+      display: inline-block; /* Prevents full-width background */
+      padding: 0.5rem 1rem; /* Padding for text only */
     }
 
     .banner p {
-      font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Responsive font size */
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
       margin-bottom: 2.5rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Stronger shadow */
       animation: float 5s ease-in-out infinite 0.5s;
+      background-color: transparent; /* No background */
+      display: inline-block; /* Prevents full-width background */
+      padding: 0.5rem 1rem; /* Padding for text only */
+    }
+
+    /* CTA Button - Transparent Background */
+    .cta-button {
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
     
     /* Floating Elements */
@@ -690,6 +739,15 @@
       </div>
     </nav>
   </header>
+  
+   <!-- Banner Section -->
+  <section class="banner" id="home">
+    <div class="banner-content">
+      <h1>Discover Your Cosmic Blueprint</h1>
+      <p>Vedic Astrology to Illuminate Your Path</p>
+      <button class="cta-button" id="consultationBtn">Explore Services</button>
+    </div>
+  </section>
 
   <!-- Banner -->
   <section class="banner" id="home">
