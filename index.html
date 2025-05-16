@@ -248,20 +248,50 @@
     }
 
     /* Banner Section */
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Previous head content remains the same until the style section -->
+  
+  <style>
+    /* Previous styles remain the same until the banner section */
+
+    /* Banner Section */
     .banner {
       position: relative;
       height: 100vh;
+      min-height: 700px; /* Minimum height for desktop */
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
       margin-top: 70px;
-      background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85)),
-                  url('https://images.unsplash.com/photo-1531517742687-0b6b254d4a88?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+      background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85));
       background-size: cover;
       background-position: center;
       overflow: hidden;
+    }
+
+    /* Desktop Banner Image */
+    @media (min-width: 769px) {
+      .banner {
+        background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85)),
+                    url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+      }
+    }
+
+    /* Mobile Banner Image */
+    @media (max-width: 768px) {
+      .banner {
+        min-height: 100vh;
+        background: linear-gradient(135deg, rgba(58, 28, 113, 0.85), rgba(215, 109, 119, 0.85)),
+                    url('https://images.unsplash.com/photo-1531517742687-0b6b254d4a88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        background-size: cover;
+        background-position: center;
+      }
     }
 
     .banner-content {
@@ -273,19 +303,19 @@
     }
 
     .banner h1 {
-      font-size: 3.5rem;
+      font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
       margin-bottom: 1.5rem;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       animation: float 6s ease-in-out infinite;
     }
 
     .banner p {
-      font-size: 1.5rem;
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Responsive font size */
       margin-bottom: 2.5rem;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
       animation: float 5s ease-in-out infinite 0.5s;
     }
-
+    
     /* Floating Elements */
     .floating-element {
       position: absolute;
