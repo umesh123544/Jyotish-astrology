@@ -639,6 +639,9 @@
       grid-column: 1 / -1;
       font-family: 'Hind Siliguri', sans-serif;
     }
+    .fa-spinner {
+  margin-right: 0.5rem;
+    }
 
     @media (max-width: 768px) {
       .rashi-container {
@@ -1426,24 +1429,30 @@
       `).join('');
     }
 
-    // Load Rashi predictions
     async function loadRashiPredictions() {
-      try {
-        // Try to fetch from API first
-        const response = await fetch('https://api.jotishi.com/rashi-today');
-        if (response.ok) {
-          const data = await response.json();
-          displayRashis(data);
-          return;
-        }
-        throw new Error('API request failed');
-      } catch (error) {
-        console.error("Error fetching Rashi data:", error);
-        // Fallback to local data
-        const localRashiData = getLocalRashiData();
-        displayRashis(localRashiData);
-      }
-    }
+  const container = document.getElementById('rashiContainer');
+  
+  try {
+    // Show loading state
+    container.innerHTML = `
+      <div class="loading">
+        <i class="fas fa-spinner fa-spin"></i> राशिफल लोड गर्दै...
+      </div>
+    `;
+    
+    // Use local data directly since the API might not be available
+    const localRashiData = getLocalRashiData();
+    displayRashis(localRashiData);
+    
+  } catch (error) {
+    console.error("Error loading Rashi data:", error);
+    container.innerHTML = `
+      <div class="error-message" style="grid-column: 1 / -1; text-align: center; color: var(--primary);">
+        <i class="fas fa-exclamation-triangle"></i> राशिफल लोड गर्न असमर्थ
+      </div>
+    `;
+  }
+}
     
 if ('serviceWorker' in navigator) {
     // Unregister old workers
