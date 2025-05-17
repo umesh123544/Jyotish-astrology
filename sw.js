@@ -7,7 +7,7 @@ const urlsToCache = [
   '/styles.css',
   '/app.js',
   'https://i.ibb.co/yFHs1wVD/2d5cd37b975293e90767b59c12ad586d.png',
-  'https://i.ibb.co/sJ3vWsvz/Picsart-25-05-17-01-07-39-140.png'
+  'https://i.ibb.co/PG2SRstT/Picsart-25-05-17-08-27-21-322.png'
 ];
 
 self.addEventListener('install', event => {
