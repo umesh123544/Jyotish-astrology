@@ -314,22 +314,23 @@
     .element-3 { width: 80px; height: 80px; top: 60%; left: 25%; animation-delay: 4s; }
     .element-4 { width: 120px; height: 120px; bottom: 20%; right: 25%; animation-delay: 6s; }
 
-    /* CTA Button */
     .cta-button {
-      background-color: var(--secondary);
-      color: white;
-      border: none;
-      padding: 1.2rem 3rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-left: 0; /* Ensure no margin pushing it right */
+  align-self: flex-start; /* Align button to left */
+}
 
     .cta-button:hover {
       background-color: #e69009;
