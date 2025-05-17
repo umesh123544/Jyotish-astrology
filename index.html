@@ -1317,31 +1317,65 @@
         displayRashis(localRashiData);
       }
     }
-// Nepali Rashi Bhavishya Implementation
-    document.addEventListener('DOMContentLoaded', function() {
-      // Display current Nepali date
-      function getNepaliDate() {
-        const today = new Date();
-        const nepaliMonths = [
-          'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज',
-          'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फाल्गुन', 'चैत'
-        ];
-        
-        const days = [
-          'आइतबार', 'सोमबार', 'मंगलबार', 'बुधबार',
-          'बिहिबार', 'शुक्रबार', 'शनिबार'
-        ];
-        
-        const day = days[today.getDay()];
-        const date = today.getDate();
-        const month = nepaliMonths[today.getMonth()];
-        const year = today.getFullYear() + 56; // Convert to BS year
-        
-        return `${day}, ${month} ${date}, ${year}`;
-      }
+// Add this function to your JavaScript
+function getCurrentNepaliDate() {
+  // English to Nepali date mapping (approximate)
+  const nepaliDateMap = {
+    1: { name: 'बैशाख', days: 31 },
+    2: { name: 'जेठ', days: 31 },
+    3: { name: 'असार', days: 32 },
+    4: { name: 'साउन', days: 31 },
+    5: { name: 'भदौ', days: 31 },
+    6: { name: 'असोज', days: 30 },
+    7: { name: 'कार्तिक', days: 30 },
+    8: { name: 'मंसिर', days: 29 },
+    9: { name: 'पुष', days: 30 },
+    10: { name: 'माघ', days: 29 },
+    11: { name: 'फाल्गुन', days: 30 },
+    12: { name: 'चैत', days: 30 }
+  };
 
-      document.getElementById('currentDate').textContent = getNepaliDate();
+  const nepaliDays = [
+    'आइतबार', 'सोमबार', 'मंगलबार', 'बुधबार',
+    'बिहिबार', 'शुक्रबार', 'शनिबार'
+  ];
 
+  // Get current English date
+  const today = new Date();
+  const engYear = today.getFullYear();
+  const engMonth = today.getMonth() + 1;
+  const engDay = today.getDate();
+  const dayOfWeek = today.getDay();
+
+  // Simple conversion (for demo - replace with proper algorithm)
+  // This is a placeholder - you should use a proper conversion library
+  const nepYear = engYear + 56;
+  let nepMonth = engMonth + 8;
+  if (nepMonth > 12) {
+    nepMonth -= 12;
+  }
+  
+  let nepDay = engDay + 15;
+  if (nepDay > nepaliDateMap[nepMonth].days) {
+    nepDay -= nepaliDateMap[nepMonth].days;
+    nepMonth++;
+    if (nepMonth > 12) {
+      nepMonth = 1;
+      nepYear++;
+    }
+  }
+
+  return {
+    dayOfWeek: nepaliDays[dayOfWeek],
+    day: nepDay,
+    month: nepaliDateMap[nepMonth].name,
+    year: nepYear,
+    formatted: `${nepaliDays[dayOfWeek]}, ${nepaliDateMap[nepMonth].name} ${nepDay}, ${nepYear}`
+  };
+}
+
+// Usage:
+document.getElementById('currentDate').textContent = getCurrentNepaliDate().formatted;
       // API endpoint for Nepali Rashi predictions
       const RASHI_API_URL = 'https://api.jotishi.com/nepali-rashi';
 
