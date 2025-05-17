@@ -438,14 +438,14 @@
       border: 1px solid rgba(0,0,0,0.05);
     }
 
-.service h3 {
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  text-decoration: none;
-  border-bottom: 2px solid var(--secondary);
-  padding-bottom: 0.5rem;
-}
+    .service h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-decoration: none;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
 
     .service p {
       margin-bottom: 0;
@@ -458,28 +458,6 @@
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
       border-color: var(--primary-light);
-    }
-
-    .service:hover h3 {
-      text-decoration-color: var(--primary);
-    }
-
-    /* Mobile Services */
-    @media (max-width: 768px) {
-      .service-grid {
-        margin-top: -40px;
-        padding: 1.5rem;
-        gap: 1.5rem;
-      }
-      
-      .service {
-        padding: 1.5rem;
-      }
-      
-      .service h3 {
-        font-size: 1.3rem;
-        text-underline-offset: 4px;
-      }
     }
 
     /* Astrology Sectors Section */
@@ -615,7 +593,14 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
-    rashi-container {
+
+    /* Rashi Section Styles */
+    .rashi-updates {
+      padding: 5rem 5%;
+      background: white;
+    }
+
+    .rashi-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
@@ -629,19 +614,32 @@
       box-shadow: 0 4px 12px rgba(109, 40, 217, 0.1);
       transition: transform 0.3s ease;
       border-left: 4px solid var(--primary);
+      text-align: center;
     }
 
     .rashi-card:hover {
       transform: translateY(-5px);
     }
 
+    .rashi-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rashi-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     .rashi-card h3 {
       color: var(--primary);
       font-size: 1.3rem;
       margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .rashi-date {
@@ -649,6 +647,21 @@
       color: var(--gray);
       margin-bottom: 1rem;
       text-align: center;
+    }
+
+    .rashi-meta {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    .rashi-meta span {
+      display: inline-block;
+      margin: 0 5px;
+    }
+
+    .rashi-meta span:first-child {
+      color: var(--primary);
     }
 
     .loading {
@@ -661,16 +674,7 @@
       .rashi-container {
         grid-template-columns: 1fr;
       }
-      .rashi-card h3 i {
-  margin-right: 10px;
-  color: var(--primary-light);
-  font-size: 1.2em;
-}
-
-/* Specific colors for each sign if you want */
-.rashi-card[data-sign="aries"] h3 i { color: #ff0000; }
-.rashi-card[data-sign="taurus"] h3 i { color: #00aa00; }
-/* Add more specific colors as needed */
+    }
 
     /* WhatsApp Float */
     .whatsapp-float {
@@ -1062,12 +1066,12 @@
     </div>
   </div>
   
+  <!-- Today's Rashi Predictions -->
   <section class="rashi-updates" id="rashi">
     <div class="section-title">
       <h2>Today's Rashi Bhavishya</h2>
     </div>
-      <div class="rashi-date" id="currentDate"></div>
-    </div>
+    <div class="rashi-date" id="currentDate"></div>
     
     <div class="rashi-container" id="rashiContainer">
       <div class="loading">
@@ -1308,149 +1312,146 @@
     if (!navigator.onLine) {
       offlineNotification.style.display = 'block';
     }
+
+    // Today's Rashi Predictions with Custom Icons
     document.addEventListener('DOMContentLoaded', function() {
       // Display current Nepali date
       const today = new Date();
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       document.getElementById('currentDate').textContent = today.toLocaleDateString('ne-NP', options);
-      const rashiData = [
-  {
-    name: "Mesh (Aries)",
-    symbol: "♈",
-    icon: "fa-fire", // Aries icon
-    prediction: "Career opportunities may arise. Focus on important tasks.",
-    luckyNumber: "7",
-    luckyColor: "Red"
-  },
-  {
-    name: "Brish (Taurus)",
-    symbol: "♉",
-    icon: "fa-bull", // Taurus icon
-    prediction: "Financial gains expected. Avoid unnecessary arguments.",
-    luckyNumber: "6",
-    luckyColor: "White"
-  },
-  {
-    name: "Mithun (Gemini)",
-    symbol: "♊",
-    icon: "fa-users", // Gemini icon (using users as twins)
-    prediction: "Good day for communication. Travel plans favorable.",
-    luckyNumber: "5",
-    luckyColor: "Green"
-  },
-  {
-    name: "Karkat (Cancer)",
-    symbol: "♋",
-    icon: "fa-crab", // Cancer icon
-    prediction: "Emotional balance needed. Family time beneficial.",
-    luckyNumber: "2",
-    luckyColor: "Silver"
-  },
-  {
-    name: "Singha (Leo)",
-    symbol: "♌",
-    icon: "fa-lion", // Leo icon
-    prediction: "Leadership skills shine. Avoid impulsive decisions.",
-    luckyNumber: "1",
-    luckyColor: "Gold"
-  },
-  {
-    name: "Kanya (Virgo)",
-    symbol: "♍",
-    icon: "fa-virgo", // Virgo icon (you might need a custom icon)
-    prediction: "Health needs attention. Good for planning.",
-    luckyNumber: "5",
-    luckyColor: "Green"
-  },
-  {
-    name: "Tula (Libra)",
-    symbol: "♎",
-    icon: "fa-balance-scale", // Libra icon
-    prediction: "Relationships in focus. Balance work and personal life.",
-    luckyNumber: "6",
-    luckyColor: "Pink"
-  },
-  {
-    name: "Brischik (Scorpio)",
-    symbol: "♏",
-    icon: "fa-scorpion", // Scorpio icon
-    prediction: "Transformation possible. Avoid risky ventures.",
-    luckyNumber: "9",
-    luckyColor: "Black"
-  },
-  {
-    name: "Dhanu (Sagittarius)",
-    symbol: "♐",
-    icon: "fa-arrow-right", // Sagittarius icon (archer)
-    prediction: "Learning opportunities. Long-distance connections favorable.",
-    luckyNumber: "3",
-    luckyColor: "Purple"
-  },
-  {
-    name: "Makar (Capricorn)",
-    symbol: "♑",
-    icon: "fa-goat", // Capricorn icon
-    prediction: "Career progress likely. Be patient with results.",
-    luckyNumber: "8",
-    luckyColor: "Brown"
-  },
-  {
-    name: "Kumbha (Aquarius)",
-    symbol: "♒",
-    icon: "fa-water", // Aquarius icon
-    prediction: "Innovative ideas flow. Social connections help.",
-    luckyNumber: "4",
-    luckyColor: "Blue"
-  },
-  {
-    name: "Meen (Pisces)",
-    symbol: "♓",
-    icon: "fa-fish", // Pisces icon
-    prediction: "Intuition strong today. Creative pursuits favored.",
-    luckyNumber: "7",
-    luckyColor: "Sea Green"
-  }
-];
-
-      // Display Rashi data
-      displayRashis(rashiData);
       
-      // For real API implementation:
-      // fetchRashiFromAPI();
+      // Load Rashi predictions
+      fetchRashiPredictions();
     });
 
-    function displayRashis(rashis) {
-  const container = document.getElementById('rashiContainer');
-  
-  container.innerHTML = rashis.map(rashi => `
-    <div class="rashi-card">
-      <h3><i class="fas ${rashi.icon}"></i> ${rashi.symbol} ${rashi.name}</h3>
-      <p>${rashi.prediction}</p>
-      <div style="margin-top: 10px; font-size: 0.9em;">
-        <span style="color: var(--primary);">Lucky Number: ${rashi.luckyNumber}</span> | 
-        <span style="color: ${rashi.luckyColor}">Color: ${rashi.luckyColor}</span>
-      </div>
-    </div>
-  `).join('');
-}
-
-    // Example API function (replace with actual API)
-    async function fetchRashiFromAPI() {
+    // Function to fetch Rashi predictions from API
+    async function fetchRashiPredictions() {
       try {
-        // This is a placeholder - use a real API endpoint
-        const response = await fetch('https://api.example.com/nepali-rashi');
+        // This is a placeholder - replace with your actual API endpoint
+        const response = await fetch('https://api.jotishi.com/rashi-today');
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
         const data = await response.json();
         displayRashis(data);
       } catch (error) {
         console.error("Error fetching Rashi data:", error);
-        document.getElementById('rashiContainer').innerHTML = `
-          <div class="rashi-card" style="grid-column: 1/-1">
-            <h3>⚠️ Service Temporarily Unavailable</h3>
-            <p>We couldn't load today's predictions. Please check back later.</p>
-          </div>
-        `;
+        // Fallback to local data if API fails
+        const localRashiData = getLocalRashiData();
+        displayRashis(localRashiData);
+      }
+    }
+
+    // Local fallback data with your custom icons
+    function getLocalRashiData() {
+      return [
+        {
+          name: "Mesh (Aries)",
+          icon: "images/zodiac/aries.png", // Path to your Aries icon
+          prediction: "Career opportunities may arise. Focus on important tasks.",
+          luckyNumber: "7",
+          luckyColor: "Red"
+        },
+        {
+          name: "Brish (Taurus)",
+          icon: "images/zodiac/taurus.png", // Path to your Taurus icon
+          prediction: "Financial gains expected. Avoid unnecessary arguments.",
+          luckyNumber: "6",
+          luckyColor: "White"
+        },
+        {
+          name: "Mithun (Gemini)",
+          icon: "images/zodiac/gemini.png", // Path to your Gemini icon
+          prediction: "Good day for communication. Travel plans favorable.",
+          luckyNumber: "5",
+          luckyColor: "Green"
+        },
+        {
+          name: "Karkat (Cancer)",
+          icon: "images/zodiac/cancer.png", // Path to your Cancer icon
+          prediction: "Emotional balance needed. Family time beneficial.",
+          luckyNumber: "2",
+          luckyColor: "Silver"
+        },
+        {
+          name: "Singha (Leo)",
+          icon: "images/zodiac/leo.png", // Path to your Leo icon
+          prediction: "Leadership skills shine. Avoid impulsive decisions.",
+          luckyNumber: "1",
+          luckyColor: "Gold"
+        },
+        {
+          name: "Kanya (Virgo)",
+          icon: "images/zodiac/virgo.png", // Path to your Virgo icon
+          prediction: "Health needs attention. Good for planning.",
+          luckyNumber: "5",
+          luckyColor: "Green"
+        },
+        {
+          name: "Tula (Libra)",
+          icon: "images/zodiac/libra.png", // Path to your Libra icon
+          prediction: "Relationships in focus. Balance work and personal life.",
+          luckyNumber: "6",
+          luckyColor: "Pink"
+        },
+        {
+          name: "Brischik (Scorpio)",
+          icon: "images/zodiac/scorpio.png", // Path to your Scorpio icon
+          prediction: "Transformation possible. Avoid risky ventures.",
+          luckyNumber: "9",
+          luckyColor: "Black"
+        },
+        {
+          name: "Dhanu (Sagittarius)",
+          icon: "images/zodiac/sagittarius.png", // Path to your Sagittarius icon
+          prediction: "Learning opportunities. Long-distance connections favorable.",
+          luckyNumber: "3",
+          luckyColor: "Purple"
+        },
+        {
+          name: "Makar (Capricorn)",
+          icon: "images/zodiac/capricorn.png", // Path to your Capricorn icon
+          prediction: "Career progress likely. Be patient with results.",
+          luckyNumber: "8",
+          luckyColor: "Brown"
+        },
+        {
+          name: "Kumbha (Aquarius)",
+          icon: "images/zodiac/aquarius.png", // Path to your Aquarius icon
+          prediction: "Innovative ideas flow. Social connections help.",
+          luckyNumber: "4",
+          luckyColor: "Blue"
+        },
+        {
+          name: "Meen (Pisces)",
+          icon: "images/zodiac/pisces.png", // Path to your Pisces icon
+          prediction: "Intuition strong today. Creative pursuits favored.",
+          luckyNumber: "7",
+          luckyColor: "Sea Green"
         }
-     }
-      </script>
-       </body>
-       </html>
+      ];
+    }
+
+    // Function to display Rashi predictions
+    function displayRashis(rashis) {
+      const container = document.getElementById('rashiContainer');
+      
+      container.innerHTML = rashis.map(rashi => `
+        <div class="rashi-card">
+          <div class="rashi-icon">
+            <img src="${rashi.icon}" alt="${rashi.name}">
+          </div>
+          <h3>${rashi.name}</h3>
+          <p>${rashi.prediction}</p>
+          <div class="rashi-meta">
+            <span>Lucky Number: ${rashi.luckyNumber}</span> | 
+            <span>Color: ${rashi.luckyColor}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
