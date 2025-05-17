@@ -661,6 +661,16 @@
       .rashi-container {
         grid-template-columns: 1fr;
       }
+      .rashi-card h3 i {
+  margin-right: 10px;
+  color: var(--primary-light);
+  font-size: 1.2em;
+}
+
+/* Specific colors for each sign if you want */
+.rashi-card[data-sign="aries"] h3 i { color: #ff0000; }
+.rashi-card[data-sign="taurus"] h3 i { color: #00aa00; }
+/* Add more specific colors as needed */
 
     /* WhatsApp Float */
     .whatsapp-float {
@@ -1303,94 +1313,104 @@
       const today = new Date();
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       document.getElementById('currentDate').textContent = today.toLocaleDateString('ne-NP', options);
-      
-      // Sample Rashi data (replace with API call)
       const rashiData = [
-        {
-          name: "Mesh (Aries)",
-          symbol: "♈",
-          prediction: "Career opportunities may arise. Focus on important tasks.",
-          luckyNumber: "7",
-          luckyColor: "Red"
-        },
-        {
-          name: "Brish (Taurus)",
-          symbol: "♉",
-          prediction: "Financial gains expected. Avoid unnecessary arguments.",
-          luckyNumber: "6",
-          luckyColor: "White"
-        },
-        {
-          name: "Mithun (Gemini)",
-          symbol: "♊",
-          prediction: "Good day for communication. Travel plans favorable.",
-          luckyNumber: "5",
-          luckyColor: "Green"
-        },
-        {
-          name: "Karkat (Cancer)",
-          symbol: "♋",
-          prediction: "Emotional balance needed. Family time beneficial.",
-          luckyNumber: "2",
-          luckyColor: "Silver"
-        },
-        {
-          name: "Singha (Leo)",
-          symbol: "♌",
-          prediction: "Leadership skills shine. Avoid impulsive decisions.",
-          luckyNumber: "1",
-          luckyColor: "Gold"
-        },
-        {
-          name: "Kanya (Virgo)",
-          symbol: "♍",
-          prediction: "Health needs attention. Good for planning.",
-          luckyNumber: "5",
-          luckyColor: "Green"
-        },
-        {
-          name: "Tula (Libra)",
-          symbol: "♎",
-          prediction: "Relationships in focus. Balance work and personal life.",
-          luckyNumber: "6",
-          luckyColor: "Pink"
-        },
-        {
-          name: "Brischik (Scorpio)",
-          symbol: "♏",
-          prediction: "Transformation possible. Avoid risky ventures.",
-          luckyNumber: "9",
-          luckyColor: "Black"
-        },
-        {
-          name: "Dhanu (Sagittarius)",
-          symbol: "♐",
-          prediction: "Learning opportunities. Long-distance connections favorable.",
-          luckyNumber: "3",
-          luckyColor: "Purple"
-        },
-        {
-          name: "Makar (Capricorn)",
-          symbol: "♑",
-          prediction: "Career progress likely. Be patient with results.",
-          luckyNumber: "8",
-          luckyColor: "Brown"
-        },
-        {
-          name: "Kumbha (Aquarius)",
-          symbol: "♒",
-          prediction: "Innovative ideas flow. Social connections help.",
-          luckyNumber: "4",
-          luckyColor: "Blue"
-        },
-        {
-          name: "Meen (Pisces)",
-          symbol: "♓",
-          prediction: "Intuition strong today. Creative pursuits favored.",
-          luckyNumber: "7",
-          luckyColor: "Sea Green"
-        }
-      ];
+  {
+    name: "Mesh (Aries)",
+    symbol: "♈",
+    icon: "fa-fire", // Aries icon
+    prediction: "Career opportunities may arise. Focus on important tasks.",
+    luckyNumber: "7",
+    luckyColor: "Red"
+  },
+  {
+    name: "Brish (Taurus)",
+    symbol: "♉",
+    icon: "fa-bull", // Taurus icon
+    prediction: "Financial gains expected. Avoid unnecessary arguments.",
+    luckyNumber: "6",
+    luckyColor: "White"
+  },
+  {
+    name: "Mithun (Gemini)",
+    symbol: "♊",
+    icon: "fa-users", // Gemini icon (using users as twins)
+    prediction: "Good day for communication. Travel plans favorable.",
+    luckyNumber: "5",
+    luckyColor: "Green"
+  },
+  {
+    name: "Karkat (Cancer)",
+    symbol: "♋",
+    icon: "fa-crab", // Cancer icon
+    prediction: "Emotional balance needed. Family time beneficial.",
+    luckyNumber: "2",
+    luckyColor: "Silver"
+  },
+  {
+    name: "Singha (Leo)",
+    symbol: "♌",
+    icon: "fa-lion", // Leo icon
+    prediction: "Leadership skills shine. Avoid impulsive decisions.",
+    luckyNumber: "1",
+    luckyColor: "Gold"
+  },
+  {
+    name: "Kanya (Virgo)",
+    symbol: "♍",
+    icon: "fa-virgo", // Virgo icon (you might need a custom icon)
+    prediction: "Health needs attention. Good for planning.",
+    luckyNumber: "5",
+    luckyColor: "Green"
+  },
+  {
+    name: "Tula (Libra)",
+    symbol: "♎",
+    icon: "fa-balance-scale", // Libra icon
+    prediction: "Relationships in focus. Balance work and personal life.",
+    luckyNumber: "6",
+    luckyColor: "Pink"
+  },
+  {
+    name: "Brischik (Scorpio)",
+    symbol: "♏",
+    icon: "fa-scorpion", // Scorpio icon
+    prediction: "Transformation possible. Avoid risky ventures.",
+    luckyNumber: "9",
+    luckyColor: "Black"
+  },
+  {
+    name: "Dhanu (Sagittarius)",
+    symbol: "♐",
+    icon: "fa-arrow-right", // Sagittarius icon (archer)
+    prediction: "Learning opportunities. Long-distance connections favorable.",
+    luckyNumber: "3",
+    luckyColor: "Purple"
+  },
+  {
+    name: "Makar (Capricorn)",
+    symbol: "♑",
+    icon: "fa-goat", // Capricorn icon
+    prediction: "Career progress likely. Be patient with results.",
+    luckyNumber: "8",
+    luckyColor: "Brown"
+  },
+  {
+    name: "Kumbha (Aquarius)",
+    symbol: "♒",
+    icon: "fa-water", // Aquarius icon
+    prediction: "Innovative ideas flow. Social connections help.",
+    luckyNumber: "4",
+    luckyColor: "Blue"
+  },
+  {
+    name: "Meen (Pisces)",
+    symbol: "♓",
+    icon: "fa-fish", // Pisces icon
+    prediction: "Intuition strong today. Creative pursuits favored.",
+    luckyNumber: "7",
+    luckyColor: "Sea Green"
+  }
+];
 
       // Display Rashi data
       displayRashis(rashiData);
@@ -1400,19 +1420,19 @@
     });
 
     function displayRashis(rashis) {
-      const container = document.getElementById('rashiContainer');
-      
-      container.innerHTML = rashis.map(rashi => `
-        <div class="rashi-card">
-          <h3>${rashi.symbol} ${rashi.name}</h3>
-          <p>${rashi.prediction}</p>
-          <div style="margin-top: 10px; font-size: 0.9em;">
-            <span style="color: var(--primary);">Lucky Number: ${rashi.luckyNumber}</span> | 
-            <span style="color: ${rashi.luckyColor}">Color: ${rashi.luckyColor}</span>
-          </div>
-        </div>
-      `).join('');
-    }
+  const container = document.getElementById('rashiContainer');
+  
+  container.innerHTML = rashis.map(rashi => `
+    <div class="rashi-card">
+      <h3><i class="fas ${rashi.icon}"></i> ${rashi.symbol} ${rashi.name}</h3>
+      <p>${rashi.prediction}</p>
+      <div style="margin-top: 10px; font-size: 0.9em;">
+        <span style="color: var(--primary);">Lucky Number: ${rashi.luckyNumber}</span> | 
+        <span style="color: ${rashi.luckyColor}">Color: ${rashi.luckyColor}</span>
+      </div>
+    </div>
+  `).join('');
+}
 
     // Example API function (replace with actual API)
     async function fetchRashiFromAPI() {
