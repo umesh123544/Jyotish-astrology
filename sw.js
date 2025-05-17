@@ -1,5 +1,5 @@
 const DEBUG = true;
-const CACHE_NAME = 'jotishi-v3';
+const CACHE_NAME = 'jotishi-v4'; // Updated version
 const OFFLINE_URL = '/offline.html';
 const PRECACHE_URLS = [
   '/',
@@ -11,7 +11,10 @@ const PRECACHE_URLS = [
   'https://i.ibb.co/yFHs1wVD/2d5cd37b975293e90767b59c12ad586d.png',
   'https://i.ibb.co/PG2SRstT/Picsart-25-05-17-08-27-21-322.png',
   'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css',
+  // Add font files
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2'
 ];
 
 function log(message) {
@@ -20,101 +23,116 @@ function log(message) {
   }
 }
 
-// Install event - cache core assets
+// Enhanced caching strategy
 self.addEventListener('install', event => {
-  log('Install event');
+  log('Install event v4');
   
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        log('Caching assets');
-        return cache.addAll(PRECACHE_URLS)
-          .then(() => cache.add(new Request(OFFLINE_URL, {cache: 'reload'})))
-          .then(() => {
-            log('All assets cached');
-            return self.skipWaiting();
-          });
+        log('Caching core assets');
+        return Promise.all(
+          PRECACHE_URLS.map(url => {
+            return fetch(url, {
+              credentials: 'omit',
+              mode: 'no-cors'
+            }).then(response => {
+              if (response.ok) return cache.put(url, response);
+            }).catch(err => {
+              log(`Failed to cache ${url}: ${err}`);
+            });
+          })
+        ).then(() => {
+          log('Core assets cached');
+          return cache.add(OFFLINE_URL);
+        });
       })
-      .catch(err => {
-        log(`Cache addAll failed: ${err}`);
-      })
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activate event - clean old caches
+// Aggressive cache cleanup
 self.addEventListener('activate', event => {
-  log('Activate event');
-  
-  const cacheWhitelist = [CACHE_NAME];
+  log('Activate event v4');
   
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (!cacheWhitelist.includes(cacheName)) {
+          if (cacheName !== CACHE_NAME) {
             log(`Deleting old cache: ${cacheName}`);
             return caches.delete(cacheName);
           }
         })
       );
     })
+    .then(() => self.clients.claim())
     .then(() => {
-      log('Claiming clients');
-      return self.clients.claim();
-    })
-    .then(() => {
-      // Start periodic updates
-      if ('periodicSync' in self.registration) {
-        self.registration.periodicSync.register('content-update', {
-          minInterval: 86400000 // 24 hours
-        }).then(() => log('Periodic sync registered'))
-         .catch(err => log(`Periodic sync failed: ${err}`));
-      }
+      // Refresh all open clients
+      self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.navigate(client.url));
+      });
     })
   );
 });
 
-// Fetch event - cache-first with network fallback
+// Improved fetch handler with CORS support
 self.addEventListener('fetch', event => {
-  // Skip non-GET requests
   if (event.request.method !== 'GET') return;
   
-  // Skip chrome-extension requests
-  if (event.request.url.startsWith('chrome-extension://')) return;
-  
-  // Skip cross-origin requests unless they're in PRECACHE_URLS
   const requestUrl = new URL(event.request.url);
-  const isExternal = requestUrl.origin !== location.origin;
-  if (isExternal && !PRECACHE_URLS.includes(event.request.url)) return;
-
-  log(`Fetching: ${event.request.url}`);
+  const isCoreAsset = PRECACHE_URLS.includes(requestUrl.href);
+  const isFontRequest = requestUrl.origin === 'https://cdnjs.cloudflare.com';
   
+  // Handle font requests with CORS
+  if (isFontRequest) {
+    event.respondWith(
+      caches.match(event.request).then(cached => {
+        return cached || fetch(event.request, { 
+          mode: 'cors',
+          credentials: 'omit'
+        }).then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+          return response;
+        });
+      })
+    );
+    return;
+  }
+
+  // Generic network-first strategy
   event.respondWith(
-    caches.match(event.request)
-      .then(cachedResponse => {
-        // Return cached response if available
-        if (cachedResponse) {
-          log(`Serving from cache: ${event.request.url}`);
-          
-          // Update cache in background
-          if (isCacheable(event.request)) {
-            fetchAndCache(event.request);
-          }
-          
-          return cachedResponse;
+    fetch(event.request)
+      .then(networkResponse => {
+        // Cache any GET request that's not in the exclusion list
+        if (isCacheable(event.request)) {
+          const clone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
         }
-
-        // For navigation requests, try network first
+        return networkResponse;
+      })
+      .catch(async () => {
+        // Return offline page for navigation requests
         if (event.request.mode === 'navigate') {
-          return fetchAndCache(event.request)
-            .catch(() => caches.match(OFFLINE_URL));
+          return caches.match(OFFLINE_URL);
         }
-
-        // For other requests, try network
-        return fetchAndCache(event.request);
+        // Return cached assets
+        return caches.match(event.request);
       })
   );
 });
+
+// Enhanced cache validation
+function isCacheable(request) {
+  const url = new URL(request.url);
+  return request.method === 'GET' &&
+         !url.pathname.endsWith('.html') &&
+         !url.searchParams.has('nocache') &&
+         (url.origin === location.origin ||
+          url.hostname === 'cdnjs.cloudflare.com' ||
+          url.hostname === 'fonts.googleapis.com');
+}
 
 // Push notification event
 self.addEventListener('push', event => {
