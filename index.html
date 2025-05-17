@@ -549,88 +549,103 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+/* Nepali Rashi Styles */
+.rashi-updates {
+  padding: 5rem 5%;
+  background: white;
+  direction: ltr; /* Ensures proper rendering of Nepali text */
+}
 
-    /* Rashi Section Styles */
-    .rashi-updates {
-      padding: 5rem 5%;
-      background: white;
-    }
+.rashi-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
 
-    .rashi-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+.rashi-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(109, 40, 217, 0.1);
+  transition: transform 0.3s ease;
+  border-left: 4px solid var(--primary);
+  text-align: center;
+  font-family: 'Hind Siliguri', sans-serif;
+}
 
-    .rashi-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(109, 40, 217, 0.1);
-      transition: transform 0.3s ease;
-      border-left: 4px solid var(--primary);
-      text-align: center;
-    }
+.rashi-card:hover {
+  transform: translateY(-5px);
+}
 
-    .rashi-card:hover {
-      transform: translateY(-5px);
-    }
+.rashi-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .rashi-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.rashi-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-    .rashi-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+.rashi-card h3 {
+  color: var(--primary);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
 
-    .rashi-card h3 {
-      color: var(--primary);
-      font-size: 1.3rem;
-      margin-bottom: 0.8rem;
-    }
+.rashi-date {
+  font-size: 1.1rem;
+  color: var(--gray);
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: 'Hind Siliguri', sans-serif;
+}
 
-    .rashi-date {
-      font-size: 0.9rem;
-      color: var(--gray);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
+.rashi-meta {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
 
-    .rashi-meta {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      color: var(--gray);
-    }
+.rashi-time {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
 
-    .rashi-meta span {
-      display: inline-block;
-      margin: 0 5px;
-    }
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--primary);
+  grid-column: 1 / -1;
+  font-family: 'Hind Siliguri', sans-serif;
+}
 
-    .rashi-meta span:first-child {
-      color: var(--primary);
-    }
-
-    .loading {
-      text-align: center;
-      padding: 2rem;
-      color: var(--primary);
-    }
-
-    @media (max-width: 768px) {
-      .rashi-container {
-        grid-template-columns: 1fr;
-      }
-    }
+@media (max-width: 768px) {
+  .rashi-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .rashi-meta {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
 
     /* WhatsApp Float */
     .whatsapp-float {
@@ -1023,20 +1038,20 @@
     </div>
   </div>
   
-  <!-- Today's Rashi Predictions -->
+    <!-- Today's Rashi Predictions in Nepali -->
   <section class="rashi-updates" id="rashi">
     <div class="section-title">
-      <h2>Today's Rashi Bhavishya</h2>
+      <h2>आजको राशिफल</h2>
     </div>
     <div class="rashi-date" id="currentDate"></div>
     
     <div class="rashi-container" id="rashiContainer">
       <div class="loading">
-        <i class="fas fa-spinner fa-spin"></i> Loading Rashi predictions...
+        <i class="fas fa-spinner fa-spin"></i> राशिफल लोड गर्दै...
       </div>
     </div>
   </section>
-
+  
   <!-- Footer -->
   <footer id="contact">
     <div class="footer-content">
@@ -1302,115 +1317,198 @@
         displayRashis(localRashiData);
       }
     }
+// Nepali Rashi Bhavishya Implementation
+    document.addEventListener('DOMContentLoaded', function() {
+      // Display current Nepali date
+      function getNepaliDate() {
+        const today = new Date();
+        const nepaliMonths = [
+          'बैशाख', 'जेठ', 'असार', 'साउन', 'भदौ', 'असोज',
+          'कार्तिक', 'मंसिर', 'पुष', 'माघ', 'फाल्गुन', 'चैत'
+        ];
+        
+        const days = [
+          'आइतबार', 'सोमबार', 'मंगलबार', 'बुधबार',
+          'बिहिबार', 'शुक्रबार', 'शनिबार'
+        ];
+        
+        const day = days[today.getDay()];
+        const date = today.getDate();
+        const month = nepaliMonths[today.getMonth()];
+        const year = today.getFullYear() + 56; // Convert to BS year
+        
+        return `${day}, ${month} ${date}, ${year}`;
+      }
 
-    // Local fallback data with your custom icons
-    function getLocalRashiData() {
-      return [
-        {
-          name: "Mesh (Aries)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/1.png", // Path to your Aries icon
-          prediction: "Career opportunities may arise. Focus on important tasks.",
-          luckyNumber: "7",
-          luckyColor: "Red"
-        },
-        {
-          name: "Brish (Taurus)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/2.png.webp", // Path to your Taurus icon
-          prediction: "Financial gains expected. Avoid unnecessary arguments.",
-          luckyNumber: "6",
-          luckyColor: "White"
-        },
-        {
-          name: "Mithun (Gemini)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/3.png", // Path to your Gemini icon
-          prediction: "Good day for communication. Travel plans favorable.",
-          luckyNumber: "5",
-          luckyColor: "Green"
-        },
-        {
-          name: "Karkat (Cancer)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/4-300x300.png.webp", // Path to your Cancer icon
-          prediction: "Emotional balance needed. Family time beneficial.",
-          luckyNumber: "2",
-          luckyColor: "Silver"
-        },
-        {
-          name: "Singha (Leo)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/5.png", // Path to your Leo icon
-          prediction: "Leadership skills shine. Avoid impulsive decisions.",
-          luckyNumber: "1",
-          luckyColor: "Gold"
-        },
-        {
-          name: "Kanya (Virgo)",
-          icon: "https://prarabdhajyotish.com/wp-content/uploads/2018/02/kanya-rashi.png", // Path to your Virgo icon
-          prediction: "Health needs attention. Good for planning.",
-          luckyNumber: "5",
-          luckyColor: "Green"
-        },
-        {
-          name: "Tula (Libra)",
-          icon: "https://www.astrosakha.com/wp-content/uploads/2023/05/libra-horoscope-2015.png", // Path to your Libra icon
-          prediction: "Relationships in focus. Balance work and personal life.",
-          luckyNumber: "6",
-          luckyColor: "Pink"
-        },
-        {
-          name: "Brischik (Scorpio)",
-          icon: "https://i.ibb.co/Qj6jGPrb/pngimg-com-scorpio-PNG44.png", // Path to your Scorpio icon
-          prediction: "Transformation possible. Avoid risky ventures.",
-          luckyNumber: "9",
-          luckyColor: "Black"
-        },
-        {
-          name: "Dhanu (Sagittarius)",
-          icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSURH8DNrS6zR3sMc0hWQN587ORq942wuzKHg&s", // Path to your Sagittarius icon
-          prediction: "Learning opportunities. Long-distance connections favorable.",
-          luckyNumber: "3",
-          luckyColor: "Purple"
-        },
-        {
-          name: "Makar (Capricorn)",
-          icon: "https://i.ibb.co/zVVLGH8k/pngimg-com-capricorn-PNG82.png", // Path to your Capricorn icon
-          prediction: "Career progress likely. Be patient with results.",
-          luckyNumber: "8",
-          luckyColor: "Brown"
-        },
-        {
-          name: "Kumbha (Aquarius)",
-          icon: "https://i.ibb.co/SX9yf0Mw/pngimg-com-aquarius-PNG37.png", // Path to your Aquarius icon
-          prediction: "Innovative ideas flow. Social connections help.",
-          luckyNumber: "4",
-          luckyColor: "Blue"
-        },
-        {
-          name: "Meen (Pisces)",
-          icon: "https://www.astrosakha.com/wp-content/uploads/2023/05/pisces-horoscope-2015.png", // Path to your Pisces icon
-          prediction: "Intuition strong today. Creative pursuits favored.",
-          luckyNumber: "7",
-          luckyColor: "Sea Green"
+      document.getElementById('currentDate').textContent = getNepaliDate();
+
+      // API endpoint for Nepali Rashi predictions
+      const RASHI_API_URL = 'https://api.jotishi.com/nepali-rashi';
+
+      // Local fallback data in Nepali
+      function getLocalRashiData() {
+        return [
+          {
+            name: "मेष (Aries)",
+            icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/1.png",
+            prediction: "कामको अवसर आउन सक्छ। महत्त्वपूर्ण काममा ध्यान दिनुहोस्।",
+            luckyNumber: "७",
+            luckyColor: "रातो",
+            time: "सुबह ७-९ बजे"
+          },
+          {
+            name: "वृष (Taurus)",
+            icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/2.png.webp",
+            prediction: "आर्थिक लाभको सम्भावना। अनावश्यक बहसबाट टाढा रहनुहोस्।",
+            luckyNumber: "६",
+            luckyColor: "सेतो",
+            time: "दिउँसो १-३ बजे"
+          },
+          {
+            name: "मिथुन (Gemini)",
+            icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/3.png",
+            prediction: "कुराकानीको लागि राम्रो दिन। यात्रा योजना अनुकूल छ।",
+            luckyNumber: "५",
+            luckyColor: "हरियो",
+            time: "बेलुका ५-७ बजे"
+          },
+          {
+            name: "कर्कट (Cancer)",
+            icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/4-300x300.png.webp",
+            prediction: "भावनात्मक संतुलन आवश्यक छ। परिवारको साथ फाइदाजनक हुनेछ।",
+            luckyNumber: "२",
+            luckyColor: "चाँदी",
+            time: "रात ९-११ बजे"
+          },
+          {
+            name: "सिंह (Leo)",
+            icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/5.png",
+            prediction: "नेतृत्व क्षमता देखिनेछ। आवेगमा निर्णय नलिनुहोस्।",
+            luckyNumber: "१",
+            luckyColor: "सुन",
+            time: "सुबह ६-८ बजे"
+          },
+          {
+            name: "कन्या (Virgo)",
+            icon: "https://prarabdhajyotish.com/wp-content/uploads/2018/02/kanya-rashi.png",
+            prediction: "स्वास्थ्यमा ध्यान दिन आवश्यक। योजना बनाउन राम्रो दिन।",
+            luckyNumber: "५",
+            luckyColor: "हरियो",
+            time: "दिउँसो २-४ बजे"
+          },
+          {
+            name: "तुला (Libra)",
+            icon: "https://www.astrosakha.com/wp-content/uploads/2023/05/libra-horoscope-2015.png",
+            prediction: "सम्बन्धमा ध्यान केन्द्रित। काम र व्यक्तिगत जीवनको संतुलन।",
+            luckyNumber: "६",
+            luckyColor: "गुलाबी",
+            time: "बेलुका ६-८ बजे"
+          },
+          {
+            name: "वृश्चिक (Scorpio)",
+            icon: "https://i.ibb.co/Qj6jGPrb/pngimg-com-scorpio-PNG44.png",
+            prediction: "परिवर्तन सम्भव। जोखिमपूर्ण उद्यमबाट टाढा रहनुहोस्।",
+            luckyNumber: "९",
+            luckyColor: "कालो",
+            time: "रात १०-१२ बजे"
+          },
+          {
+            name: "धनु (Sagittarius)",
+            icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSURH8DNrS6zR3sMc0hWQN587ORq942wuzKHg&s",
+            prediction: "सिक्ने अवसर। लामो दूरीको सम्बन्ध अनुकूल।",
+            luckyNumber: "३",
+            luckyColor: "बैंगनी",
+            time: "सुबह ९-११ बजे"
+          },
+          {
+            name: "मकर (Capricorn)",
+            icon: "https://i.ibb.co/zVVLGH8k/pngimg-com-capricorn-PNG82.png",
+            prediction: "क्यारियर प्रगति सम्भव। नतिजाको लागि धैर्य राख्नुहोस्।",
+            luckyNumber: "८",
+            luckyColor: "खैरो",
+            time: "दिउँसो १२-२ बजे"
+          },
+          {
+            name: "कुम्भ (Aquarius)",
+            icon: "https://i.ibb.co/SX9yf0Mw/pngimg-com-aquarius-PNG37.png",
+            prediction: "नवीन विचारहरू प्रवाह। सामाजिक सम्बन्धले मद्दत गर्छ।",
+            luckyNumber: "४",
+            luckyColor: "निलो",
+            time: "बेलुका ७-९ बजे"
+          },
+          {
+            name: "मीन (Pisces)",
+            icon: "https://www.astrosakha.com/wp-content/uploads/2023/05/pisces-horoscope-2015.png",
+            prediction: "आज अन्तर्ज्ञान बलियो छ। रचनात्मक गतिविधिहरू अनुकूल।",
+            luckyNumber: "७",
+            luckyColor: "समुद्री हरियो",
+            time: "रात ८-१० बजे"
+          }
+        ];
+      }
+    // Fetch Rashi predictions from API
+      async function fetchNepaliRashiPredictions() {
+        try {
+          const response = await fetch(RASHI_API_URL);
+          
+          if (!response.ok) {
+            throw new Error('नेटवर्क प्रतिक्रिया ठीक छैन');
+          }
+          
+          const data = await response.json();
+          
+          // Validate API response
+          if (Array.isArray(data) && data.length === 12) {
+            return data;
+          } else {
+            throw new Error('अमान्य डाटा ढाँचा');
+          }
+        } catch (error) {
+          console.error("राशि डाटा फेच गर्दा त्रुटि:", error);
+          return getLocalRashiData(); // Fallback to local data
         }
-      ];
-    }
+      }
 
-    // Function to display Rashi predictions
-    function displayRashis(rashis) {
-      const container = document.getElementById('rashiContainer');
-      
-      container.innerHTML = rashis.map(rashi => `
-        <div class="rashi-card">
-          <div class="rashi-icon">
-            <img src="${rashi.icon}" alt="${rashi.name}">
+      // Display Rashi predictions
+      function displayNepaliRashis(rashis) {
+        const container = document.getElementById('rashiContainer');
+        
+        container.innerHTML = rashis.map(rashi => `
+          <div class="rashi-card">
+            <div class="rashi-icon">
+              <img src="${rashi.icon}" alt="${rashi.name}" loading="lazy">
+            </div>
+            <h3>${rashi.name}</h3>
+            <p>${rashi.prediction}</p>
+            <div class="rashi-meta">
+              <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
+              <span>रंग: ${rashi.luckyColor}</span>
+            </div>
+            <div class="rashi-time">
+              <i class="fas fa-clock"></i> शुभ समय: ${rashi.time}
+            </div>
           </div>
-          <h3>${rashi.name}</h3>
-          <p>${rashi.prediction}</p>
-          <div class="rashi-meta">
-            <span>Lucky Number: ${rashi.luckyNumber}</span> | 
-            <span>Color: ${rashi.luckyColor}</span>
-          </div>
-        </div>
-      `).join('');
-    }
+        `).join('');
+      }
+
+      // Load Rashi predictions
+      async function loadRashiPredictions() {
+        try {
+          const rashis = await fetchNepaliRashiPredictions();
+          displayNepaliRashis(rashis);
+        } catch (error) {
+          console.error("राशिफल लोड गर्दा त्रुटि:", error);
+          const localRashiData = getLocalRashiData();
+          displayNepaliRashis(localRashiData);
+        }
+      }
+
+      // Initialize
+      loadRashiPredictions();
+
+      // Refresh every 6 hours
+      setInterval(loadRashiPredictions, 21600000);
+    });
   </script>
 </body>
 </html>
