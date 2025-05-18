@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Career Guidance - श्री जोतिषी</title>
   <meta name="description" content="Professional Vedic Astrology Career Guidance Services">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="https://i.ibb.co/PG2SRstT/Picsart-25-05-17-08-27-21-322.png" type="image/png">
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Hind+Siliguri:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -25,19 +27,20 @@
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Poppins', 'Hind Siliguri', sans-serif;
-      background-color: #f5f3ff;
+      font-family: 'Poppins', sans-serif;
       color: var(--dark);
+      background-color: var(--light);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Header Styles */
+    /* Header - Same as other pages */
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       padding: 1rem 5%;
@@ -56,12 +59,28 @@
       margin: 0 auto;
     }
 
-    .logo {
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
       font-family: 'Hind Siliguri', sans-serif;
       font-size: 1.8rem;
       font-weight: 700;
       color: white;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
     }
 
     .nav-links {
@@ -73,7 +92,12 @@
       color: white;
       text-decoration: none;
       font-weight: 600;
+      transition: all 0.3s ease;
       position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
     }
 
     .nav-links a.active {
@@ -90,13 +114,133 @@
       left: 0;
     }
 
-    /* Hero Section */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before {
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.1s;
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      top: 0;
+      transform: rotate(90deg);
+      transition: top 0.1s ease-out, transform 0.2s 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      top: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+        display: none;
+      }
+
+      .nav-links.active {
+        left: 0;
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Career Guidance Specific Styles */
+    .career-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .career-hero {
+      text-align: center;
+      padding: 4rem 0;
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       color: white;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
-      margin-top: 80px;
+      border-radius: 15px;
+      margin-bottom: 3rem;
       position: relative;
     }
 
@@ -104,10 +248,12 @@
       font-family: 'Hind Siliguri', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
 
     .career-hero p {
       font-size: 1.2rem;
+      opacity: 0.9;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -116,7 +262,9 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      background: rgba(255,255,255,0.2);
+      font-size: 1.5rem;
+      color: white;
+      background: rgba(0,0,0,0.2);
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -124,4 +272,439 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.3);
+      transform: rotate(90deg);
+    }
+
+    .career-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      .career-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .career-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-weight: 600;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .career-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-points {
+      margin-top: 1.5rem;
+    }
+
+    .info-point {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .career-options {
+      margin-top: 2rem;
+    }
+
+    .option-card {
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    .option-card h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer - Same as other pages */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 5%;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      position: relative;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #334155;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header - Same as other pages -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage-matching.html">Marriage Matching</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="/career.html" class="active">Career Guidance</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Career Guidance Main Content -->
+  <main class="career-main">
+    <section class="career-hero">
+      <div class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+      
+      <h1>क्यारियर मार्गदर्शन</h1>
+      <p>तपाईंको जन्म कुण्डली अनुसार उत्तम पेशागत रोजाइ</p>
+    </section>
+
+    <div class="career-container">
+      <div class="career-form">
+        <h2>क्यारियर विश्लेषणको लागि जानकारी दिनुहोस्</h2>
+        <p>कृपया तपाईंको जन्म विवरण र वर्तमान क्यारियर स्थिति बारे जानकारी दिनुहोस्</p>
+        
+        <form id="careerForm">
+          <div class="form-section">
+            <h3>व्यक्तिगत विवरण</h3>
+            
+            <div class="form-group">
+              <label for="name">पूरा नाम</label>
+              <input type="text" id="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="dob">जन्म मिति</label>
+              <input type="date" id="dob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="tob">जन्म समय</label>
+              <input type="time" id="tob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="pob">जन्म स्थान</label>
+              <input type="text" id="pob" required>
+            </div>
+          </div>
+          
+          <div class="form-section">
+            <h3>क्यारियर सम्बन्धी जानकारी</h3>
+            
+            <div class="form-group">
+              <label for="current-status">वर्तमान क्यारियर स्थिति</label>
+              <select id="current-status" required>
+                <option value="">छान्नुहोस्</option>
+                <option value="student">विद्यार्थी</option>
+                <option value="employed">नियोजित</option>
+                <option value="unemployed">बेरोजगार</option>
+                <option value="business">व्यवसायी</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="education">उच्चतम शैक्षिक योग्यता</label>
+              <input type="text" id="education" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="interests">रुचिहरू (कमा ३)</label>
+              <textarea id="interests" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="concerns">क्यारियर सम्बन्धी चिन्ता/प्रश्नहरू</label>
+              <textarea id="concerns" rows="3"></textarea>
+            </div>
+          </div>
+          
+          <button type="submit" class="submit-btn">क्यारियर विश्लेषण गर्नुहोस्</button>
+        </form>
+      </div>
+      
+      <div class="career-info">
+        <h2>ज्योतिष अनुसार क्यारियर मार्गदर्शन</h2>
+        <p>वैदिक ज्योतिषले तपाईंको जन्म कुण्डलीमा ग्रहहरूको स्थिति, दशा र योगहरूको आधारमा उपयुक्त क्यारियर विकल्पहरू सुझाव दिन्छ।</p>
+        
+        <div class="info-points">
+          <div class="info-point">
+            <i class="info-icon fas fa-chart-line"></i>
+            <div>
+              <h4>दशा अनुसार उत्तम समय</h4>
+              <p>तपाईंको वर्तमान दशा अनुसार क्यारियरमा प्रगतिको उत्तम समय पत्ता लगाउनुहोस्</p>
+            </div>
+          </div>
+          
+          <div class="info-point">
+            <i class="info-icon fas fa-briefcase"></i>
+            <div>
+              <h4>ग्रह स्थिति अनुसार पेशा</h4>
+              <p>तपाईंको दशम भाव (क्यारियर भाव) र दशमेशको स्थिति अनुसार उपयुक्त पेशा</p>
+            </div>
+          </div>
+          
+          <div class="info-point">
+            <i class="info-icon fas fa-hand-holding-usd"></i>
+            <div>
+              <h4>आर्थिक सम्भावना</h4>
+              <p>तपाईंको धन भाव (द्वितीय र एकादश भाव) अनुसार आयको स्रोत र सम्भावना</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="career-options">
+          <h3>सामान्य क्यारियर योगहरू</h3>
+          
+          <div class="option-card">
+            <h4>सूर्य योग</h4>
+            <p>प्रशासन, सरकारी नोकरी, राजनीति, प्रबन्धन सम्बन्धी पेशाहरू</p>
+          </div>
+          
+          <div class="option-card">
+            <h4>चन्द्र योग</h4>
+            <p>सृजनात्मक क्षेत्र, मनोविज्ञान, होटल व्यवसाय, तरल पदार्थ सम्बन्धी</p>
+          </div>
+          
+          <div class="option-card">
+            <h4>मङ्गल योग</h4>
+            <p>सेना, प्रहरी, इन्जिनियरिङ, यान्त्रिकी, खेलकुद सम्बन्धी पेशा</p>
+          </div>
+          
+          <div class="option-card">
+            <h4>बुध योग</h4>
+            <p>लेखन, शिक्षण, व्यापार, संचार, प्रविधि सम्बन्धी क्षेत्र</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer - Same as other pages -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +977-9813197704</p>
+        <p>Kathmandu, Nepal</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Jotishi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Form Submission
+    document.getElementById('careerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const name = document.getElementById('name').value;
+      const dob = document.getElementById('dob').value;
+      const tob = document.getElementById('tob').value;
+      const pob = document.getElementById('pob').value;
+      const status = document.getElementById('current-status').value;
+      const education = document.getElementById('education').value;
+      const interests = document.getElementById('interests').value;
+      
+      // Validate inputs
+      if (!name || !dob || !tob || !pob || !status || !education || !interests) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      alert('धन्यवाद! तपाईंको क्यारियर विश्लेषण तयार गरिएको छ। हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।');
+      this.reset();
+    });
+
+    // Close button functionality
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.location.href = 'services.html';
+    });
+  </script>
+</body>
+</html>
