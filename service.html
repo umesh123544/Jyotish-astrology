@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jotishi - Astrology Services</title>
+  
+  <!-- Reuse existing styles and fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Maintain existing theme styles */
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+    }
+
+    /* Service Page Specific Styles */
+    .services-container {
+      max-width: 1200px;
+      margin: 100px auto 50px;
+      padding: 0 20px;
+    }
+
+    .service-hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 1rem;
+    }
+
+    .service-price {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .booking-btn {
+      background: var(--secondary);
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .consultation-form {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Add existing header/footer styles from previous code */
+    /* ... (Your existing header/footer styles here) ... */
+  </style>
+</head>
+<body>
+  <!-- Header (Same as main page) -->
+  <header>
+    <!-- Your existing header content -->
+  </header>
+
+  <main class="services-container">
+    <section class="service-hero">
+      <h1>Vedic Astrology Services</h1>
+      <p>Discover your destiny with our authentic Vedic astrology solutions</p>
+    </section>
+
+    <!-- Featured Services -->
+    <div class="service-grid">
+      <div class="service-card">
+        <i class="service-icon fas fa-birthday-cake"></i>
+        <h3>Birth Chart Analysis</h3>
+        <p>Detailed analysis of your natal chart (Janam Kundli)</p>
+        <div class="service-price">₹1500</div>
+        <button class="booking-btn">Book Now</button>
+      </div>
+
+      <div class="service-card">
+        <i class="service-icon fas fa-heart"></i>
+        <h3>Marriage Compatibility</h3>
+        <p>Kundli matching for marriage (Guna Milan)</p>
+        <div class="service-price">₹2500</div>
+        <button class="booking-btn">Book Now</button>
+      </div>
+
+      <div class="service-card">
+        <i class="service-icon fas fa-briefcase"></i>
+        <h3>Career Guidance</h3>
+        <p>Career path analysis based on planetary positions</p>
+        <div class="service-price">₹2000</div>
+        <button class="booking-btn">Book Now</button>
+      </div>
+    </div>
+
+    <!-- Consultation Form -->
+    <form class="consultation-form" id="consultationForm">
+      <h2>Personalized Consultation</h2>
+      
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDetails">Birth Details (Date, Time, Place)</label>
+        <textarea id="birthDetails" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="consultationType">Service Required</label>
+        <select id="consultationType" required>
+          <option value="">Select Service</option>
+          <option>Birth Chart Analysis</option>
+          <option>Marriage Compatibility</option>
+          <option>Career Guidance</option>
+        </select>
+      </div>
+
+      <button type="submit" class="booking-btn">Request Consultation</button>
+    </form>
+  </main>
+
+  <!-- Footer (Same as main page) -->
+  <footer>
+    <!-- Your existing footer content -->
+  </footer>
+
+  <script>
+    // Form Handling
+    document.getElementById('consultationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Collect form data
+      const formData = {
+        name: document.getElementById('fullName').value,
+        details: document.getElementById('birthDetails').value,
+        service: document.getElementById('consultationType').value
+      };
+
+      // Show confirmation
+      alert('Thank you for your request! Our astrologer will contact you within 24 hours.');
+      this.reset();
+    });
+
+    // Service Worker Registration (from previous code)
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registered'))
+        .catch(err => console.log('SW registration failed'));
+    }
+  </script>
+</body>
+</html>
