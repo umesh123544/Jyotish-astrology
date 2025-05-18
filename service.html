@@ -411,32 +411,30 @@
       <p>हाम्रो प्रामाणिक वैदिक समाधानहरूसँग आफ्नो भविष्यको पूर्वानुमान गर्नुहोस्</p>
     </section>
 
-    <div class="service-grid">
-      <div class="service-card">
-        <i class="service-icon fas fa-birthday-cake"></i>
-        <h3>Janam Kundali</h3>
-        <p>Complete birth chart analysis with planetary positions</p>
-        <div class="service-price">Rs 1500</div>
-        <button class="booking-btn">Book Now</button>
-      </div>
+   <!-- In your HTML service cards -->
+<div class="service-card" data-redirect="janma.html">
+  <i class="service-icon fas fa-birthday-cake"></i>
+  <h3>Janam Kundali</h3>
+  <p>Complete birth chart analysis with planetary positions</p>
+  <div class="service-price">Rs 1500</div>
+  <button class="booking-btn">Book Now</button>
+</div>
 
-      <div class="service-card">
-        <i class="service-icon fas fa-heart"></i>
-        <h3>Marriage Matching</h3>
-        <p>Detailed kundali matching with 36 gun analysis</p>
-        <div class="service-price">Rs 2500</div>
-        <button class="booking-btn">Book Now</button>
-      </div>
+<div class="service-card" data-redirect="career.html">
+  <i class="service-icon fas fa-briefcase"></i>
+  <h3>Career Guidance</h3>
+  <p>Professional analysis based on dasha periods</p>
+  <div class="service-price">Rs 3000</div>
+  <button class="booking-btn">Book Now</button>
+</div>
 
-      <div class="service-card">
-        <i class="service-icon fas fa-briefcase"></i>
-        <h3>Career Guidance</h3>
-        <p>Professional analysis based on dasha periods</p>
-        <div class="service-price">Rs 3000</div>
-        <button class="booking-btn">Book Now</button>
-      </div>
-    </div>
-  </main>
+<div class="service-card" data-redirect="marriage.html">
+  <i class="service-icon fas fa-heart"></i>
+  <h3>Marriage Matching</h3>
+  <p>Detailed kundali matching with 36 gun analysis</p>
+  <div class="service-price">Rs 2500</div>
+  <button class="booking-btn">Book Now</button>
+</div>
 
   <!-- EXACT SAME FOOTER AS INDEX.HTML -->
   <footer id="contact">
@@ -510,22 +508,16 @@
     // Copyright Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-   // Modified Booking Button Handlers with debugging
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded');
-    
-    const buttons = document.querySelectorAll('.booking-btn');
-    console.log('Found buttons:', buttons.length);
-
-    buttons.forEach(button => {
-      button.addEventListener('click', function() {
-        console.log('Button clicked');
-        const service = this.parentElement.querySelector('h3').textContent;
-        const price = this.parentElement.querySelector('.service-price').textContent;
-        console.log(`Redirecting to janma.html with service: ${service}, price: ${price}`);
-        window.location.href = `janma.html?service=${encodeURIComponent(service)}&price=${encodeURIComponent(price)}`;
-      });
+   document.querySelectorAll('.booking-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const serviceCard = this.closest('.service-card');
+      const redirectPage = serviceCard.dataset.redirect;
+      const service = serviceCard.querySelector('h3').textContent;
+      const price = serviceCard.querySelector('.service-price').textContent;
+      
+      window.location.href = `${redirectPage}?service=${encodeURIComponent(service)}&price=${encodeURIComponent(price)}`;
     });
+  });
  });
   </script>
 </body>
