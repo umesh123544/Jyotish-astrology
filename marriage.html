@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marriage Matching - श्री जोतिषी</title>
+  
+  <!-- Same head content as your other pages -->
+  <meta name="description" content="Professional Vedic Astrology Marriage Matching (Kundali Milan) Service">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+
+  <style>
+    /* === MAIN STYLES (Same as your other pages) === */
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header - Same as your other pages */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    /* === MARRIAGE MATCHING SPECIFIC STYLES === */
+    .marriage-matching-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .matching-hero {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+    }
+
+    .matching-hero h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .matching-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+      .matching-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .matching-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .form-section h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-weight: 600;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .matching-info {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .info-points {
+      margin-top: 1.5rem;
+    }
+
+    .info-point {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+
+    .info-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .gunas-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+
+    .gunas-table th, .gunas-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .gunas-table th {
+      background-color: var(--primary-light);
+      color: white;
+    }
+
+    .gunas-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* Same footer styles as your other pages */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 5%;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      position: relative;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #334155;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (Same as your other pages) -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage-matching.html" class="active">Marriage Matching</a>
+        <a href="#sectors">Sectors</a>
+        <a href="#team">Astrologers</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Marriage Matching Main Content -->
+  <main class="marriage-matching-main">
+    <section class="matching-hero">
+      <h1>कुण्डली मिलान</h1>
+      <p>वैदिक ज्योतिष अनुसार ३६ गुणको विस्तृत विश्लेषण</p>
+    </section>
+
+    <div class="matching-container">
+      <div class="matching-form">
+        <h2>विवाह योग्यता जाँच</h2>
+        <p>कृपया दुबै जनाको जन्म विवरण भर्नुहोस्</p>
+        
+        <form id="matchingForm">
+          <!-- Bride's Details -->
+          <div class="form-section">
+            <h3>वर (पुरुष) को विवरण</h3>
+            
+            <div class="form-group">
+              <label for="groomName">पूरा नाम</label>
+              <input type="text" id="groomName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="groomDob">जन्म मिति</label>
+              <input type="date" id="groomDob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="groomTob">जन्म समय</label>
+              <input type="time" id="groomTob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="groomPob">जन्म स्थान</label>
+              <input type="text" id="groomPob" required>
+            </div>
+          </div>
+          
+          <!-- Bride's Details -->
+          <div class="form-section">
+            <h3>वधू (महिला) को विवरण</h3>
+            
+            <div class="form-group">
+              <label for="brideName">पूरा नाम</label>
+              <input type="text" id="brideName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="brideDob">जन्म मिति</label>
+              <input type="date" id="brideDob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="brideTob">जन्म समय</label>
+              <input type="time" id="brideTob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="bridePob">जन्म स्थान</label>
+              <input type="text" id="bridePob" required>
+            </div>
+          </div>
+          
+          <button type="submit" class="submit-btn">कुण्डली मिलान गर्नुहोस्</button>
+        </form>
+      </div>
+      
+      <div class="matching-info">
+        <h2>कुण्डली मिलानको महत्त्व</h2>
+        <p>वैदिक ज्योतिषमा, विवाह पूर्व कुण्डली मिलानले दम्पतीको भविष्यको जीवन सुखद बनाउन मद्दत गर्छ। यसले ३६ गुणको आधारमा दुबै जनाको अनुकूलता जाँच गर्छ।</p>
+        
+        <div class="info-points">
+          <div class="info-point">
+            <i class="info-icon fas fa-star"></i>
+            <div>
+              <h4>३६ गुण मिलान</h4>
+              <p>वर र वधूको कुण्डलीमा ३६ विभिन्न गुणहरूको मिलान गरिन्छ</p>
+            </div>
+          </div>
+          
+          <div class="info-point">
+            <i class="info-icon fas fa-heart"></i>
+            <div>
+              <h4>मानसिक अनुकूलता</h4>
+              <p>दुबैको मानसिकताको मिलान जाँच गरिन्छ</p>
+            </div>
+          </div>
+          
+          <div class="info-point">
+            <i class="info-icon fas fa-baby"></i>
+            <div>
+              <h4>सन्तान योग</h4>
+              <p>भविष्यमा सन्तान सम्बन्धी योगहरू जाँच गरिन्छ</p>
+            </div>
+          </div>
+        </div>
+        
+        <h3 style="margin-top: 2rem;">गुणहरूको तालिका</h3>
+        <table class="gunas-table">
+          <thead>
+            <tr>
+              <th>गुण</th>
+              <th>अंक</th>
+              <th>महत्त्व</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>वर्ण</td>
+              <td>1</td>
+              <td>सामाजिक स्तर</td>
+            </tr>
+            <tr>
+              <td>वश्य</td>
+              <td>2</td>
+              <td>नियन्त्रण</td>
+            </tr>
+            <tr>
+              <td>तारा</td>
+              <td>3</td>
+              <td>भाग्य</td>
+            </tr>
+            <tr>
+              <td>योनि</td>
+              <td>4</td>
+              <td>शारीरिक अनुकूलता</td>
+            </tr>
+            <tr>
+              <td>ग्रह मैत्री</td>
+              <td>5</td>
+              <td>मानसिक अनुकूलता</td>
+            </tr>
+            <tr>
+              <td>भकूट</td>
+              <td>6</td>
+              <td>राशि अनुकूलता</td>
+            </tr>
+            <tr>
+              <td>नाडी</td>
+              <td>8</td>
+              <td>सन्तान योग</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (Same as your other pages) -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +977-9813197704</p>
+        <p>Kathmandu, Nepal</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Jotishi. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Form Submission
+    document.getElementById('matchingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const groomName = document.getElementById('groomName').value;
+      const groomDob = document.getElementById('groomDob').value;
+      const groomTob = document.getElementById('groomTob').value;
+      const groomPob = document.getElementById('groomPob').value;
+      
+      const brideName = document.getElementById('brideName').value;
+      const brideDob = document.getElementById('brideDob').value;
+      const brideTob = document.getElementById('brideTob').value;
+      const bridePob = document.getElementById('bridePob').value;
+      
+      // Validate inputs
+      if (!groomName || !groomDob || !groomTob || !groomPob || 
+          !brideName || !brideDob || !brideTob || !bridePob) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      // Here you would typically send the data to your backend
+      // For now, we'll simulate a successful submission
+      alert('धन्यवाद! तपाईंको कुण्डली मिलान विश्लेषण तयार गरिएको छ। हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।');
+      
+      // Reset form
+      this.reset();
+      
+      // In a real implementation, you would redirect to results page:
+      // window.location.href = `matching-results.html?groom=${encodeURIComponent(groomName)}&bride=${encodeURIComponent(brideName)}`;
+    });
+  </script>
+</body>
+</html>
