@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>जन्म कुण्डली - श्री जोतिषी</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --max-width: 1200px;
+    }
+
+    body {
+      font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+      background-color: #f5f3ff;
+      color: var(--dark);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .kundali-header {
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .kundali-header h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .kundali-header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .kundali-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .kundali-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .kundali-details, .kundali-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .kundali-features {
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .benefits-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="kundali-header">
+      <h1>जन्म कुण्डली विश्लेषण</h1>
+      <p>तपाईंको जन्म समय, मिति र स्थान अनुसार सटीक भविष्यवाणी</p>
+    </div>
+
+    <div class="kundali-content">
+      <div class="kundali-details">
+        <h2>तपाईंको जन्म कुण्डलीको बारेमा</h2>
+        <p>जन्म कुण्डली भनेको तपाईंको जन्म समयमा आकाशमा ग्रहहरूको स्थितिको एक नक्शा हो। यसले तपाईंको व्यक्तित्व, भाग्य, र भविष्यको घटनाहरूको बारेमा जानकारी दिन्छ।</p>
+        
+        <div class="kundali-features">
+          <h3>हाम्रो जन्म कुण्डली सेवामा समावेश छ:</h3>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-star"></i></div>
+            <div>
+              <h4>ग्रह स्थिति विश्लेषण</h4>
+              <p>सबै ९ ग्रहहरूको स्थिति र प्रभाव</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-moon"></i></div>
+            <div>
+              <h4>राशि र नक्षत्र</h4>
+              <p>तपाईंको जन्म राशि र जन्म नक्षत्रको विस्तृत विवरण</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+              <h4>दशा अनुसार भविष्यवाणी</h4>
+              <p>वर्तमान र भविष्यका दशाहरूको विश्लेषण</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="benefits">
+          <h3>जन्म कुण्डलीको लाभ:</h3>
+          <ul class="benefits-list">
+            <li>व्यक्तित्वको गहिरो बुझाइ</li>
+            <li>उपयुक्त करियर रोज्न सहयोग</li>
+            <li>विवाह र सम्बन्ध सम्बन्धी सुझाव</li>
+            <li>शुभ मुहूर्त निर्धारण</li>
+            <li>समस्याहरूको समाधानका उपाय</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="kundali-form">
+        <h2>जन्म कुण्डलीको लागि जानकारी दिनुहोस्</h2>
+        <form id="kundaliForm">
+          <div class="form-group">
+            <label for="name">पूरा नाम</label>
+            <input type="text" id="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob">जन्म मिति</label>
+            <input type="date" id="dob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob">जन्म समय</label>
+            <input type="time" id="tob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob">जन्म स्थान</label>
+            <input type="text" id="pob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gender">लिङ्ग</label>
+            <select id="gender" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="male">पुरुष</option>
+              <option value="female">महिला</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="submit-btn">कुण्डली बनाउनुहोस्</button>
+        </form>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="font-size: 0.9rem; color: #666;">हाम्रो सेवा १००% प्रामाणिक वैदिक ज्योतिषशास्त्रमा आधारित छ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('kundaliForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('धन्यवाद! तपाईंको जन्म कुण्डली तयार गरिएको छ। हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।');
+      // Here you would typically send the data to your backend
+      this.reset();
+    });
+  </script>
+</body>
+</html>
