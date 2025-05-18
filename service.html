@@ -510,13 +510,13 @@
     // Copyright Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Booking Button Handlers
-    document.querySelectorAll('.booking-btn').forEach(button => {
-      button.addEventListener('click', function() {
-        const service = this.parentElement.querySelector('h3').textContent;
-        const price = this.parentElement.querySelector('.service-price').textContent;
-        window.location.href = `https://wa.me/9813197704?text=I%20want%20to%20book%20${encodeURIComponent(service)}%20(${encodeURIComponent(price)})`;
-      });
+     Modified Booking Button Handlers
+  document.querySelectorAll('.booking-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      const service = this.parentElement.querySelector('h3').textContent;
+      const price = this.parentElement.querySelector('.service-price').textContent;
+      // Redirect to janma.html with service parameters
+      window.location.href = `janma.html?service=${encodeURIComponent(service)}&price=${encodeURIComponent(price)}`;
     });
   </script>
 </body>
