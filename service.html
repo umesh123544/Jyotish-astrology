@@ -1,203 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jotishi - Astrology Services</title>
-  
-  <!-- Reuse existing styles and fonts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <style>
-    /* Maintain existing theme styles */
-    :root {
-      --primary: #6d28d9;
-      --primary-light: #8b5cf6;
-      --secondary: #f59e0b;
-      --dark: #1e293b;
-      --light: #f8fafc;
-      --gray: #64748b;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jotishi - Professional Astrology Services</title>
+    
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#6d28d9">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- iOS Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Jotishi">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/PG2SRstT/Picsart-25-05-17-08-27-21-322.png">
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: var(--dark);
-      background-color: var(--light);
-      line-height: 1.6;
-    }
+    <style>
+        /* Existing CSS Variables */
+        :root {
+            --primary: #6d28d9;
+            --primary-light: #8b5cf6;
+            --secondary: #f59e0b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --max-width: 1200px;
+        }
 
-    /* Service Page Specific Styles */
-    .services-container {
-      max-width: 1200px;
-      margin: 100px auto 50px;
-      padding: 0 20px;
-    }
+        /* Existing Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    .service-hero {
-      text-align: center;
-      padding: 4rem 0;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
-      border-radius: 15px;
-      margin-bottom: 3rem;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem 0;
-    }
+        /* Existing Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
 
-    .service-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
 
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
+        /* ... (All existing header/nav styles remain same) ... */
 
-    .service-icon {
-      font-size: 2.5rem;
-      color: var(--secondary);
-      margin-bottom: 1rem;
-    }
+        /* Service Page Specific Styles */
+        .service-main {
+            margin-top: 100px;
+            padding: 2rem 5%;
+            max-width: var(--max-width);
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .service-price {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin: 1rem 0;
-    }
+        .service-hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
 
-    .booking-btn {
-      background: var(--secondary);
-      color: white;
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
 
-    .consultation-form {
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* Add existing header/footer styles from previous code */
-    /* ... (Your existing header/footer styles here) ... */
-  </style>
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--secondary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-price {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            font-weight: 700;
+        }
+
+        .service-duration {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .booking-btn {
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .booking-btn:hover {
+            background: #e67e22;
+        }
+
+        .consultation-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        /* Existing WhatsApp Button Styles */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            animation: pulse 2s infinite;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Existing Footer Styles */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            margin-top: 4rem;
+        }
+    </style>
 </head>
 <body>
-  <!-- Header (Same as main page) -->
-  <header>
-    <!-- Your existing header content -->
-  </header>
+    <!-- Header (Same as main page) -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <div class="brand-name">श्री जोतिषी</div>
+                <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="#services">Services</a>
+                <a href="#sectors">Sectors</a>
+                <a href="#team">Astrologers</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-  <main class="services-container">
-    <section class="service-hero">
-      <h1>Vedic Astrology Services</h1>
-      <p>Discover your destiny with our authentic Vedic astrology solutions</p>
-    </section>
+    <!-- Service Page Content -->
+    <main class="service-main">
+        <section class="service-hero">
+            <h1>Professional Vedic Astrology Services</h1>
+            <p>Discover your destiny with our authentic Vedic astrology solutions</p>
+        </section>
 
-    <!-- Featured Services -->
-    <div class="service-grid">
-      <div class="service-card">
-        <i class="service-icon fas fa-birthday-cake"></i>
-        <h3>Birth Chart Analysis</h3>
-        <p>Detailed analysis of your natal chart (Janam Kundli)</p>
-        <div class="service-price">₹1500</div>
-        <button class="booking-btn">Book Now</button>
-      </div>
+        <!-- Service Grid -->
+        <div class="service-grid">
+            <!-- Birth Chart Analysis -->
+            <div class="service-card">
+                <i class="service-icon fas fa-birthday-cake"></i>
+                <h3>Janam Kundali Analysis</h3>
+                <p>Detailed analysis of your birth chart including planetary positions and nakshatra influences</p>
+                <div class="service-price">₹1500</div>
+                <span class="service-duration">Duration: 60-90 minutes</span>
+                <button class="booking-btn">Book Now</button>
+            </div>
 
-      <div class="service-card">
-        <i class="service-icon fas fa-heart"></i>
-        <h3>Marriage Compatibility</h3>
-        <p>Kundli matching for marriage (Guna Milan)</p>
-        <div class="service-price">₹2500</div>
-        <button class="booking-btn">Book Now</button>
-      </div>
+            <!-- Marriage Compatibility -->
+            <div class="service-card">
+                <i class="service-icon fas fa-heart"></i>
+                <h3>Marriage Compatibility</h3>
+                <p>Comprehensive kundali matching with detailed gun milan analysis</p>
+                <div class="service-price">₹2500</div>
+                <span class="service-duration">Detailed 36-point analysis</span>
+                <button class="booking-btn">Book Now</button>
+            </div>
 
-      <div class="service-card">
-        <i class="service-icon fas fa-briefcase"></i>
-        <h3>Career Guidance</h3>
-        <p>Career path analysis based on planetary positions</p>
-        <div class="service-price">₹2000</div>
-        <button class="booking-btn">Book Now</button>
-      </div>
-    </div>
+            <!-- Career Guidance -->
+            <div class="service-card">
+                <i class="service-icon fas fa-briefcase"></i>
+                <h3>Career Guidance</h3>
+                <p>Detailed analysis of career prospects and suitable professions</p>
+                <div class="service-price">₹2000</div>
+                <span class="service-duration">Includes dasha period analysis</span>
+                <button class="booking-btn">Book Now</button>
+            </div>
+        </div>
 
-    <!-- Consultation Form -->
-    <form class="consultation-form" id="consultationForm">
-      <h2>Personalized Consultation</h2>
-      
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" required>
-      </div>
+        <!-- Consultation Form -->
+        <form class="consultation-form" id="consultationForm">
+            <h2>Personalized Consultation Request</h2>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" required>
+            </div>
 
-      <div class="form-group">
-        <label for="birthDetails">Birth Details (Date, Time, Place)</label>
-        <textarea id="birthDetails" rows="3" required></textarea>
-      </div>
+            <div class="form-group">
+                <label for="birthDate">Date of Birth *</label>
+                <input type="date" id="birthDate" required>
+            </div>
 
-      <div class="form-group">
-        <label for="consultationType">Service Required</label>
-        <select id="consultationType" required>
-          <option value="">Select Service</option>
-          <option>Birth Chart Analysis</option>
-          <option>Marriage Compatibility</option>
-          <option>Career Guidance</option>
-        </select>
-      </div>
+            <div class="form-group">
+                <label for="birthTime">Exact Birth Time *</label>
+                <input type="time" id="birthTime" required>
+            </div>
 
-      <button type="submit" class="booking-btn">Request Consultation</button>
-    </form>
-  </main>
+            <div class="form-group">
+                <label for="birthPlace">Birth Place *</label>
+                <input type="text" id="birthPlace" placeholder="City, Country" required>
+            </div>
 
-  <!-- Footer (Same as main page) -->
-  <footer>
-    <!-- Your existing footer content -->
-  </footer>
+            <div class="form-group">
+                <label for="serviceType">Select Service *</label>
+                <select id="serviceType" required>
+                    <option value="">Choose Service</option>
+                    <option>Birth Chart Analysis</option>
+                    <option>Marriage Compatibility</option>
+                    <option>Career Guidance</option>
+                    <option>Mangal Dosha Analysis</option>
+                    <option>Gemstone Recommendation</option>
+                </select>
+            </div>
 
-  <script>
-    // Form Handling
-    document.getElementById('consultationForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Collect form data
-      const formData = {
-        name: document.getElementById('fullName').value,
-        details: document.getElementById('birthDetails').value,
-        service: document.getElementById('consultationType').value
-      };
+            <div class="form-group">
+                <label for="questions">Specific Questions</label>
+                <textarea id="questions" rows="4"></textarea>
+            </div>
 
-      // Show confirmation
-      alert('Thank you for your request! Our astrologer will contact you within 24 hours.');
-      this.reset();
-    });
+            <button type="submit" class="booking-btn">Submit Consultation Request</button>
+        </form>
+    </main>
 
-    // Service Worker Registration (from previous code)
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => console.log('SW registered'))
-        .catch(err => console.log('SW registration failed'));
-    }
-  </script>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer (Same as main page) -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: contact@jotishi.com</p>
+                <p>Phone: +977-9813197704</p>
+                <p>Kathmandu, Nepal</p>
+            </div>
+            <!-- Add other footer sections as needed -->
+        </div>
+    </footer>
+
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+
+        // Form Handling
+        document.getElementById('consultationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('fullName').value,
+                dob: document.getElementById('birthDate').value,
+                time: document.getElementById('birthTime').value,
+                place: document.getElementById('birthPlace').value,
+                service: document.getElementById('serviceType').value,
+                questions: document.getElementById('questions').value
+            };
+
+            // Here you would typically send this data to your backend
+            console.log('Consultation Request:', formData);
+            
+            alert('Thank you for your request! Our astrologer will contact you within 24 hours.');
+            this.reset();
+        });
+
+        // Mobile Menu Toggle (From existing code)
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
