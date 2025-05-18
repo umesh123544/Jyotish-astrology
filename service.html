@@ -300,40 +300,52 @@
       background: #e67e22;
     }
 
-    /* === EXACT FOOTER STYLES FROM INDEX.HTML === */
+    /* === FOOTER STYLES MATCHING OTHER PAGES === */
     footer {
       background: var(--dark);
       color: white;
       padding: 3rem 5%;
+      margin-top: 2rem;
     }
 
-    .footer-content {
+    .footer-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
     }
 
-    .footer-section h4 {
-      margin-bottom: 1rem;
+    .footer-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section h3 {
       font-size: 1.3rem;
+      margin-bottom: 1rem;
       position: relative;
+      padding-bottom: 0.5rem;
     }
 
-    .footer-section h4::after {
+    .footer-section h3::after {
       content: '';
       position: absolute;
-      width: 50%;
+      left: 0;
+      bottom: 0;
+      width: 50px;
       height: 2px;
       background: var(--secondary);
-      bottom: -5px;
-      left: 0;
+    }
+
+    .footer-section p {
+      margin: 0.5rem 0;
+      opacity: 0.9;
     }
 
     .social-links {
       display: flex;
       gap: 1rem;
+      margin-top: 1rem;
     }
 
     .social-links a {
@@ -350,7 +362,7 @@
       text-align: center;
       padding-top: 2rem;
       margin-top: 2rem;
-      border-top: 1px solid #334155;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     .whatsapp-float {
@@ -411,51 +423,64 @@
       <p>हाम्रो प्रामाणिक वैदिक समाधानहरूसँग आफ्नो भविष्यको पूर्वानुमान गर्नुहोस्</p>
     </section>
 
-   <!-- In your HTML service cards -->
-<div class="service-card" data-redirect="janma.html">
-  <i class="service-icon fas fa-birthday-cake"></i>
-  <h3>Janam Kundali</h3>
-  <p>Complete birth chart analysis with planetary positions</p>
-  <div class="service-price">Rs 1500</div>
-  <button class="booking-btn">Book Now</button>
-</div>
-
-<div class="service-card" data-redirect="career.html">
-  <i class="service-icon fas fa-briefcase"></i>
-  <h3>Career Guidance</h3>
-  <p>Professional analysis based on dasha periods</p>
-  <div class="service-price">Rs 3000</div>
-  <button class="booking-btn">Book Now</button>
-</div>
-
-<div class="service-card" data-redirect="marriage.html">
-  <i class="service-icon fas fa-heart"></i>
-  <h3>Marriage Matching</h3>
-  <p>Detailed kundali matching with 36 gun analysis</p>
-  <div class="service-price">Rs 2500</div>
-  <button class="booking-btn">Book Now</button>
-</div>
-
-  <!-- EXACT SAME FOOTER AS INDEX.HTML -->
-  <footer id="contact">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>Contact Us</h4>
-        <p>Email: contact@jotishi.com</p>
-        <p>Phone: +977-9813197704</p>
-        <p>Kathmandu, Nepal</p>
+    <div class="service-grid">
+      <div class="service-card" data-redirect="janma.html">
+        <i class="service-icon fas fa-birthday-cake"></i>
+        <h3>Janam Kundali</h3>
+        <p>Complete birth chart analysis with planetary positions</p>
+        <div class="service-price">Rs 1500</div>
+        <button class="booking-btn">Book Now</button>
       </div>
+
+      <div class="service-card" data-redirect="marriage.html">
+        <i class="service-icon fas fa-heart"></i>
+        <h3>Marriage Matching</h3>
+        <p>Detailed kundali matching with 36 gun analysis</p>
+        <div class="service-price">Rs 2500</div>
+        <button class="booking-btn">Book Now</button>
+      </div>
+
+      <div class="service-card" data-redirect="career.html">
+        <i class="service-icon fas fa-briefcase"></i>
+        <h3>Career Guidance</h3>
+        <p>Professional analysis based on dasha periods</p>
+        <div class="service-price">Rs 3000</div>
+        <button class="booking-btn">Book Now</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- UNIFIED FOOTER -->
+  <footer id="contact">
+    <div class="footer-container">
       <div class="footer-section">
-        <h4>Follow Us</h4>
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-envelope"></i> contact@jotishi.com</p>
+        <p><i class="fas fa-phone"></i> +977-9813197704</p>
+        <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="/services.html">Services</a></p>
+        <p><a href="/janma.html">Janma Kundali</a></p>
+        <p><a href="/marriage.html">Marriage Matching</a></p>
+        <p><a href="/career.html">Career Guidance</a></p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Follow Us</h3>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>
+    
     <div class="footer-bottom">
-      <p>© <span id="year"></span> Jotishi. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Jotishi. All rights reserved.</p>
     </div>
   </footer>
 
@@ -508,16 +533,17 @@
     // Copyright Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-   document.querySelectorAll('.booking-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const serviceCard = this.closest('.service-card');
-      const redirectPage = serviceCard.dataset.redirect;
-      const service = serviceCard.querySelector('h3').textContent;
-      const price = serviceCard.querySelector('.service-price').textContent;
-      
-      window.location.href = `${redirectPage}?service=${encodeURIComponent(service)}&price=${encodeURIComponent(price)}`;
+    // Booking Button Functionality
+    document.querySelectorAll('.booking-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        const serviceCard = this.closest('.service-card');
+        const redirectPage = serviceCard.dataset.redirect;
+        const service = serviceCard.querySelector('h3').textContent;
+        const price = serviceCard.querySelector('.service-price').textContent;
+        
+        window.location.href = `${redirectPage}?service=${encodeURIComponent(service)}&price=${encodeURIComponent(price)}`;
+      });
     });
-  });
   </script>
 </body>
 </html>
