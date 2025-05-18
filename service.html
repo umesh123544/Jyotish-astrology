@@ -91,7 +91,38 @@
       letter-spacing: 0.8px;
     }
 
-      .hamburger {
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .hamburger {
       display: none;
       cursor: pointer;
       background: rgba(255, 255, 255, 0.1);
@@ -161,6 +192,10 @@
 
     /* Mobile nav links */
     @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
       .nav-links {
         position: fixed;
         top: 0;
@@ -175,10 +210,12 @@
         padding: 2rem;
         transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         z-index: 999;
+        display: none;
       }
 
       .nav-links.active {
         left: 0;
+        display: flex;
       }
 
       .nav-links a {
@@ -342,31 +379,20 @@
   </style>
 </head>
 <body>
-  <!-- EXACT SAME HEADER AS INDEX.HTML -->
+  <!-- CORRECTED HEADER -->
   <header>
     <nav class="navbar">
       <div class="logo-container">
         <div class="brand-name">श्री जोतिषी</div>
         <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
       </div>
-      <button class="hamburger" id="hamburger">
-        <div class="hamburger-box">
-          <div class="hamburger-inner"></div>
-        </div>
-      </button>
-
-    <nav class="navbar">
-      <!-- ... rest of nav content ... -->
+      
       <button class="hamburger" id="hamburger" aria-label="Menu">
-        <div class="hamburger-box">
-          <div class="hamburger-inner"></div>
-        </div>
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
       </button>
-      <div class="nav-links" id="navLinks">
-        <!-- Your navigation links -->
-      </div>
-    </nav>
-  
+      
       <div class="nav-links" id="navLinks">
         <a href="/">Home</a>
         <a href="/services.html" class="active">Services</a>
@@ -390,7 +416,7 @@
         <i class="service-icon fas fa-birthday-cake"></i>
         <h3>Janam Kundali</h3>
         <p>Complete birth chart analysis with planetary positions</p>
-        <div class="service-price">₹1500</div>
+        <div class="service-price">Rs 1500</div>
         <button class="booking-btn">Book Now</button>
       </div>
 
@@ -398,7 +424,7 @@
         <i class="service-icon fas fa-heart"></i>
         <h3>Marriage Matching</h3>
         <p>Detailed kundali matching with 36 gun analysis</p>
-        <div class="service-price">₹2500</div>
+        <div class="service-price">Rs 2500</div>
         <button class="booking-btn">Book Now</button>
       </div>
 
@@ -406,7 +432,7 @@
         <i class="service-icon fas fa-briefcase"></i>
         <h3>Career Guidance</h3>
         <p>Professional analysis based on dasha periods</p>
-        <div class="service-price">₹2000</div>
+        <div class="service-price">₹Rs 3000</div>
         <button class="booking-btn">Book Now</button>
       </div>
     </div>
@@ -454,7 +480,7 @@
       });
     }
 
-     // Mobile Menu Toggle (Identical to index.html)
+    // Mobile Menu Toggle (Identical to index.html)
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     
