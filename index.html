@@ -824,6 +824,35 @@
       cursor: pointer;
       margin-top: 1rem;
     }
+    
+.update-status {
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin: -1rem 0 2rem;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+.update-notification {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(109,40,217,0.3);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideIn 0.3s ease-out;
+  z-index: 9999;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
 
     /* PWA Specific Styles */
     @media all and (display-mode: standalone) {
@@ -1045,19 +1074,18 @@
     </div>
   </div>
   
-  <!-- Today's Rashi Predictions in Nepali -->
-  <section class="rashi-updates" id="rashi">
-    <div class="section-title">
-      <h2>आजको राशिफल</h2>
-    </div>
-    <div class="rashi-date" id="currentDate"></div>
-    
-    <div class="rashi-container" id="rashiContainer">
-      <div class="loading">
-        <i class="fas fa-spinner fa-spin"></i> राशिफल लोड गर्दै...
-      </div>
-    </div>
-  </section>
+  <!-- rashi-updates section -->
+<section class="rashi-updates" id="rashi">
+  <div class="section-title">
+    <h2>आजको राशिफल</h2>
+  </div>
+  <div class="rashi-date" id="currentDate"></div>
+  <!-- Add this line below date -->
+  <div class="update-status" id="updateStatus"></div>
+  <div class="rashi-container" id="rashiContainer">
+    <!-- Loading spinner will appear here -->
+  </div>
+</section>
   
   <!-- Footer -->
   <footer id="contact">
@@ -1084,226 +1112,151 @@
 
   <script>
     // Mobile Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
 
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+});
 
-    // Form Handling
-    const consultationModal = document.getElementById('consultationModal');
-    const closeModal = document.getElementById('closeModal');
-    const consultationBtn = document.getElementById('consultationBtn');
+// Consultation Form Handling
+const consultationModal = document.getElementById('consultationModal');
+const closeModal = document.getElementById('closeModal');
+const consultationBtn = document.getElementById('consultationBtn');
 
-    consultationBtn.addEventListener('click', () => {
-      consultationModal.style.display = 'block';
-    });
+consultationBtn.addEventListener('click', () => {
+  consultationModal.style.display = 'block';
+});
 
-    closeModal.addEventListener('click', () => {
-      consultationModal.style.display = 'none';
-    });
+closeModal.addEventListener('click', () => {
+  consultationModal.style.display = 'none';
+});
 
-    window.addEventListener('click', (e) => {
-      if (e.target === consultationModal) {
-        consultationModal.style.display = 'none';
-      }
-    });
+window.addEventListener('click', (e) => {
+  if (e.target === consultationModal) {
+    consultationModal.style.display = 'none';
+  }
+});
 
-    // Form Submission
-    document.getElementById('astroForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      consultationModal.style.display = 'none';
-      alert('Thank you! Our astrologer will contact you shortly.');
-    });
+// Form Submission
+document.getElementById('astroForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  consultationModal.style.display = 'none';
+  alert('Thank you! Our astrologer will contact you shortly.');
+});
 
-    // Copyright Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+// PWA Installation
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+const iosInstallModal = document.getElementById('iosInstallModal');
+const iosInstallClose = document.getElementById('iosInstallClose');
 
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-        if (window.innerWidth <= 768) {
-          hamburger.classList.remove('active');
-          navLinks.classList.remove('active');
-        }
-      });
-    });
+window.addEventListener('beforeinstallprompt', (e) => {
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) return;
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.style.display = 'block';
+});
 
-    // PWA Installation
-    let deferredPrompt;
-    const installButton = document.getElementById('installButton');
-    const iosInstallModal = document.getElementById('iosInstallModal');
-    const iosInstallClose = document.getElementById('iosInstallClose');
+installButton.addEventListener('click', async () => {
+  if(deferredPrompt) {
+    installButton.style.opacity = '0';
+    setTimeout(() => installButton.style.display = 'none', 300);
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  }
+});
+
+// Rashi Auto-Update System
+const API_URL = 'https://api.jotishi.com/rashi-today';
+const UPDATE_INTERVAL = 3600000; // 1 hour
+let lastUpdateTimestamp = 0;
+
+async function fetchRashiData() {
+  try {
+    const response = await fetch(`${API_URL}?ts=${Date.now()}`);
+    if (!response.ok) throw new Error('API response error');
     
-    // Check if iOS
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const { data, timestamp } = await response.json();
     
-    // Check if already installed
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
-                       window.navigator.standalone;
-
-    // Don't show install button if already installed
-    if (isStandalone) {
-      installButton.style.display = 'none';
+    if (timestamp > lastUpdateTimestamp) {
+      lastUpdateTimestamp = timestamp;
+      localStorage.setItem('rashiData', JSON.stringify(data));
+      localStorage.setItem('lastUpdate', timestamp);
+      displayRashis(data);
+      showUpdateNotification('राशिफल अद्यावधिक गरियो');
+      updateStatusDisplay(timestamp);
     }
+    return true;
+  } catch (error) {
+    console.log('Using cached data:', error);
+    return false;
+  }
+}
 
-    // Show install prompt for Android
-    window.addEventListener('beforeinstallprompt', (e) => {
-      if (isIOS || isStandalone) return;
-      
-      e.preventDefault();
-      deferredPrompt = e;
-      
-      // Show install button with animation
-      installButton.style.display = 'block';
-      setTimeout(() => {
-        installButton.style.opacity = '1';
-        installButton.style.transform = 'translateY(0)';
-      }, 100);
-      
-      // Automatically hide after 15 seconds
-      setTimeout(() => {
-        if (installButton.style.display !== 'none') {
-          installButton.style.opacity = '0';
-          installButton.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            installButton.style.display = 'none';
-          }, 300);
-        }
-      }, 15000);
-    });
+function displayRashis(rashis) {
+  const container = document.getElementById('rashiContainer');
+  container.innerHTML = rashis.map(rashi => `
+    <div class="rashi-card">
+      <div class="rashi-icon">
+        <img src="${rashi.icon}" alt="${rashi.name}" loading="lazy">
+      </div>
+      <h3>${rashi.name}</h3>
+      <p>${rashi.prediction}</p>
+      <div class="rashi-meta">
+        <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
+        <span>रंग: ${rashi.luckyColor}</span>
+      </div>
+      <div class="rashi-time">
+        <i class="fas fa-clock"></i> शुभ समय: ${rashi.time}
+      </div>
+    </div>
+  `).join('');
+}
 
-    // iOS-specific installation instructions
-    if (isIOS && !isStandalone) {
-      // Show install button after 5 seconds
-      setTimeout(() => {
-        installButton.style.display = 'block';
-        setTimeout(() => {
-          installButton.style.opacity = '1';
-          installButton.style.transform = 'translateY(0)';
-        }, 100);
-      }, 5000);
-    }
+function setupAutoUpdates() {
+  const loadData = async () => {
+    const apiSuccess = await fetchRashiData();
+    if (!apiSuccess) loadLocalData();
+  };
+  
+  setInterval(fetchRashiData, UPDATE_INTERVAL);
+  window.addEventListener('online', fetchRashiData);
+  navigator.serviceWorker?.addEventListener('controllerchange', fetchRashiData);
+  loadData();
+}
 
-    // Install button click handler
-    installButton.addEventListener('click', async () => {
-      if (isIOS) {
-        // Show iOS installation instructions
-        iosInstallModal.classList.add('active');
-        return;
-      }
-      
-      if (deferredPrompt) {
-        installButton.style.opacity = '0';
-        installButton.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-          installButton.style.display = 'none';
-        }, 300);
-        
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        if (outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-          // You can track installations here
-        } else {
-          console.log('User dismissed the install prompt');
-          // Show the button again after 1 minute if dismissed
-          setTimeout(() => {
-            installButton.style.display = 'block';
-            setTimeout(() => {
-              installButton.style.opacity = '1';
-              installButton.style.transform = 'translateY(0)';
-            }, 100);
-          }, 60000);
-        }
-        deferredPrompt = null;
-      }
-    });
+function loadLocalData() {
+  const localData = JSON.parse(localStorage.getItem('rashiData')) || getLocalRashiData();
+  const lastUpdate = localStorage.getItem('lastUpdate') || Date.now();
+  displayRashis(localData);
+  updateStatusDisplay(lastUpdate);
+}
 
-    // Close iOS install modal
-    iosInstallClose.addEventListener('click', () => {
-      iosInstallModal.classList.remove('active');
-    });
+function updateStatusDisplay(timestamp) {
+  const date = new Date(timestamp);
+  const options = { 
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+    timeZone: 'Asia/Kathmandu'
+  };
+  document.getElementById('updateStatus').textContent = 
+    `अन्तिम अद्यावधिक: ${date.toLocaleDateString('ne-NP')} ${date.toLocaleTimeString('ne-NP', options)}`;
+}
 
-    // Track app installation
-    window.addEventListener('appinstalled', () => {
-      console.log('PWA was installed');
-      installButton.style.display = 'none';
-    });
-
-    // Register Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('ServiceWorker registration successful');
-            
-            // Check for updates every hour
-            setInterval(() => {
-              registration.update();
-            }, 3600000);
-            
-            // Listen for updates
-            registration.addEventListener('updatefound', () => {
-              const newWorker = registration.installing;
-              newWorker.addEventListener('statechange', () => {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  showUpdateNotification();
-                }
-              });
-            });
-          })
-          .catch(err => {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-
-    function showUpdateNotification() {
-      if (confirm('A new version of Jotishi is available. Would you like to reload to update?')) {
-        window.location.reload();
-      }
-    }
-
-    // Offline Detection
-    const offlineNotification = document.getElementById('offlineNotification');
-    
-    window.addEventListener('offline', () => {
-      console.log('You are offline');
-      offlineNotification.style.display = 'block';
-      setTimeout(() => {
-        offlineNotification.style.display = 'none';
-      }, 5000);
-    });
-
-    window.addEventListener('online', () => {
-      console.log('You are online');
-      offlineNotification.style.display = 'none';
-    });
-
-    // Check initial connection status
-    if (!navigator.onLine) {
-      offlineNotification.style.display = 'block';
-    }
-
-    // Today's Rashi Predictions with Custom Icons
-    document.addEventListener('DOMContentLoaded', function() {
-      // Display current Nepali date
-      const today = new Date();
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      document.getElementById('currentDate').textContent = today.toLocaleDateString('ne-NP', options);
-      
-      // Load Rashi predictions
-      loadRashiPredictions();
-    });
+function showUpdateNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'update-notification';
+  notification.innerHTML = `
+    <i class="fas fa-sync-alt"></i>
+    <span>${message}</span>
+  `;
+  document.body.appendChild(notification);
+  setTimeout(() => notification.remove(), 5000);
+}
 
     // Function to get local Rashi data
     function getLocalRashiData() {
@@ -1406,87 +1359,46 @@
         }
       ];
     }
+// Service Worker Management
+const SW_VERSION = 'v4';
 
-    // Display Rashi predictions
-    function displayRashis(rashis) {
-      const container = document.getElementById('rashiContainer');
-      
-      container.innerHTML = rashis.map(rashi => `
-        <div class="rashi-card">
-          <div class="rashi-icon">
-            <img src="${rashi.icon}" alt="${rashi.name}" loading="lazy">
-          </div>
-          <h3>${rashi.name}</h3>
-          <p>${rashi.prediction}</p>
-          <div class="rashi-meta">
-            <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
-            <span>रंग: ${rashi.luckyColor}</span>
-          </div>
-          <div class="rashi-time">
-            <i class="fas fa-clock"></i> शुभ समय: ${rashi.time}
-          </div>
-        </div>
-      `).join('');
-    }
-
-    async function loadRashiPredictions() {
-  const container = document.getElementById('rashiContainer');
-  
-  try {
-    // Show loading state
-    container.innerHTML = `
-      <div class="loading">
-        <i class="fas fa-spinner fa-spin"></i> राशिफल लोड गर्दै...
-      </div>
-    `;
-    
-    // Use local data directly since the API might not be available
-    const localRashiData = getLocalRashiData();
-    displayRashis(localRashiData);
-    
-  } catch (error) {
-    console.error("Error loading Rashi data:", error);
-    container.innerHTML = `
-      <div class="error-message" style="grid-column: 1 / -1; text-align: center; color: var(--primary);">
-        <i class="fas fa-exclamation-triangle"></i> राशिफल लोड गर्न असमर्थ
-      </div>
-    `;
-  }
-}
-    
 if ('serviceWorker' in navigator) {
-    // Unregister old workers
-    navigator.serviceWorker.getRegistrations().then(registrations => {
-      registrations.forEach(registration => {
-        console.log('Removing old service worker:', registration.scope);
-        registration.unregister();
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered:', registration);
+        setInterval(() => registration.update(), 3600000);
       });
+  });
+
+  // Cleanup old caches
+  caches.keys().then(cacheNames => {
+    cacheNames.forEach(cacheName => {
+      if (cacheName !== 'jotishi-v4') {
+        caches.delete(cacheName);
+      }
+    });
+  });
+}
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+  // Set current date
+  document.getElementById('currentDate').textContent = 
+    new Date().toLocaleDateString('ne-NP', { 
+      weekday: 'long', 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
     });
 
-    // Clear old caches
-    caches.keys().then(cacheNames => {
-      cacheNames.forEach(cacheName => {
-        if (cacheName !== 'jotishi-v4') { // Match your CACHE_NAME
-          console.log('Deleting old cache:', cacheName);
-          caches.delete(cacheName);
-        }
-      });
-    });
-
-    // Register new worker
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(registration => {
-          console.log('New SW registered:', registration);
-          if (localStorage.getItem('swVersion') !== SW_VERSION) {
-            localStorage.setItem('swVersion', SW_VERSION);
-            window.location.reload();
-          }
-        });
-    });
-  }
-    // Refresh every 6 hours
-    setInterval(loadRashiPredictions, 21600000);
-  </script>
+  // Start systems
+  setupAutoUpdates();
+  
+  // Copyright year
+  document.getElementById('year').textContent = new Date().getFullYear();
+});
+    
+</script>
 </body>
 </html>
