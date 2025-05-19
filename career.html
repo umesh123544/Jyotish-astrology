@@ -361,6 +361,12 @@
       transform: translateY(-2px);
     }
 
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .career-info {
       background: white;
       padding: 2rem;
@@ -406,6 +412,185 @@
     .option-card h4 {
       color: var(--primary);
       margin-bottom: 0.5rem;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .career-results {
+      color: var(--dark);
+    }
+
+    .career-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .career-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .career-potential {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .potential-score {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+      margin: 0.5rem 0;
+    }
+
+    .potential-label {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .potential-description {
+      margin-top: 1rem;
+      font-size: 1rem;
+    }
+
+    .planetary-influences {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .planetary-influences th, .planetary-influences td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .planetary-influences th {
+      background-color: #f5f5f5;
+      font-weight: 600;
+    }
+
+    .planetary-influences tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .predictions {
+      margin: 2rem 0;
+    }
+
+    .prediction-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .prediction-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .career-suggestions {
+      margin-top: 1.5rem;
+    }
+
+    .suggestion-card {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .suggestion-card h5 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Footer */
@@ -573,6 +758,14 @@
       .career-hero p {
         font-size: 1rem;
       }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+
+      .download-options {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -673,7 +866,12 @@
             </div>
           </div>
           
-          <button type="submit" class="submit-btn">क्यारियर विश्लेषण गर्नुहोस्</button>
+          <button type="submit" class="submit-btn">
+            <span id="submitText">क्यारियर विश्लेषण गर्नुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> प्रसंसकरण गर्दै...
+            </span>
+          </button>
         </form>
       </div>
       
@@ -733,6 +931,16 @@
       </div>
     </div>
   </main>
+
+  <!-- Career Results Modal -->
+  <div id="careerResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="careerResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -808,28 +1016,209 @@
     // Copyright Year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Form Submission
-    document.getElementById('careerForm').addEventListener('submit', function(e) {
+    // Modal Handling
+    const modal = document.getElementById('careerResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('careerForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       // Get form values
-      const name = document.getElementById('name').value;
-      const dob = document.getElementById('dob').value;
-      const tob = document.getElementById('tob').value;
-      const pob = document.getElementById('pob').value;
-      const status = document.getElementById('current-status').value;
-      const education = document.getElementById('education').value;
-      const interests = document.getElementById('interests').value;
+      const formData = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        tob: document.getElementById('tob').value,
+        pob: document.getElementById('pob').value,
+        currentStatus: document.getElementById('current-status').value,
+        education: document.getElementById('education').value,
+        interests: document.getElementById('interests').value,
+        concerns: document.getElementById('concerns').value
+      };
       
       // Validate inputs
-      if (!name || !dob || !tob || !pob || !status || !education || !interests) {
+      if (!formData.name || !formData.dob || !formData.tob || !formData.pob || 
+          !formData.currentStatus || !formData.education || !formData.interests) {
         alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
         return;
       }
       
-      alert('धन्यवाद! तपाईंको क्यारियर विश्लेषण तयार गरिएको छ। हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।');
-      this.reset();
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to generate career report
+        const careerData = await generateCareerReport(formData);
+        
+        // Display the results
+        displayCareerResults(careerData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error generating career report:', error);
+        alert('क्यारियर विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
     });
+
+    // API Integration Function
+    async function generateCareerReport(formData) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          name: formData.name,
+          birthDetails: {
+            date: formData.dob,
+            time: formData.tob,
+            place: formData.pob
+          },
+          currentStatus: formData.currentStatus === 'student' ? 'विद्यार्थी' : 
+                        formData.currentStatus === 'employed' ? 'नियोजित' :
+                        formData.currentStatus === 'unemployed' ? 'बेरोजगार' : 'व्यवसायी',
+          education: formData.education,
+          interests: formData.interests.split('\n').filter(i => i.trim() !== ''),
+          planetaryInfluences: [
+            { planet: 'सूर्य', house: '10', influence: 'प्रबल', description: 'तपाईंको क्यारियरमा नेतृत्व गुण रहेको छ' },
+            { planet: 'चन्द्रमा', house: '4', influence: 'मध्यम', description: 'सृजनात्मक क्षेत्रमा रुचि' },
+            { planet: 'मङ्गल', house: '6', influence: 'प्रबल', description: 'प्रतिस्पर्धात्मक क्षेत्रमा सफलताको सम्भावना' },
+            { planet: 'बुध', house: '3', influence: 'उत्कृष्ट', description: 'संचार र प्रविधि क्षेत्र उपयुक्त' }
+          ],
+          dashaPeriods: [
+            { planet: 'शुक्र', start: '2020', end: '2040', influence: 'कला र सृजनात्मक क्षेत्रमा उन्नति' },
+            { planet: 'सूर्य', start: '2040', end: '2046', influence: 'नेतृत्व पदमा उन्नतिको समय' }
+          ],
+          careerPotential: 85,
+          potentialDescription: 'तपाईंसँग उच्च क्यारियर सम्भावना छ। सही मार्गदर्शन र परिश्रमले उच्च सफलता प्राप्त गर्न सक्नुहुन्छ।',
+          suggestedCareers: [
+            { field: 'प्रविधि', options: 'सफ्टवेयर इन्जिनियर, डेटा वैज्ञानिक, AI विशेषज्ञ' },
+            { field: 'प्रबन्धन', options: 'प्रोजेक्ट म्यानेजर, व्यवसाय प्रशासक, संचालक' },
+            { field: 'सृजनात्मक', options: 'लेखक, ग्राफिक डिजाइनर, कन्टेन्ट क्रिएटर' }
+          ],
+          remedies: [
+            'बुधवार हरित वस्त्र लगाउनुहोस्',
+            'बुध ग्रहको मन्त्र "ॐ बुं बुधाय नमः" को जप गर्नुहोस्',
+            'हरियो रंगको पन्ना धारण गर्नुहोस्'
+          ]
+        }
+      };
+    }
+
+    // Display Career Results
+    function displayCareerResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('careerResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="career-results">
+          <h2>${data.name} को क्यारियर विश्लेषण</h2>
+          
+          <div class="career-potential">
+            <div class="potential-label">क्यारियर सम्भावना</div>
+            <div class="potential-score">${data.careerPotential}%</div>
+            <div class="potential-description">${data.potentialDescription}</div>
+          </div>
+          
+          <div class="basic-info">
+            <h3>आधारभूत विवरण</h3>
+            <p><strong>जन्म मिति:</strong> ${data.birthDetails.date}</p>
+            <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
+            <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
+            <p><strong>वर्तमान स्थिति:</strong> ${data.currentStatus}</p>
+            <p><strong>शैक्षिक योग्यता:</strong> ${data.education}</p>
+            <p><strong>रुचिहरू:</strong> ${data.interests.join(', ')}</p>
+          </div>
+          
+          <h3>ग्रह प्रभावहरू</h3>
+          <table class="planetary-influences">
+            <thead>
+              <tr>
+                <th>ग्रह</th>
+                <th>भाव</th>
+                <th>प्रभाव</th>
+                <th>विवरण</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${data.planetaryInfluences.map(planet => `
+                <tr>
+                  <td>${planet.planet}</td>
+                  <td>${planet.house}</td>
+                  <td>${planet.influence}</td>
+                  <td>${planet.description}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          <h3>दशा अनुसार क्यारियर योगहरू</h3>
+          <div class="predictions">
+            ${data.dashaPeriods.map(dasha => `
+              <div class="prediction-item">
+                <h4>${dasha.planet} दशा (${dasha.start}-${dasha.end})</h4>
+                <p>${dasha.influence}</p>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>सुझावित क्यारियर विकल्पहरू</h3>
+          <div class="career-suggestions">
+            ${data.suggestedCareers.map(career => `
+              <div class="suggestion-card">
+                <h5>${career.field}</h5>
+                <p>${career.options}</p>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+          </ul>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadReport('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadReport('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Download Report Function
+    function downloadReport(format) {
+      alert(`क्यारियर विवरण ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
 
     // Close button functionality
     document.getElementById('closeBtn').addEventListener('click', function() {
