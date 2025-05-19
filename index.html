@@ -711,6 +711,58 @@
       box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     }
     
+    /* Footer Search */
+    .footer-section .search-container {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section #footerSearch {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px 0 0 8px;
+      font-size: 1rem;
+      background: #f1f5f9;
+      color: var(--dark);
+    }
+
+    .footer-section #searchButton {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0 1.2rem;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .footer-section #searchButton:hover {
+      background: #e69009;
+    }
+
+    .search-results {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .search-results a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s ease;
+    }
+
+    .search-results a:hover {
+      background: #f8fafc;
+      color: var(--primary);
+    }
 
     /* Footer */
     footer {
@@ -742,58 +794,6 @@
       bottom: -5px;
       left: 0;
     }
-    /* Footer Search */
-.footer-section .search-container {
-  display: flex;
-  margin-bottom: 1rem;
-}
-
-.footer-section #footerSearch {
-  flex: 1;
-  padding: 0.8rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px 0 0 8px;
-  font-size: 1rem;
-  background: #f1f5f9;
-  color: var(--dark);
-}
-
-.footer-section #searchButton {
-  background: var(--secondary);
-  color: white;
-  border: none;
-  padding: 0 1.2rem;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.footer-section #searchButton:hover {
-  background: #e69009;
-}
-
-.search-results {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  max-height: 200px;
-  overflow-y: auto;
-  display: none;
-}
-
-.search-results a {
-  display: block;
-  padding: 0.8rem 1rem;
-  color: var(--dark);
-  text-decoration: none;
-  border-bottom: 1px solid #eee;
-  transition: background 0.2s ease;
-}
-
-.search-results a:hover {
-  background: #f8fafc;
-  color: var(--primary);
-}
 
     .social-links {
       display: flex;
@@ -1139,38 +1139,39 @@
   </div>
 </section>
   
- <!-- Footer -->
-<footer id="contact">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h4>Quick Search</h4>
-      <div class="search-container">
-        <input type="text" id="footerSearch" placeholder="Search services..." aria-label="Search services">
-        <button id="searchButton" aria-label="Search">
-          <i class="fas fa-search"></i>
-        </button>
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Quick Search</h4>
+        <div class="search-container">
+          <input type="text" id="footerSearch" placeholder="Search services..." aria-label="Search services">
+          <button id="searchButton" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
       </div>
-      <div id="searchResults" class="search-results"></div>
-    </div>
-    <div class="footer-section">
-      <h4>Contact Us</h4>
-      <p>Email: contact@jotishi.com</p>
-      <p>Phone: +977-9813197704</p>
-      <p>Kathmandu, Nepal</p>
-    </div>
-    <div class="footer-section">
-      <h4>Follow Us</h4>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +977-9813197704</p>
+        <p>Kathmandu, Nepal</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
-  </div>
-</footer>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
+    </div>
+  </footer>
+
   <script>
     // Mobile Menu Toggle
 const hamburger = document.getElementById('hamburger');
@@ -1420,28 +1421,8 @@ function showUpdateNotification(message) {
         }
       ];
     }
-// Service Worker Management
-const SW_VERSION = 'v4';
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('SW registered:', registration);
-        setInterval(() => registration.update(), 3600000);
-      });
-  });
-
-  // Cleanup old caches
-  caches.keys().then(cacheNames => {
-    cacheNames.forEach(cacheName => {
-      if (cacheName !== 'jotishi-v4') {
-        caches.delete(cacheName);
-      }
-    });
-  });
-}
-    // Footer Search Functionality
+// Footer Search Functionality
 const footerSearch = document.getElementById('footerSearch');
 const searchButton = document.getElementById('searchButton');
 const searchResults = document.getElementById('searchResults');
@@ -1485,10 +1466,32 @@ searchButton.addEventListener('click', performSearch);
 
 // Close search results when clicking outside
 document.addEventListener('click', (e) => {
-  if (!footerSearch.contains(e.target) {
+  if (!footerSearch.contains(e.target) && !searchResults.contains(e.target)) {
     searchResults.style.display = 'none';
   }
 });
+
+// Service Worker Management
+const SW_VERSION = 'v4';
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registered:', registration);
+        setInterval(() => registration.update(), 3600000);
+      });
+  });
+
+  // Cleanup old caches
+  caches.keys().then(cacheNames => {
+    cacheNames.forEach(cacheName => {
+      if (cacheName !== 'jotishi-v4') {
+        caches.delete(cacheName);
+      }
+    });
+  });
+}
 
 // Initialization
 document.addEventListener('DOMContentLoaded', () => {
