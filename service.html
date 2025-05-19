@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jotishi - Professional Astrology Services</title>
   
-  <!-- 100% Same Head Content as index.html -->
   <meta name="description" content="Authentic Vedic Astrology Services by Certified Astrologers">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#6d28d9">
@@ -23,7 +22,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
 
   <style>
-    /* === EXACTLY THE SAME CSS AS INDEX.HTML === */
     :root {
       --primary: #6d28d9;
       --primary-light: #8b5cf6;
@@ -48,7 +46,7 @@
       overflow-x: hidden;
     }
 
-    /* Header - Same as index.html */
+    /* Header */
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       padding: 1rem 5%;
@@ -171,7 +169,6 @@
       top: 8px;
     }
 
-    /* Active state */
     .hamburger.active .hamburger-inner {
       transform: rotate(225deg);
       transition-delay: 0.1s;
@@ -190,7 +187,6 @@
       transition: top 0.1s ease-out, opacity 0.1s ease-out;
     }
 
-    /* Mobile nav links */
     @media (max-width: 768px) {
       .hamburger {
         display: block;
@@ -235,22 +231,59 @@
       }
     }
 
-    /* === SERVICE PAGE SPECIFIC STYLES === */
+    /* Service Hero with Background Image */
+    .service-hero {
+      text-align: center;
+      padding: 4rem 0;
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      background: url('https://i.ibb.co/SDyM0ySn/pexels-photo-1146134.jpg') center/cover no-repeat;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .service-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(109, 40, 217, 0.7);
+      z-index: 1;
+    }
+
+    .service-hero h1,
+    .service-hero p {
+      position: relative;
+      z-index: 2;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .service-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-hero p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Services Grid */
     .services-main {
       margin-top: 100px;
       padding: 2rem 5%;
       max-width: var(--max-width);
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .service-hero {
-      text-align: center;
-      padding: 4rem 0;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
-      border-radius: 15px;
-      margin-bottom: 3rem;
     }
 
     .service-grid {
@@ -300,7 +333,7 @@
       background: #e67e22;
     }
 
-    /* === FOOTER STYLES MATCHING INDEX.HTML === */
+    /* Footer */
     footer {
       background: var(--dark);
       color: white;
@@ -329,28 +362,6 @@
       background: var(--secondary);
       bottom: -5px;
       left: 0;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .social-links a {
-      color: white;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-
-    .social-links a:hover {
-      color: var(--secondary);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      margin-top: 2rem;
-      border-top: 1px solid #334155;
     }
 
     /* Footer Search */
@@ -406,6 +417,29 @@
       color: var(--primary);
     }
 
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #334155;
+    }
+
+    /* WhatsApp Float */
     .whatsapp-float {
       position: fixed;
       bottom: 2rem;
@@ -432,7 +466,6 @@
   </style>
 </head>
 <body>
-  <!-- CORRECTED HEADER -->
   <header>
     <nav class="navbar">
       <div class="logo-container">
@@ -457,10 +490,9 @@
     </nav>
   </header>
 
-  <!-- SERVICE PAGE CONTENT -->
   <main class="services-main">
     <section class="service-hero">
-      <h1>वैदिक ज्योतिष सेवाहरू </h1>
+      <h1>वैदिक ज्योतिष सेवाहरू</h1>
       <p>हाम्रो प्रामाणिक वैदिक समाधानहरूसँग आफ्नो भविष्यको पूर्वानुमान गर्नुहोस्</p>
     </section>
 
@@ -491,7 +523,6 @@
     </div>
   </main>
 
-  <!-- UPDATED FOOTER TO MATCH INDEX.HTML -->
   <footer id="contact">
     <div class="footer-content">
       <div class="footer-section">
@@ -524,12 +555,10 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
   <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- EXACT SAME SCRIPTS AS INDEX.HTML -->
   <script>
     // Service Worker Registration
     const SW_VERSION = 'v4';
@@ -543,7 +572,7 @@
       });
     }
 
-    // Mobile Menu Toggle (Identical to index.html)
+    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     
@@ -562,7 +591,7 @@
       }
     });
 
-    // Close menu on window resize (if needed)
+    // Close menu on window resize
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         hamburger.classList.remove('active');
@@ -590,7 +619,6 @@
     const searchButton = document.getElementById('searchButton');
     const searchResults = document.getElementById('searchResults');
 
-    // Sample search data - replace with your actual services
     const searchData = [
       { title: "Birth Chart Reading", url: "service.html#birth-chart" },
       { title: "Horoscope Matching", url: "service.html#horoscope" },
