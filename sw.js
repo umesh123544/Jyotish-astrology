@@ -7,7 +7,7 @@ const CACHE_URLS = [
   '/manifest.json',
   '/styles.css',
   '/app.js',
-  'https://i.ibb.co/PG2SRstT/Picsart-25-05-17-08-27-21-322.png',
+  'https://www.alokikastro.com/uploaded-files/category/images/thumbs/Vedic-Janam-Kundli-thumbs-500X500.jpg',
   // Add all other assets
 ];
 
