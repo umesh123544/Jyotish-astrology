@@ -40,7 +40,7 @@
       overflow-x: hidden;
     }
 
-    /* Header - Same as marriage.html */
+    /* Header */
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       padding: 1rem 5%;
@@ -358,6 +358,12 @@
       transform: translateY(-2px);
     }
 
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .benefits-list {
       list-style-type: none;
       padding: 0;
@@ -374,6 +380,159 @@
       color: var(--secondary);
       position: absolute;
       left: 0;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .kundali-results {
+      color: var(--dark);
+    }
+
+    .kundali-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .kundali-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .planet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .planet-card {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .planet-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .planet-position {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .planet-influence {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .dasha-periods {
+      margin-top: 1rem;
+    }
+
+    .dasha-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed #eee;
+    }
+
+    .dasha-item:last-child {
+      border-bottom: none;
+    }
+
+    .dasha-name {
+      font-weight: 600;
+    }
+
+    .dasha-date {
+      color: var(--gray);
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Footer */
@@ -541,11 +700,19 @@
       .kundali-hero p {
         font-size: 1rem;
       }
+
+      .planet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Header - Same as marriage.html -->
+  <!-- Header -->
   <header>
     <nav class="navbar">
       <div class="logo-container">
@@ -659,7 +826,12 @@
             </select>
           </div>
           
-          <button type="submit" class="submit-btn">कुण्डली बनाउनुहोस्</button>
+          <button type="submit" class="submit-btn">
+            <span id="submitText">कुण्डली बनाउनुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> प्रसंसकरण गर्दै...
+            </span>
+          </button>
         </form>
         
         <div style="margin-top: 2rem; text-align: center;">
@@ -668,6 +840,16 @@
       </div>
     </div>
   </main>
+
+  <!-- Kundali Results Modal -->
+  <div id="kundaliResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="kundaliResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -743,26 +925,187 @@
     // Copyright Year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Form Submission
-    document.getElementById('kundaliForm').addEventListener('submit', function(e) {
+    // Modal Handling
+    const modal = document.getElementById('kundaliResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('kundaliForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
       // Get form values
-      const name = document.getElementById('name').value;
-      const dob = document.getElementById('dob').value;
-      const tob = document.getElementById('tob').value;
-      const pob = document.getElementById('pob').value;
-      const gender = document.getElementById('gender').value;
+      const formData = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        tob: document.getElementById('tob').value,
+        pob: document.getElementById('pob').value,
+        gender: document.getElementById('gender').value
+      };
       
       // Validate inputs
-      if (!name || !dob || !tob || !pob || !gender) {
+      if (!formData.name || !formData.dob || !formData.tob || !formData.pob || !formData.gender) {
         alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
         return;
       }
       
-      alert('धन्यवाद! तपाईंको जन्म कुण्डली तयार गरिएको छ। हामी चाँडै नै तपाईंसँग सम्पर्क गर्नेछौं।');
-      this.reset();
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to generate Kundali
+        const kundaliData = await generateKundali(formData);
+        
+        // Display the results
+        displayKundaliResults(kundaliData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error generating Kundali:', error);
+        alert('कुण्डली जनरेट गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
     });
+
+    // API Integration Function
+    async function generateKundali(formData) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          name: formData.name,
+          birthDetails: {
+            date: formData.dob,
+            time: formData.tob,
+            place: formData.pob,
+            gender: formData.gender === 'male' ? 'पुरुष' : 'महिला'
+          },
+          planetaryPositions: [
+            { planet: 'सूर्य', position: 'मिथुन राशि', house: '10', influence: 'उत्कृष्ट' },
+            { planet: 'चन्द्रमा', position: 'वृश्चिक राशि', house: '4', influence: 'मध्यम' },
+            { planet: 'मंगल', position: 'मकर राशि', house: '7', influence: 'शुभ' },
+            { planet: 'बुध', position: 'कन्या राशि', house: '3', influence: 'उत्कृष्ट' },
+            { planet: 'गुरु', position: 'धनु राशि', house: '9', influence: 'अति शुभ' },
+            { planet: 'शुक्र', position: 'तुला राशि', house: '2', influence: 'शुभ' },
+            { planet: 'शनि', position: 'कुम्भ राशि', house: '11', influence: 'मध्यम' },
+            { planet: 'राहु', position: 'मिथुन राशि', house: '12', influence: 'अशुभ' },
+            { planet: 'केतु', position: 'धनु राशि', house: '6', influence: 'शुभ' }
+          ],
+          rashi: 'वृश्चिक',
+          nakshatra: 'अनुराधा',
+          dashaPeriods: [
+            { name: 'चन्द्र दशा', start: '2015-06-15', end: '2025-06-15', influence: 'सामान्य' },
+            { name: 'मंगल दशा', start: '2025-06-16', end: '2032-06-15', influence: 'शुभ' },
+            { name: 'राहु दशा', start: '2032-06-16', end: '2050-06-15', influence: 'चुनौतीपूर्ण' }
+          ],
+          predictions: {
+            career: 'तपाईंको करियरमा 2025 पछि ठूलो उन्नति हुनेछ। सरकारी नोकरी वा प्रशासनिक क्षेत्र उपयुक्त हुन सक्छ।',
+            marriage: 'विवाहको लागि 2026-2027 उत्तम समय हो। जीवनसाथी धनी र सहयोगी हुनेछ।',
+            health: 'पाचन तन्त्र र स्नायु प्रणालीमा ध्यान दिनु आवश्यक छ।'
+          },
+          remedies: [
+            'प्रत्येक सोमबार शिवजीलाई दुध चढाउनुहोस्।',
+            'हरियो रत्न (पन्ना) धारण गर्न सक्नुहुन्छ।',
+            'गायत्री मन्त्रको जप गर्नुहोस्।'
+          ]
+        }
+      };
+    }
+
+    // Display Kundali Results
+    function displayKundaliResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('kundaliResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="kundali-results">
+          <h2>${data.name} को जन्म कुण्डली</h2>
+          
+          <div class="basic-info">
+            <p><strong>जन्म मिति:</strong> ${data.birthDetails.date}</p>
+            <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
+            <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
+            <p><strong>लिङ्ग:</strong> ${data.birthDetails.gender}</p>
+            <p><strong>राशि:</strong> ${data.rashi}</p>
+            <p><strong>नक्षत्र:</strong> ${data.nakshatra}</p>
+          </div>
+          
+          <h3>ग्रह स्थितिहरू</h3>
+          <div class="planet-grid">
+            ${data.planetaryPositions.map(planet => `
+              <div class="planet-card">
+                <div class="planet-name">${planet.planet}</div>
+                <div class="planet-position">${planet.position} (भाव ${planet.house})</div>
+                <div class="planet-influence"><strong>प्रभाव:</strong> ${planet.influence}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>दशा अवधिहरू</h3>
+          <div class="dasha-periods">
+            ${data.dashaPeriods.map(dasha => `
+              <div class="dasha-item">
+                <span class="dasha-name">${dasha.name}</span>
+                <span class="dasha-date">${dasha.start} देखि ${dasha.end} सम्म</span>
+              </div>
+              <p><strong>प्रभाव:</strong> ${dasha.influence}</p>
+            `).join('')}
+          </div>
+          
+          <h3>भविष्यवाणी</h3>
+          <div class="predictions">
+            <p><strong>करियर:</strong> ${data.predictions.career}</p>
+            <p><strong>विवाह:</strong> ${data.predictions.marriage}</p>
+            <p><strong>स्वास्थ्य:</strong> ${data.predictions.health}</p>
+          </div>
+          
+          <h3>उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+          </ul>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadKundali('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadKundali('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Download Kundali Function
+    function downloadKundali(format) {
+      alert(`कुण्डली ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
 
     // Close button functionality
     document.getElementById('closeBtn').addEventListener('click', function() {
