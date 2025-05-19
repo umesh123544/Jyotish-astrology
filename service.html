@@ -300,52 +300,40 @@
       background: #e67e22;
     }
 
-    /* === FOOTER STYLES MATCHING OTHER PAGES === */
+    /* === FOOTER STYLES MATCHING INDEX.HTML === */
     footer {
       background: var(--dark);
       color: white;
       padding: 3rem 5%;
-      margin-top: 2rem;
     }
 
-    .footer-container {
-      max-width: var(--max-width);
-      margin: 0 auto;
+    .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
-    .footer-section {
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-section h3 {
-      font-size: 1.3rem;
+    .footer-section h4 {
       margin-bottom: 1rem;
+      font-size: 1.3rem;
       position: relative;
-      padding-bottom: 0.5rem;
     }
 
-    .footer-section h3::after {
+    .footer-section h4::after {
       content: '';
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 50px;
+      width: 50%;
       height: 2px;
       background: var(--secondary);
-    }
-
-    .footer-section p {
-      margin: 0.5rem 0;
-      opacity: 0.9;
+      bottom: -5px;
+      left: 0;
     }
 
     .social-links {
       display: flex;
       gap: 1rem;
-      margin-top: 1rem;
     }
 
     .social-links a {
@@ -362,7 +350,60 @@
       text-align: center;
       padding-top: 2rem;
       margin-top: 2rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid #334155;
+    }
+
+    /* Footer Search */
+    .footer-section .search-container {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section #footerSearch {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px 0 0 8px;
+      font-size: 1rem;
+      background: #f1f5f9;
+      color: var(--dark);
+    }
+
+    .footer-section #searchButton {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0 1.2rem;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .footer-section #searchButton:hover {
+      background: #e69009;
+    }
+
+    .search-results {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .search-results a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s ease;
+    }
+
+    .search-results a:hover {
+      background: #f8fafc;
+      color: var(--primary);
     }
 
     .whatsapp-float {
@@ -406,8 +447,8 @@
       </button>
       
       <div class="nav-links" id="navLinks">
-        <a href="/">Home</a>
-        <a href="/services.html" class="active">Services</a>
+        <a href="index.html">Home</a>
+        <a href="service.html" class="active">Services</a>
         <a href="#sectors">Sectors</a>
         <a href="#team">Astrologers</a>
         <a href="#faq">FAQ</a>
@@ -450,37 +491,36 @@
     </div>
   </main>
 
-  <!-- UNIFIED FOOTER -->
+  <!-- UPDATED FOOTER TO MATCH INDEX.HTML -->
   <footer id="contact">
-    <div class="footer-container">
+    <div class="footer-content">
       <div class="footer-section">
-        <h3>Contact Us</h3>
-        <p><i class="fas fa-envelope"></i> contact@jotishi.com</p>
-        <p><i class="fas fa-phone"></i> +977-9813197704</p>
-        <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+        <h4>Quick Search</h4>
+        <div class="search-container">
+          <input type="text" id="footerSearch" placeholder="Search services..." aria-label="Search services">
+          <button id="searchButton" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
       </div>
-      
       <div class="footer-section">
-        <h3>Quick Links</h3>
-        <p><a href="/services.html">Services</a></p>
-        <p><a href="/janma.html">Janma Kundali</a></p>
-        <p><a href="/marriage.html">Marriage Matching</a></p>
-        <p><a href="/career.html">Career Guidance</a></p>
+        <h4>Contact Us</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +977-9813197704</p>
+        <p>Kathmandu, Nepal</p>
       </div>
-      
       <div class="footer-section">
-        <h3>Follow Us</h3>
+        <h4>Follow Us</h4>
         <div class="social-links">
           <a href="#"><i class="fab fa-facebook"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-whatsapp"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
     </div>
-    
     <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Jotishi. All rights reserved.</p>
+      <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
     </div>
   </footer>
 
@@ -543,6 +583,55 @@
         
         window.location.href = `${redirectPage}?service=${encodeURIComponent(service)}&price=${encodeURIComponent(price)}`;
       });
+    });
+
+    // Footer Search Functionality
+    const footerSearch = document.getElementById('footerSearch');
+    const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
+
+    // Sample search data - replace with your actual services
+    const searchData = [
+      { title: "Birth Chart Reading", url: "service.html#birth-chart" },
+      { title: "Horoscope Matching", url: "service.html#horoscope" },
+      { title: "Remedial Guidance", url: "service.html#remedial" },
+      { title: "Marriage Compatibility", url: "service.html#marriage" },
+      { title: "Career Astrology", url: "service.html#career" },
+      { title: "Medical Astrology", url: "service.html#medical" },
+      { title: "Natal Astrology", url: "service.html#natal" },
+      { title: "Relationship Astrology", url: "service.html#relationship" }
+    ];
+
+    function performSearch() {
+      const query = footerSearch.value.toLowerCase();
+      if (query.length < 2) {
+        searchResults.style.display = 'none';
+        return;
+      }
+
+      const results = searchData.filter(item => 
+        item.title.toLowerCase().includes(query)
+      );
+
+      if (results.length > 0) {
+        searchResults.innerHTML = results.map(item => 
+          `<a href="${item.url}">${item.title}</a>`
+        ).join('');
+        searchResults.style.display = 'block';
+      } else {
+        searchResults.innerHTML = '<div class="no-results">No services found</div>';
+        searchResults.style.display = 'block';
+      }
+    }
+
+    footerSearch.addEventListener('input', performSearch);
+    searchButton.addEventListener('click', performSearch);
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!footerSearch.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
     });
   </script>
 </body>
