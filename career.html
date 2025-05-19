@@ -237,11 +237,17 @@
     .career-hero {
       text-align: center;
       padding: 4rem 0;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      background: linear-gradient(rgba(109, 40, 217, 0.8), rgba(139, 92, 246, 0.8)), 
+                  url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
       color: white;
       border-radius: 15px;
       margin-bottom: 3rem;
       position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .career-hero h1 {
@@ -249,6 +255,7 @@
       font-size: 2.5rem;
       margin-bottom: 1rem;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
     }
 
     .career-hero p {
@@ -256,6 +263,7 @@
       opacity: 0.9;
       max-width: 800px;
       margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
     }
 
     .close-btn {
@@ -387,6 +395,12 @@
       border-radius: 10px;
       margin-bottom: 1rem;
       border-left: 4px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    .option-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     .option-card h4 {
@@ -394,57 +408,107 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Footer - Same as other pages */
+    /* Footer */
     footer {
-      background: var(--dark);
+      background: #000;
       color: white;
-      padding: 3rem 5%;
+      padding: 60px 20px 20px;
+      text-align: center;
     }
 
     .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
+      gap: 40px;
+      text-align: left;
     }
 
-    .footer-section h4 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
       position: relative;
+      padding-bottom: 10px;
     }
 
-    .footer-section h4::after {
+    .footer-column h3::after {
       content: '';
       position: absolute;
-      width: 50%;
+      left: 0;
+      bottom: 0;
+      width: 50px;
       height: 2px;
       background: var(--secondary);
-      bottom: -5px;
-      left: 0;
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
     }
 
     .social-links {
       display: flex;
-      gap: 1rem;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .social-links a {
       color: white;
-      font-size: 1.2rem;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.3s ease;
     }
 
     .social-links a:hover {
-      color: var(--secondary);
+      background: var(--secondary);
+      transform: translateY(-3px);
     }
 
-    .footer-bottom {
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      font-size: 12px;
       text-align: center;
-      padding-top: 2rem;
-      margin-top: 2rem;
-      border-top: 1px solid #334155;
+      line-height: 1.6;
+    }
+
+    .legal-notice a {
+      color: var(--secondary);
+      text-decoration: none;
     }
 
     .whatsapp-float {
@@ -469,6 +533,46 @@
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .career-hero {
+        min-height: 300px;
+        padding: 2rem 1rem;
+      }
+
+      .career-hero h1 {
+        font-size: 2rem;
+      }
+
+      .career-hero p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -630,28 +734,54 @@
     </div>
   </main>
 
-  <!-- Footer - Same as other pages -->
-  <footer id="contact">
+  <!-- Footer -->
+  <footer>
     <div class="footer-content">
-      <div class="footer-section">
-        <h4>Contact Us</h4>
-        <p>Email: contact@jotishi.com</p>
-        <p>Phone: +977-9813197704</p>
-        <p>Kathmandu, Nepal</p>
-      </div>
-      <div class="footer-section">
-        <h4>Follow Us</h4>
+      <div class="footer-column">
+        <h3>श्री जोतिषी</h3>
+        <p>तपाईंको भविष्यको सटीक विश्लेषण र ज्योतिषीय सल्लाह। हाम्रो सेवाले तपाईंलाई जीवनका विभिन्न पक्षहरूमा मार्गदर्शन प्रदान गर्दछ।</p>
         <div class="social-links">
-          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
+      
+      <div class="footer-column">
+        <h3>द्रुत लिंकहरू</h3>
+        <a href="/"><i class="fas fa-home"></i> गृहपृष्ठ</a>
+        <a href="/services.html"><i class="fas fa-star"></i> सेवाहरू</a>
+        <a href="/marriage-matching.html"><i class="fas fa-heart"></i> विवाह मिलान</a>
+        <a href="/janma.html"><i class="fas fa-chart-line"></i> जन्म कुण्डली</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>ग्राहक सेवा</h3>
+        <a href="#faq"><i class="fas fa-question-circle"></i> प्रश्नहरू</a>
+        <a href="#privacy"><i class="fas fa-lock"></i> गोपनीयता नीति</a>
+        <a href="#terms"><i class="fas fa-file-alt"></i> सेवा सर्तहरू</a>
+        <a href="#refund"><i class="fas fa-exchange-alt"></i> फिर्ता नीति</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>हामीलाई सम्पर्क गर्नुहोस्</h3>
+        <p><i class="fas fa-map-marker-alt"></i> काठमाडौं, नेपाल</p>
+        <p><i class="fas fa-phone"></i> +९७७ ९८१३१९७७०४</p>
+        <p><i class="fas fa-envelope"></i> info@jotishi.com</p>
+        <p><i class="fas fa-clock"></i> सोम-शनि: ९:०० AM - ६:०० PM</p>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <p>© <span id="year"></span> Jotishi. All rights reserved.</p>
+    
+    <div class="copyright">
+      &copy; <span id="current-year"></span> श्री जोतिषी. सर्वाधिकार सुरक्षित.
     </div>
   </footer>
+
+  <!-- Legal Notice -->
+  <div class="legal-notice">
+    <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
+  </div>
 
   <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i>
@@ -676,7 +806,7 @@
     });
 
     // Copyright Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 
     // Form Submission
     document.getElementById('careerForm').addEventListener('submit', function(e) {
