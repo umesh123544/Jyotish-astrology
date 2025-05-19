@@ -7,7 +7,7 @@ const CACHE_URLS = [
   '/manifest.json',
   '/styles.css',
   '/app.js',
-  'https://i.ibb.co/5hGc1zjb/Picsart-25-05-19-20-53-31-742.png',
+  'https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png',
   // Add all other assets
 ];
 
