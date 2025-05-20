@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>विवाह मिलान - श्री जोतिषी</title>
-  <meta name="description" content="पेशेवर वैदिक ज्योतिष विवाह मिलान (कुण्डली मिलान) सेवा">
+  <title>Marriage Matching - श्री जोतिषी</title>
+  <meta name="description" content="Professional Vedic Astrology Marriage Matching (Kundali Milan) Service">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#6d28d9">
   <link rel="stylesheet" 
@@ -14,6 +14,9 @@
         referrerpolicy="no-referrer">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  
+  <!-- Nepali Date Picker CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/nepali-date-picker@1.0.0/dist/nepaliDatePicker.min.css" rel="stylesheet">
 
   <style>
     :root {
@@ -224,7 +227,7 @@
       }
     }
 
-    /* विवाह मिलान विशेष शैलीहरू */
+    /* Marriage Matching Specific Styles */
     .marriage-matching-main {
       margin-top: 100px;
       padding: 2rem 5%;
@@ -342,6 +345,19 @@
       box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
     }
 
+    /* Nepali Date Picker Customization */
+    .nepali-date-picker {
+      width: 100%;
+    }
+    
+    .nepali-date-picker input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
     .submit-btn {
       background: var(--secondary);
       color: white;
@@ -411,7 +427,7 @@
       background-color: #f9f9f9;
     }
 
-    /* परिणाम मोडल */
+    /* Results Modal */
     .modal {
       display: none;
       position: fixed;
@@ -581,7 +597,7 @@
       }
     }
 
-    /* फुटर */
+    /* Footer */
     footer {
       background: #000;
       color: white;
@@ -669,7 +685,7 @@
       font-size: 0.9rem;
     }
 
-    /* कानूनी सूचना */
+    /* Legal Notice */
     .legal-notice {
       background: #111;
       color: #aaa;
@@ -765,19 +781,19 @@
         <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
       </div>
       
-      <button class="hamburger" id="hamburger" aria-label="मेनु">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
       </button>
       
       <div class="nav-links" id="navLinks">
-        <a href="/">गृहपृष्ठ</a>
-        <a href="/services.html">सेवाहरू</a>
-        <a href="/marriage-matching.html" class="active">विवाह मिलान</a>
-        <a href="/janma.html">जन्म कुण्डली</a>
-        <a href="#team">ज्योतिषीहरू</a>
-        <a href="#faq">प्रश्नहरू</a>
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage-matching.html" class="active">Marriage Matching</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="#team">Astrologers</a>
+        <a href="#faq">FAQ</a>
       </div>
     </nav>
   </header>
@@ -808,7 +824,7 @@
             
             <div class="form-group">
               <label for="groomDob">जन्म मिति</label>
-              <input type="date" id="groomDob" required>
+              <input type="text" id="groomDob" class="nepali-date" required>
             </div>
             
             <div class="form-group">
@@ -832,7 +848,7 @@
             
             <div class="form-group">
               <label for="brideDob">जन्म मिति</label>
-              <input type="date" id="brideDob" required>
+              <input type="text" id="brideDob" class="nepali-date" required>
             </div>
             
             <div class="form-group">
@@ -936,17 +952,17 @@
     </div>
   </main>
 
-  <!-- मिलान परिणाम मोडल -->
+  <!-- Matching Results Modal -->
   <div id="matchingResultsModal" class="modal">
     <div class="modal-content">
       <span class="modal-close" id="modalClose">&times;</span>
       <div id="matchingResultsContainer">
-        <!-- परिणामहरू यहाँ जावास्क्रिप्ट द्वारा घुसाइनेछ -->
+        <!-- Results will be inserted here by JavaScript -->
       </div>
     </div>
   </div>
 
-  <!-- फुटर -->
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-column">
@@ -990,7 +1006,7 @@
     </div>
   </footer>
 
-  <!-- कानूनी सूचना -->
+  <!-- Legal Notice -->
   <div class="legal-notice">
     <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
   </div>
@@ -999,8 +1015,11 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- Nepali Date Picker JS -->
+  <script src="https://cdn.jsdelivr.net/npm/nepali-date-picker@1.0.0/dist/nepaliDatePicker.min.js"></script>
+  
   <script>
-    // मोबाइल मेनु टगल
+    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     
@@ -1009,7 +1028,7 @@
       navLinks.classList.toggle('active');
     });
 
-    // लिंकमा क्लिक गर्दा मेनु बन्द गर्नुहोस् (मोबाइल)
+    // Close menu when clicking links (mobile)
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -1017,10 +1036,10 @@
       });
     });
 
-    // कपिराइट वर्ष
+    // Copyright Year
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // मोडल ह्यान्डलिंग
+    // Modal Handling
     const modal = document.getElementById('matchingResultsModal');
     const modalClose = document.getElementById('modalClose');
     
@@ -1034,11 +1053,36 @@
       }
     });
 
-    // एपीआई एकीकरण सहित फारम सबमिशन
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      const nepaliDateConfig = {
+        dateFormat: "YYYY-MM-DD",
+        language: "nepali",
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        disableBefore: "1970-01-01",
+        disableAfter: "2090-12-30"
+      };
+      
+      // Initialize for groom's date of birth
+      const groomDob = document.getElementById('groomDob');
+      if (groomDob) {
+        nepaliDatePicker(groomDob, nepaliDateConfig);
+      }
+      
+      // Initialize for bride's date of birth
+      const brideDob = document.getElementById('brideDob');
+      if (brideDob) {
+        nepaliDatePicker(brideDob, nepaliDateConfig);
+      }
+    });
+
+    // Form Submission with API Integration
     document.getElementById('matchingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // फारम मानहरू प्राप्त गर्नुहोस्
+      // Get form values
       const formData = {
         groom: {
           name: document.getElementById('groomName').value,
@@ -1054,7 +1098,7 @@
         }
       };
       
-      // इनपुटहरू मान्यता दिनुहोस्
+      // Validate inputs
       if (!formData.groom.name || !formData.groom.dob || !formData.groom.tob || !formData.groom.pob || 
           !formData.bride.name || !formData.bride.dob || !formData.bride.tob || !formData.bride.pob) {
         alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
@@ -1062,38 +1106,38 @@
       }
       
       try {
-        // लोडिङ स्थिति देखाउनुहोस्
+        // Show loading state
         document.getElementById('submitText').style.display = 'none';
         document.getElementById('submitSpinner').style.display = 'inline';
         
-        // मिलान विवरण उत्पन्न गर्न एपीआई कल गर्नुहोस्
+        // Call API to generate matching report
         const matchingData = await generateMatchingReport(formData);
         
-        // परिणामहरू प्रदर्शन गर्नुहोस्
+        // Display the results
         displayMatchingResults(matchingData);
         
-        // मोडल देखाउनुहोस्
+        // Show the modal
         modal.style.display = 'block';
         
       } catch (error) {
-        console.error('मिलान विवरण उत्पन्न गर्दा त्रुटि:', error);
+        console.error('Error generating matching report:', error);
         alert('कुण्डली मिलान गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
       } finally {
-        // बटन स्थिति रिसेट गर्नुहोस्
+        // Reset button state
         document.getElementById('submitText').style.display = 'inline';
         document.getElementById('submitSpinner').style.display = 'none';
       }
     });
 
-    // एपीआई एकीकरण प्रकार्य
+    // API Integration Function
     async function generateMatchingReport(formData) {
-      // वास्तविक कार्यान्वयनमा, तपाईंले यहाँ आफ्नो ब्याकएन्ड एपीआई कल गर्नुहुनेछ
-      // यो एक नक्कली कार्यान्वयन हो जसले एपीआई कल अनुकरण गर्दछ
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
       
-      // एपीआई ढिलाइ अनुकरण गर्नुहोस्
+      // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // नक्कली प्रतिक्रिया डाटा - वास्तविक एप्लिकेसनमा, यो तपाईंको एपीआईबाट आउनेछ
+      // Mock response data - in a real app, this would come from your API
       return {
         success: true,
         data: {
@@ -1133,16 +1177,16 @@
       };
     }
 
-    // मिलान परिणाम प्रदर्शन गर्नुहोस्
+    // Display Matching Results
     function displayMatchingResults(response) {
       if (!response.success || !response.data) {
-        throw new Error('सर्भरबाट अमान्य प्रतिक्रिया');
+        throw new Error('Invalid response from server');
       }
       
       const data = response.data;
       const resultsContainer = document.getElementById('matchingResultsContainer');
       
-      // परिणामहरूको लागि HTML सिर्जना गर्नुहोस्
+      // Create HTML for the results
       resultsContainer.innerHTML = `
         <div class="matching-results">
           <h2>${data.groom.name} र ${data.bride.name} को कुण्डली मिलान</h2>
@@ -1230,12 +1274,12 @@
       `;
     }
 
-    // विवरण डाउनलोड प्रकार्य
+    // Download Report Function
     function downloadReport(format) {
       alert(`मिलान विवरण ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
     }
 
-    // बन्द बटन कार्यक्षमता
+    // Close button functionality
     document.getElementById('closeBtn').addEventListener('click', function() {
       window.location.href = 'service.html';
     });
