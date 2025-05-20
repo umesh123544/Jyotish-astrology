@@ -1416,6 +1416,9 @@
   <div class="update-status" id="updateStatus"></div>
   <div class="rashi-container" id="rashiContainer">
     <!-- Loading spinner will appear here -->
+    <div class="loading">
+      <i class="fas fa-spinner fa-spin"></i> राशिफल लोड हुँदैछ...
+    </div>
   </div>
 </section>
   
@@ -1536,51 +1539,123 @@
       iosInstallModal.classList.remove('active');
     });
 
-    // Rashi Auto-Update System
-    const API_URL = 'https://api.jotishi.com/rashi-today';
+    // Rashi Auto-Update System from HamroPatro
+    const HAMROPATRO_API = 'https://www.hamropatro.com/rashifal';
     const UPDATE_INTERVAL = 3600000; // 1 hour
     let lastUpdateTimestamp = 0;
 
     async function fetchRashiData() {
       try {
-        const response = await fetch(`${API_URL}?ts=${Date.now()}`);
+        // Show loading state
+        document.getElementById('rashiContainer').innerHTML = `
+          <div class="loading">
+            <i class="fas fa-spinner fa-spin"></i> राशिफल लोड हुँदैछ...
+          </div>
+        `;
+        
+        const response = await fetch(HAMROPATRO_API);
         if (!response.ok) throw new Error('API response error');
         
-        const { data, timestamp } = await response.json();
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
         
-        if (timestamp > lastUpdateTimestamp) {
+        // Extract the date
+        const dateElement = doc.querySelector('.date');
+        const currentDate = dateElement ? dateElement.textContent.trim() : new Date().toLocaleDateString('ne-NP');
+        document.getElementById('currentDate').textContent = currentDate;
+        
+        // Extract all rashifal cards
+        const rashifalCards = doc.querySelectorAll('.rashifal-card');
+        const rashis = [];
+        
+        rashifalCards.forEach(card => {
+          const name = card.querySelector('h3')?.textContent.trim() || 'Unknown';
+          const prediction = card.querySelector('.desc')?.textContent.trim() || 'No prediction available';
+          const luckyNumber = card.querySelector('.lucky-number')?.textContent.replace('भाग्यांक:', '').trim() || 'N/A';
+          const luckyColor = card.querySelector('.lucky-color')?.textContent.replace('रंग:', '').trim() || 'N/A';
+          
+          rashis.push({
+            name,
+            prediction,
+            luckyNumber,
+            luckyColor,
+            time: 'शुभ समय: दिउँसो १२-२ बजे' // Default time as HamroPatro doesn't provide this
+          });
+        });
+
+        // If we got data from HamroPatro
+        if (rashis.length > 0) {
+          const timestamp = Date.now();
           lastUpdateTimestamp = timestamp;
-          localStorage.setItem('rashiData', JSON.stringify(data));
+          localStorage.setItem('rashiData', JSON.stringify(rashis));
           localStorage.setItem('lastUpdate', timestamp);
-          displayRashis(data);
+          displayRashis(rashis);
           showUpdateNotification('राशिफल अद्यावधिक गरियो');
           updateStatusDisplay(timestamp);
+          return true;
+        } else {
+          throw new Error('No rashifal data found');
         }
-        return true;
       } catch (error) {
-        console.log('Using cached data:', error);
+        console.error('Error fetching from HamroPatro:', error);
         return false;
       }
     }
 
     function displayRashis(rashis) {
       const container = document.getElementById('rashiContainer');
-      container.innerHTML = rashis.map(rashi => `
-        <div class="rashi-card">
-          <div class="rashi-icon">
-            <img src="${rashi.icon}" alt="${rashi.name}" loading="lazy">
+      
+      // If we have data to display
+      if (rashis && rashis.length > 0) {
+        container.innerHTML = rashis.map(rashi => `
+          <div class="rashi-card">
+            <div class="rashi-icon">
+              <img src="${getRashiIcon(rashi.name)}" alt="${rashi.name}" loading="lazy">
+            </div>
+            <h3>${rashi.name}</h3>
+            <p>${rashi.prediction}</p>
+            <div class="rashi-meta">
+              <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
+              <span>रंग: ${rashi.luckyColor}</span>
+            </div>
+            <div class="rashi-time">
+              <i class="fas fa-clock"></i> ${rashi.time}
+            </div>
           </div>
-          <h3>${rashi.name}</h3>
-          <p>${rashi.prediction}</p>
-          <div class="rashi-meta">
-            <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
-            <span>रंग: ${rashi.luckyColor}</span>
-          </div>
-          <div class="rashi-time">
-            <i class="fas fa-clock"></i> शुभ समय: ${rashi.time}
-          </div>
-        </div>
-      `).join('');
+        `).join('');
+      } else {
+        // Fallback to local data if API fails
+        loadLocalData();
+      }
+    }
+
+    function getRashiIcon(rashiName) {
+      // Map rashi names to appropriate icons
+      const iconMap = {
+        'मेष': 'https://masavitrijyotish.com/wp-content/uploads/2024/08/1.png',
+        'वृष': 'https://masavitrijyotish.com/wp-content/uploads/2024/08/2.png.webp',
+        'मिथुन': 'https://masavitrijyotish.com/wp-content/uploads/2024/08/3.png',
+        'कर्कट': 'https://masavitrijyotish.com/wp-content/uploads/2024/08/4-300x300.png.webp',
+        'सिंह': 'https://masavitrijyotish.com/wp-content/uploads/2024/08/5.png',
+        'कन्या': 'https://prarabdhajyotish.com/wp-content/uploads/2018/02/kanya-rashi.png',
+        'तुला': 'https://www.astrosakha.com/wp-content/uploads/2023/05/libra-horoscope-2015.png',
+        'वृश्चिक': 'https://i.ibb.co/Qj6jGPrb/pngimg-com-scorpio-PNG44.png',
+        'धनु': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSURH8DNrS6zR3sMc0hWQN587ORq942wuzKHg&s',
+        'मकर': 'https://i.ibb.co/zVVLGH8k/pngimg-com-capricorn-PNG82.png',
+        'कुम्भ': 'https://i.ibb.co/SX9yf0Mw/pngimg-com-aquarius-PNG37.png',
+        'मीन': 'https://www.astrosakha.com/wp-content/uploads/2023/05/pisces-horoscope-2015.png'
+      };
+      
+      // Find matching icon
+      for (const [key, value] of Object.entries(iconMap)) {
+        if (rashiName.includes(key)) {
+          return value;
+        }
+      }
+      
+      // Default icon if not found
+      return 'https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png';
     }
 
     function setupAutoUpdates() {
@@ -1603,7 +1678,7 @@
     }
 
     function updateStatusDisplay(timestamp) {
-      const date = new Date(timestamp);
+      const date = new Date(Number(timestamp));
       const options = { 
         hour: 'numeric',
         minute: 'numeric',
@@ -1625,12 +1700,11 @@
       setTimeout(() => notification.remove(), 5000);
     }
 
-    // Function to get local Rashi data
+    // Function to get local Rashi data (fallback)
     function getLocalRashiData() {
       return [
         {
           name: "मेष (Aries)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/1.png",
           prediction: "कामको अवसर आउन सक्छ। महत्त्वपूर्ण काममा ध्यान दिनुहोस्।",
           luckyNumber: "७",
           luckyColor: "रातो",
@@ -1638,7 +1712,6 @@
         },
         {
           name: "वृष (Taurus)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/2.png.webp",
           prediction: "आर्थिक लाभको सम्भावना। अनावश्यक बहसबाट टाढा रहनुहोस्।",
           luckyNumber: "६",
           luckyColor: "सेतो",
@@ -1646,7 +1719,6 @@
         },
         {
           name: "मिथुन (Gemini)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/3.png",
           prediction: "कुराकानीको लागि राम्रो दिन। यात्रा योजना अनुकूल छ।",
           luckyNumber: "५",
           luckyColor: "हरियो",
@@ -1654,7 +1726,6 @@
         },
         {
           name: "कर्कट (Cancer)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/4-300x300.png.webp",
           prediction: "भावनात्मक संतुलन आवश्यक छ। परिवारको साथ फाइदाजनक हुनेछ।",
           luckyNumber: "२",
           luckyColor: "चाँदी",
@@ -1662,7 +1733,6 @@
         },
         {
           name: "सिंह (Leo)",
-          icon: "https://masavitrijyotish.com/wp-content/uploads/2024/08/5.png",
           prediction: "नेतृत्व क्षमता देखिनेछ। आवेगमा निर्णय नलिनुहोस्।",
           luckyNumber: "१",
           luckyColor: "सुन",
@@ -1670,7 +1740,6 @@
         },
         {
           name: "कन्या (Virgo)",
-          icon: "https://prarabdhajyotish.com/wp-content/uploads/2018/02/kanya-rashi.png",
           prediction: "स्वास्थ्यमा ध्यान दिन आवश्यक। योजना बनाउन राम्रो दिन।",
           luckyNumber: "५",
           luckyColor: "हरियो",
@@ -1678,7 +1747,6 @@
         },
         {
           name: "तुला (Libra)",
-          icon: "https://www.astrosakha.com/wp-content/uploads/2023/05/libra-horoscope-2015.png",
           prediction: "सम्बन्धमा ध्यान केन्द्रित। काम र व्यक्तिगत जीवनको संतुलन।",
           luckyNumber: "६",
           luckyColor: "गुलाबी",
@@ -1686,7 +1754,6 @@
         },
         {
           name: "वृश्चिक (Scorpio)",
-          icon: "https://i.ibb.co/Qj6jGPrb/pngimg-com-scorpio-PNG44.png",
           prediction: "परिवर्तन सम्भव। जोखिमपूर्ण उद्यमबाट टाढा रहनुहोस्।",
           luckyNumber: "९",
           luckyColor: "कालो",
@@ -1694,7 +1761,6 @@
         },
         {
           name: "धनु (Sagittarius)",
-          icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSURH8DNrS6zR3sMc0hWQN587ORq942wuzKHg&s",
           prediction: "सिक्ने अवसर। लामो दूरीको सम्बन्ध अनुकूल।",
           luckyNumber: "३",
           luckyColor: "बैंगनी",
@@ -1702,7 +1768,6 @@
         },
         {
           name: "मकर (Capricorn)",
-          icon: "https://i.ibb.co/zVVLGH8k/pngimg-com-capricorn-PNG82.png",
           prediction: "क्यारियर प्रगति सम्भव। नतिजाको लागि धैर्य राख्नुहोस्।",
           luckyNumber: "८",
           luckyColor: "खैरो",
@@ -1710,7 +1775,6 @@
         },
         {
           name: "कुम्भ (Aquarius)",
-          icon: "https://i.ibb.co/SX9yf0Mw/pngimg-com-aquarius-PNG37.png",
           prediction: "नवीन विचारहरू प्रवाह। सामाजिक सम्बन्धले मद्दत गर्छ।",
           luckyNumber: "४",
           luckyColor: "निलो",
@@ -1718,7 +1782,6 @@
         },
         {
           name: "मीन (Pisces)",
-          icon: "https://www.astrosakha.com/wp-content/uploads/2023/05/pisces-horoscope-2015.png",
           prediction: "आज अन्तर्ज्ञान बलियो छ। रचनात्मक गतिविधिहरू अनुकूल।",
           luckyNumber: "७",
           luckyColor: "समुद्री हरियो",
