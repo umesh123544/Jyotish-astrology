@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>सम्बन्ध ज्योतिष - श्री जोतिषी</title>
+  <meta name="description" content="Authentic Vedic Relationship Astrology Analysis">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
+
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before {
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.1s;
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      top: 0;
+      transform: rotate(90deg);
+      transition: top 0.1s ease-out, transform 0.2s 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      top: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+        display: none;
+      }
+
+      .nav-links.active {
+        left: 0;
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Relationship Astrology Specific Styles */
+    .relationship-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .relationship-hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(rgba(109, 40, 217, 0.8), rgba(139, 92, 246, 0.8)), 
+                  url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .relationship-hero h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    .relationship-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: white;
+      background: rgba(0,0,0,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.3);
+      transform: rotate(90deg);
+    }
+
+    .relationship-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .relationship-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .relationship-details, .relationship-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .relationship-features {
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .benefits-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .relationship-results {
+      color: var(--dark);
+    }
+
+    .relationship-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .relationship-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .compatibility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .compatibility-card {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .aspect-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .aspect-score {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .aspect-details {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .prediction-item {
+      margin-bottom: 1rem;
+    }
+
+    .prediction-title {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: white;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .legal-notice a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .relationship-hero {
+        min-height: 300px;
+        padding: 2rem 1rem;
+      }
+
+      .relationship-hero h1 {
+        font-size: 2rem;
+      }
+
+      .relationship-hero p {
+        font-size: 1rem;
+      }
+
+      .compatibility-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage.html">Marriage Matching</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="/relationship.html" class="active">सम्बन्ध ज्योतिष</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Relationship Astrology Main Content -->
+  <main class="relationship-main">
+    <section class="relationship-hero">
+      <div class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+      
+      <h1>सम्बन्ध ज्योतिष विश्लेषण</h1>
+      <p>तपाईं र तपाईंको प्रियजनबीचको सम्बन्धको गहिरो ज्योतिषीय विश्लेषण</p>
+    </section>
+
+    <div class="relationship-content">
+      <div class="relationship-details">
+        <h2>सम्बन्ध ज्योतिषको बारेमा</h2>
+        <p>सम्बन्ध ज्योतिषले दुई व्यक्तिहरूको जन्म कुण्डलीको तुलनात्मक अध्ययन गरेर उनीहरूबीचको सम्बन्ध, अनुकूलता, र सम्भावित चुनौतीहरूको बारेमा जानकारी दिन्छ। यसले प्रेम, विवाह, मित्रता, वा व्यावसायिक सम्बन्धहरूको विश्लेषण गर्न सक्छ।</p>
+        
+        <div class="relationship-features">
+          <h3>हाम्रो सम्बन्ध ज्योतिष सेवामा समावेश छ:</h3>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-heart"></i></div>
+            <div>
+              <h4>भावनात्मक अनुकूलता</h4>
+              <p>दुई व्यक्तिहरूबीचको भावनात्मक जडानको विश्लेषण</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+            <div>
+              <h4>मानसिक समझदारी</h4>
+              <p>विचार, विश्वास र दर्शनको तुलनात्मक अध्ययन</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-ring"></i></div>
+            <div>
+              <h4>वैवाहिक अनुकूलता</h4>
+              <p>विवाहित जीवनका लागि ग्रहीय प्रभावको विश्लेषण</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="benefits">
+          <h3>सम्बन्ध ज्योतिषको लाभ:</h3>
+          <ul class="benefits-list">
+            <li>सम्बन्धमा आउने समस्याहरूको पूर्वानुमान</li>
+            <li>सम्बन्ध सुधारका उपायहरूको सुझाव</li>
+            <li>विवाह वा प्रेम सम्बन्धको उत्तम समय निर्धारण</li>
+            <li>एकअर्काको व्यक्तित्व बुझ्न सहयोग</li>
+            <li>दीर्घकालीन सम्बन्ध निर्माणको मार्गदर्शन</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="relationship-form">
+        <h2>सम्बन्ध विश्लेषणको लागि जानकारी दिनुहोस्</h2>
+        <form id="relationshipForm">
+          <h3 style="color: var(--primary); margin: 1rem 0;">पहिलो व्यक्ति</h3>
+          
+          <div class="form-group">
+            <label for="name1">पूरा नाम</label>
+            <input type="text" id="name1" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob1">जन्म मिति (अंग्रेजी)</label>
+            <input type="date" id="dob1" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob1">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob1" class="nepali-datepicker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob1">जन्म समय</label>
+            <input type="time" id="tob1" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob1">जन्म स्थान</label>
+            <input type="text" id="pob1" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gender1">लिङ्ग</label>
+            <select id="gender1" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="male">पुरुष</option>
+              <option value="female">महिला</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <h3 style="color: var(--primary); margin: 1rem 0;">दोस्रो व्यक्ति</h3>
+          
+          <div class="form-group">
+            <label for="name2">पूरा नाम</label>
+            <input type="text" id="name2" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob2">जन्म मिति (अंग्रेजी)</label>
+            <input type="date" id="dob2" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob2">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob2" class="nepali-datepicker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob2">जन्म समय</label>
+            <input type="time" id="tob2" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob2">जन्म स्थान</label>
+            <input type="text" id="pob2" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gender2">लिङ्ग</label>
+            <select id="gender2" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="male">पुरुष</option>
+              <option value="female">महिला</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="relationshipType">सम्बन्धको प्रकार</label>
+            <select id="relationshipType" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="love">प्रेम सम्बन्ध</option>
+              <option value="marriage">विवाह सम्बन्ध</option>
+              <option value="friendship">मित्रता</option>
+              <option value="business">व्यावसायिक सम्बन्ध</option>
+              <option value="family">पारिवारिक सम्बन्ध</option>
+            </select>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span id="submitText">सम्बन्ध विश्लेषण गर्नुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> प्रसंसकरण गर्दै...
+            </span>
+          </button>
+        </form>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="font-size: 0.9rem; color: #666;">हाम्रो सेवा १००% प्रामाणिक वैदिक ज्योतिषशास्त्रमा आधारित छ</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Relationship Results Modal -->
+  <div id="relationshipResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="relationshipResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>श्री जोतिषी</h3>
+        <p>तपाईंको भविष्यको सटीक विश्लेषण र ज्योतिषीय सल्लाह। हाम्रो सेवाले तपाईंलाई जीवनका विभिन्न पक्षहरूमा मार्गदर्शन प्रदान गर्दछ।</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>द्रुत लिंकहरू</h3>
+        <a href="/"><i class="fas fa-home"></i> गृहपृष्ठ</a>
+        <a href="/services.html"><i class="fas fa-star"></i> सेवाहरू</a>
+        <a href="/marriage-matching.html"><i class="fas fa-heart"></i> विवाह मिलान</a>
+        <a href="/relationship.html"><i class="fas fa-people-arrows"></i> सम्बन्ध ज्योतिष</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>ग्राहक सेवा</h3>
+        <a href="#faq"><i class="fas fa-question-circle"></i> प्रश्नहरू</a>
+        <a href="#privacy"><i class="fas fa-lock"></i> गोपनीयता नीति</a>
+        <a href="#terms"><i class="fas fa-file-alt"></i> सेवा सर्तहरू</a>
+        <a href="#refund"><i class="fas fa-exchange-alt"></i> फिर्ता नीति</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>हामीलाई सम्पर्क गर्नुहोस्</h3>
+        <p><i class="fas fa-map-marker-alt"></i> काठमाडौं, नेपाल</p>
+        <p><i class="fas fa-phone"></i> +९७७ ९८१३१९७७०४</p>
+        <p><i class="fas fa-envelope"></i> info@jotishi.com</p>
+        <p><i class="fas fa-clock"></i> सोम-शनि: ९:०० AM - ६:०० PM</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; <span id="current-year"></span> श्री जोतिषी. सर्वाधिकार सुरक्षित.
+    </div>
+  </footer>
+
+  <!-- Legal Notice -->
+  <div class="legal-notice">
+    <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
+  </div>
+
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Modal Handling
+    const modal = document.getElementById('relationshipResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Initialize Nepali Date Pickers
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize for first person
+      var nepaliDatePicker1 = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01",
+        ndpTriggerButton: false
+      });
+      nepaliDatePicker1.init("#nepali-dob1");
+      
+      // Initialize for second person
+      var nepaliDatePicker2 = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01",
+        ndpTriggerButton: false
+      });
+      nepaliDatePicker2.init("#nepali-dob2");
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('relationshipForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values for first person
+      const person1 = {
+        name: document.getElementById('name1').value,
+        dob: document.getElementById('dob1').value,
+        nepaliDob: document.getElementById('nepali-dob1').value,
+        tob: document.getElementById('tob1').value,
+        pob: document.getElementById('pob1').value,
+        gender: document.getElementById('gender1').value
+      };
+      
+      // Get form values for second person
+      const person2 = {
+        name: document.getElementById('name2').value,
+        dob: document.getElementById('dob2').value,
+        nepaliDob: document.getElementById('nepali-dob2').value,
+        tob: document.getElementById('tob2').value,
+        pob: document.getElementById('pob2').value,
+        gender: document.getElementById('gender2').value
+      };
+      
+      const relationshipType = document.getElementById('relationshipType').value;
+      
+      // Validate inputs
+      if (!person1.name || !person1.dob || !person1.nepaliDob || !person1.tob || !person1.pob || !person1.gender ||
+          !person2.name || !person2.dob || !person2.nepaliDob || !person2.tob || !person2.pob || !person2.gender ||
+          !relationshipType) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to generate relationship analysis
+        const relationshipData = await analyzeRelationship(person1, person2, relationshipType);
+        
+        // Display the results
+        displayRelationshipResults(relationshipData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error analyzing relationship:', error);
+        alert('सम्बन्ध विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
+    });
+
+    // API Integration Function
+    async function analyzeRelationship(person1, person2, relationshipType) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          person1: {
+            name: person1.name,
+            rashi: getRandomRashi(),
+            nakshatra: getRandomNakshatra()
+          },
+          person2: {
+            name: person2.name,
+            rashi: getRandomRashi(),
+            nakshatra: getRandomNakshatra()
+          },
+          relationshipType: relationshipType,
+          compatibilityScore: Math.floor(Math.random() * 41) + 60, // Random score between 60-100
+          aspects: [
+            { aspect: 'भावनात्मक जडान', score: Math.floor(Math.random() * 41) + 60, details: 'तपाईंहरूबीच भावनात्मक जडान मजबुत छ। तपाईं एकअर्काको भावनाहरू बुझ्न सक्नुहुन्छ र समर्थन गर्न सक्नुहुन्छ।' },
+            { aspect: 'मानसिक समझदारी', score: Math.floor(Math.random() * 41) + 60, details: 'तपाईंहरूको विचारधारा र विश्वासहरूमा केही भिन्नता छन् तर यी भिन्नताहरूले सम्बन्धलाई रोचक बनाउँछन्।' },
+            { aspect: 'शारीरिक आकर्षण', score: Math.floor(Math.random() * 41) + 60, details: 'तपाईंहरूबीच शारीरिक आकर्षण उत्कृष्ट छ, जसले सम्बन्धलाई मजबुत बनाउँछ।' },
+            { aspect: 'आध्यात्मिक जडान', score: Math.floor(Math.random() * 41) + 60, details: 'तपाईंहरूको आध्यात्मिक विश्वास र अभ्यासहरूमा समानता छ, जसले गर्दा सम्बन्ध गहिरो हुन्छ।' }
+          ],
+          strengths: [
+            'एकअर्काको भावनाहरू बुझ्ने क्षमता',
+            'कठिन समयमा एकअर्कालाई समर्थन गर्ने इच्छा',
+            'समान लक्ष्य र मूल्यहरू',
+            'एकअर्काको स्वतन्त्रतालाई सम्मान गर्ने प्रवृत्ति'
+          ],
+          challenges: [
+            'कहिलेकाहीँ संचारमा समस्या',
+            'कहिलेकाहीँ जिद्दी स्वभावले झगडा हुन सक्छ',
+            'वित्तीय मामिलामा भिन्न दृष्टिकोण'
+          ],
+          predictions: {
+            shortTerm: 'अर्को ६ महिनामा तपाईंहरूको सम्बन्ध मजबुत हुनेछ। केही साना मतभेदहरू आउन सक्छन् तर यी समस्याहरू समाधान गर्न सकिनेछ।',
+            longTerm: 'दीर्घकालीन रूपमा, तपाईंहरूको सम्बन्ध स्थिर र मायालु हुनेछ। तपाईंहरू एकअर्काको व्यक्तित्वको सम्मान गर्नेछन् र सँगै बढ्नेछन्।'
+          },
+          remedies: [
+            'प्रत्येक शुक्रवार दुर्गा मातालाई फूल चढाउनुहोस्',
+            'गुरुवारको दिन पहेँलो वस्त्र लगाउनुहोस्',
+            'एकअर्कालाई नियमित रूपमा उपहार दिनुहोस्'
+          ],
+          bestTimes: [
+            '२०८० चैत १५ देखि ३० सम्म - विवाहको लागि उत्तम समय',
+            '२०८० असार १ देखि १५ सम्म - सम्बन्ध सुधारको लागि राम्रो समय'
+          ]
+        }
+      };
+    }
+
+    // Helper functions for mock data
+    function getRandomRashi() {
+      const rashis = ['मेष', 'वृष', 'मिथुन', 'कर्क', 'सिंह', 'कन्या', 'तुला', 'वृश्चिक', 'धनु', 'मकर', 'कुम्भ', 'मीन'];
+      return rashis[Math.floor(Math.random() * rashis.length)];
+    }
+
+    function getRandomNakshatra() {
+      const nakshatras = ['अश्विनी', 'भरणी', 'कृत्तिका', 'रोहिणी', 'मृगशिरा', 'आर्द्रा', 'पुनर्वसु', 'पुष्य', 'आश्लेषा', 'मघा', 'पूर्व फाल्गुनी', 'उत्तर फाल्गुनी', 'हस्त', 'चित्रा', 'स्वाती', 'विशाखा', 'अनुराधा', 'ज्येष्ठा', 'मूल', 'पूर्वाषाढा', 'उत्तराषाढा', 'श्रवण', 'धनिष्ठा', 'शतभिषा', 'पूर्व भाद्रपद', 'उत्तर भाद्रपद', 'रेवती'];
+      return nakshatras[Math.floor(Math.random() * nakshatras.length)];
+    }
+
+    // Display Relationship Results
+    function displayRelationshipResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('relationshipResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="relationship-results">
+          <h2>${data.person1.name} र ${data.person2.name} को सम्बन्ध विश्लेषण</h2>
+          <p style="text-align: center; font-size: 1.2rem; margin-bottom: 2rem;">
+            <strong>सम्बन्धको प्रकार:</strong> ${getRelationshipTypeName(data.relationshipType)} |
+            <strong>अनुकूलता स्कोर:</strong> ${data.compatibilityScore}/100
+          </p>
+          
+          <div class="basic-info">
+            <div style="display: flex; justify-content: space-around; margin-bottom: 2rem;">
+              <div>
+                <h3>${data.person1.name}</h3>
+                <p><strong>राशि:</strong> ${data.person1.rashi}</p>
+                <p><strong>नक्षत्र:</strong> ${data.person1.nakshatra}</p>
+              </div>
+              <div>
+                <h3>${data.person2.name}</h3>
+                <p><strong>राशि:</strong> ${data.person2.rashi}</p>
+                <p><strong>नक्षत्र:</strong> ${data.person2.nakshatra}</p>
+              </div>
+            </div>
+          </div>
+          
+          <h3>सम्बन्धका विभिन्न पक्षहरू</h3>
+          <div class="compatibility-grid">
+            ${data.aspects.map(aspect => `
+              <div class="compatibility-card">
+                <div class="aspect-name">${aspect.aspect}</div>
+                <div class="aspect-score">${aspect.score}/100</div>
+                <div class="aspect-details">${aspect.details}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>सम्बन्धका मजबुत पक्षहरू</h3>
+          <ul class="benefits-list">
+            ${data.strengths.map(strength => `<li>${strength}</li>`).join('')}
+          </ul>
+          
+          <h3>सम्भावित चुनौतीहरू</h3>
+          <ul class="benefits-list">
+            ${data.challenges.map(challenge => `<li>${challenge}</li>`).join('')}
+          </ul>
+          
+          <h3>भविष्यवाणी</h3>
+          <div class="prediction-item">
+            <div class="prediction-title">अल्पकालीन भविष्यवाणी (६-१२ महिना)</div>
+            <p>${data.predictions.shortTerm}</p>
+          </div>
+          <div class="prediction-item">
+            <div class="prediction-title">दीर्घकालीन भविष्यवाणी (३-५ वर्ष)</div>
+            <p>${data.predictions.longTerm}</p>
+          </div>
+          
+          <h3>उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+          </ul>
+          
+          <h3>सम्बन्धका लागि उत्तम समयहरू</h3>
+          <ul class="benefits-list">
+            ${data.bestTimes.map(time => `<li>${time}</li>`).join('')}
+          </ul>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadReport('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadReport('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Helper function to get relationship type name
+    function getRelationshipTypeName(type) {
+      const types = {
+        'love': 'प्रेम सम्बन्ध',
+        'marriage': 'विवाह सम्बन्ध',
+        'friendship': 'मित्रता',
+        'business': 'व्यावसायिक सम्बन्ध',
+        'family': 'पारिवारिक सम्बन्ध'
+      };
+      return types[type] || type;
+    }
+
+    // Download Report Function
+    function downloadReport(format) {
+      alert(`सम्बन्ध विश्लेषण ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
+
+    // Close button functionality
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.location.href = 'service.html';
+    });
+  </script>
+</body>
+</html>
