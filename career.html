@@ -14,6 +14,7 @@
         referrerpolicy="no-referrer">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
 
   <style>
     :root {
@@ -412,6 +413,63 @@
     .option-card h4 {
       color: var(--primary);
       margin-bottom: 0.5rem;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+
+    .nepali-datepicker:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.2);
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
     }
 
     /* Results Modal */
@@ -821,8 +879,13 @@
             </div>
             
             <div class="form-group">
-              <label for="dob">जन्म मिति</label>
+              <label for="dob">जन्म मिति (अंग्रेजी)</label>
               <input type="date" id="dob" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="nepali-dob">जन्म मिति (नेपाली)</label>
+              <input type="text" id="nepali-dob" class="nepali-datepicker" required>
             </div>
             
             <div class="form-group">
@@ -995,6 +1058,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
   <script>
     // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
@@ -1030,6 +1094,33 @@
       }
     });
 
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      var nepaliDatePicker = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01"
+      });
+      nepaliDatePicker.init();
+      
+      // Sync between Nepali and English date
+      document.getElementById('nepali-dob').addEventListener('dateChange', function(e) {
+        console.log("Nepali date selected:", e.detail.formattedDate);
+        // Here you would convert Nepali date to English date
+        // For demo purposes, we're just showing the selected date
+        // document.getElementById('dob').value = convertNepaliToEnglish(e.detail.formattedDate);
+      });
+      
+      document.getElementById('dob').addEventListener('change', function() {
+        // Here you would convert English date to Nepali date
+        // For demo purposes, we're just showing the selected date
+        // document.getElementById('nepali-dob').value = convertEnglishToNepali(this.value);
+      });
+    });
+
     // Form Submission with API Integration
     document.getElementById('careerForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -1038,6 +1129,7 @@
       const formData = {
         name: document.getElementById('name').value,
         dob: document.getElementById('dob').value,
+        nepaliDob: document.getElementById('nepali-dob').value,
         tob: document.getElementById('tob').value,
         pob: document.getElementById('pob').value,
         currentStatus: document.getElementById('current-status').value,
@@ -1047,7 +1139,7 @@
       };
       
       // Validate inputs
-      if (!formData.name || !formData.dob || !formData.tob || !formData.pob || 
+      if (!formData.name || !formData.dob || !formData.nepaliDob || !formData.tob || !formData.pob || 
           !formData.currentStatus || !formData.education || !formData.interests) {
         alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
         return;
@@ -1091,7 +1183,8 @@
         data: {
           name: formData.name,
           birthDetails: {
-            date: formData.dob,
+            englishDate: formData.dob,
+            nepaliDate: formData.nepaliDob,
             time: formData.tob,
             place: formData.pob
           },
@@ -1107,8 +1200,8 @@
             { planet: 'बुध', house: '3', influence: 'उत्कृष्ट', description: 'संचार र प्रविधि क्षेत्र उपयुक्त' }
           ],
           dashaPeriods: [
-            { planet: 'शुक्र', start: '2020', end: '2040', influence: 'कला र सृजनात्मक क्षेत्रमा उन्नति' },
-            { planet: 'सूर्य', start: '2040', end: '2046', influence: 'नेतृत्व पदमा उन्नतिको समय' }
+            { planet: 'शुक्र', start: '२०८०', end: '२०९०', influence: 'कला र सृजनात्मक क्षेत्रमा उन्नति' },
+            { planet: 'सूर्य', start: '२०९०', end: '२०९६', influence: 'नेतृत्व पदमा उन्नतिको समय' }
           ],
           careerPotential: 85,
           potentialDescription: 'तपाईंसँग उच्च क्यारियर सम्भावना छ। सही मार्गदर्शन र परिश्रमले उच्च सफलता प्राप्त गर्न सक्नुहुन्छ।',
@@ -1148,7 +1241,8 @@
           
           <div class="basic-info">
             <h3>आधारभूत विवरण</h3>
-            <p><strong>जन्म मिति:</strong> ${data.birthDetails.date}</p>
+            <p><strong>जन्म मिति (अंग्रेजी):</strong> ${data.birthDetails.englishDate}</p>
+            <p><strong>जन्म मिति (नेपाली):</strong> ${data.birthDetails.nepaliDate}</p>
             <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
             <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
             <p><strong>वर्तमान स्थिति:</strong> ${data.currentStatus}</p>
