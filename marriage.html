@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marriage Matching - श्री जोतिषी</title>
-  <meta name="description" content="Professional Vedic Astrology Marriage Matching (Kundali Milan) Service">
+  <title>विवाह मिलान - श्री जोतिषी</title>
+  <meta name="description" content="पेशेवर वैदिक ज्योतिष विवाह मिलान (कुण्डली मिलान) सेवा">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#6d28d9">
   <link rel="stylesheet" 
@@ -224,7 +224,7 @@
       }
     }
 
-    /* Marriage Matching Specific Styles */
+    /* विवाह मिलान विशेष शैलीहरू */
     .marriage-matching-main {
       margin-top: 100px;
       padding: 2rem 5%;
@@ -411,7 +411,7 @@
       background-color: #f9f9f9;
     }
 
-    /* Results Modal */
+    /* परिणाम मोडल */
     .modal {
       display: none;
       position: fixed;
@@ -581,7 +581,7 @@
       }
     }
 
-    /* Footer */
+    /* फुटर */
     footer {
       background: #000;
       color: white;
@@ -669,7 +669,7 @@
       font-size: 0.9rem;
     }
 
-    /* Legal Notice */
+    /* कानूनी सूचना */
     .legal-notice {
       background: #111;
       color: #aaa;
@@ -765,19 +765,19 @@
         <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
       </div>
       
-      <button class="hamburger" id="hamburger" aria-label="Menu">
+      <button class="hamburger" id="hamburger" aria-label="मेनु">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
       </button>
       
       <div class="nav-links" id="navLinks">
-        <a href="/">Home</a>
-        <a href="/services.html">Services</a>
-        <a href="/marriage-matching.html" class="active">Marriage Matching</a>
-        <a href="/janma.html">Janma Kundali</a>
-        <a href="#team">Astrologers</a>
-        <a href="#faq">FAQ</a>
+        <a href="/">गृहपृष्ठ</a>
+        <a href="/services.html">सेवाहरू</a>
+        <a href="/marriage-matching.html" class="active">विवाह मिलान</a>
+        <a href="/janma.html">जन्म कुण्डली</a>
+        <a href="#team">ज्योतिषीहरू</a>
+        <a href="#faq">प्रश्नहरू</a>
       </div>
     </nav>
   </header>
@@ -936,17 +936,17 @@
     </div>
   </main>
 
-  <!-- Matching Results Modal -->
+  <!-- मिलान परिणाम मोडल -->
   <div id="matchingResultsModal" class="modal">
     <div class="modal-content">
       <span class="modal-close" id="modalClose">&times;</span>
       <div id="matchingResultsContainer">
-        <!-- Results will be inserted here by JavaScript -->
+        <!-- परिणामहरू यहाँ जावास्क्रिप्ट द्वारा घुसाइनेछ -->
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- फुटर -->
   <footer>
     <div class="footer-content">
       <div class="footer-column">
@@ -990,7 +990,7 @@
     </div>
   </footer>
 
-  <!-- Legal Notice -->
+  <!-- कानूनी सूचना -->
   <div class="legal-notice">
     <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
   </div>
@@ -1000,7 +1000,7 @@
   </a>
 
   <script>
-    // Mobile Menu Toggle
+    // मोबाइल मेनु टगल
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     
@@ -1009,7 +1009,7 @@
       navLinks.classList.toggle('active');
     });
 
-    // Close menu when clicking links (mobile)
+    // लिंकमा क्लिक गर्दा मेनु बन्द गर्नुहोस् (मोबाइल)
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -1017,10 +1017,10 @@
       });
     });
 
-    // Copyright Year
+    // कपिराइट वर्ष
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Modal Handling
+    // मोडल ह्यान्डलिंग
     const modal = document.getElementById('matchingResultsModal');
     const modalClose = document.getElementById('modalClose');
     
@@ -1034,11 +1034,11 @@
       }
     });
 
-    // Form Submission with API Integration
+    // एपीआई एकीकरण सहित फारम सबमिशन
     document.getElementById('matchingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Get form values
+      // फारम मानहरू प्राप्त गर्नुहोस्
       const formData = {
         groom: {
           name: document.getElementById('groomName').value,
@@ -1054,7 +1054,7 @@
         }
       };
       
-      // Validate inputs
+      // इनपुटहरू मान्यता दिनुहोस्
       if (!formData.groom.name || !formData.groom.dob || !formData.groom.tob || !formData.groom.pob || 
           !formData.bride.name || !formData.bride.dob || !formData.bride.tob || !formData.bride.pob) {
         alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
@@ -1062,38 +1062,38 @@
       }
       
       try {
-        // Show loading state
+        // लोडिङ स्थिति देखाउनुहोस्
         document.getElementById('submitText').style.display = 'none';
         document.getElementById('submitSpinner').style.display = 'inline';
         
-        // Call API to generate matching report
+        // मिलान विवरण उत्पन्न गर्न एपीआई कल गर्नुहोस्
         const matchingData = await generateMatchingReport(formData);
         
-        // Display the results
+        // परिणामहरू प्रदर्शन गर्नुहोस्
         displayMatchingResults(matchingData);
         
-        // Show the modal
+        // मोडल देखाउनुहोस्
         modal.style.display = 'block';
         
       } catch (error) {
-        console.error('Error generating matching report:', error);
+        console.error('मिलान विवरण उत्पन्न गर्दा त्रुटि:', error);
         alert('कुण्डली मिलान गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
       } finally {
-        // Reset button state
+        // बटन स्थिति रिसेट गर्नुहोस्
         document.getElementById('submitText').style.display = 'inline';
         document.getElementById('submitSpinner').style.display = 'none';
       }
     });
 
-    // API Integration Function
+    // एपीआई एकीकरण प्रकार्य
     async function generateMatchingReport(formData) {
-      // In a real implementation, you would call your backend API here
-      // This is a mock implementation that simulates an API call
+      // वास्तविक कार्यान्वयनमा, तपाईंले यहाँ आफ्नो ब्याकएन्ड एपीआई कल गर्नुहुनेछ
+      // यो एक नक्कली कार्यान्वयन हो जसले एपीआई कल अनुकरण गर्दछ
       
-      // Simulate API delay
+      // एपीआई ढिलाइ अनुकरण गर्नुहोस्
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Mock response data - in a real app, this would come from your API
+      // नक्कली प्रतिक्रिया डाटा - वास्तविक एप्लिकेसनमा, यो तपाईंको एपीआईबाट आउनेछ
       return {
         success: true,
         data: {
@@ -1133,16 +1133,16 @@
       };
     }
 
-    // Display Matching Results
+    // मिलान परिणाम प्रदर्शन गर्नुहोस्
     function displayMatchingResults(response) {
       if (!response.success || !response.data) {
-        throw new Error('Invalid response from server');
+        throw new Error('सर्भरबाट अमान्य प्रतिक्रिया');
       }
       
       const data = response.data;
       const resultsContainer = document.getElementById('matchingResultsContainer');
       
-      // Create HTML for the results
+      // परिणामहरूको लागि HTML सिर्जना गर्नुहोस्
       resultsContainer.innerHTML = `
         <div class="matching-results">
           <h2>${data.groom.name} र ${data.bride.name} को कुण्डली मिलान</h2>
@@ -1230,12 +1230,12 @@
       `;
     }
 
-    // Download Report Function
+    // विवरण डाउनलोड प्रकार्य
     function downloadReport(format) {
       alert(`मिलान विवरण ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
     }
 
-    // Close button functionality
+    // बन्द बटन कार्यक्षमता
     document.getElementById('closeBtn').addEventListener('click', function() {
       window.location.href = 'service.html';
     });
