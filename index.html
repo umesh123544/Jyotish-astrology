@@ -321,6 +321,7 @@
     .element-4 { width: 120px; height: 120px; bottom: 20%; right: 25%; animation-delay: 6s; }
 
     .cta-button {
+      display: inline-block;
       background-color: var(--secondary);
       color: white;
       border: none;
@@ -334,12 +335,180 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      text-decoration: none;
     }
 
     .cta-button:hover {
       background-color: #e69009;
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Promotional Ads Section */
+    .promo-section {
+      background: linear-gradient(135deg, #f3e8ff, #ede9fe);
+      padding: 5rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .promo-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .promo-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .promo-header h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+
+    .promo-header p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .promo-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .promo-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .promo-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .promo-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--secondary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
+    }
+
+    .promo-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .promo-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .promo-card:hover .promo-image img {
+      transform: scale(1.05);
+    }
+
+    .promo-content {
+      padding: 1.5rem;
+    }
+
+    .promo-content h3 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .promo-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .promo-price {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .original-price {
+      text-decoration: line-through;
+      color: var(--gray);
+      font-size: 1.2rem;
+      margin-right: 0.5rem;
+    }
+
+    .promo-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .promo-button:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .promo-button i {
+      font-size: 1rem;
+    }
+
+    .promo-stars {
+      color: var(--secondary);
+      margin: 0.5rem 0;
+    }
+
+    .testimonial {
+      font-style: italic;
+      color: var(--gray);
+      border-left: 3px solid var(--secondary);
+      padding-left: 1rem;
+      margin: 1rem 0;
     }
 
     /* Services Section */
@@ -640,7 +809,7 @@
       font-family: 'Hind Siliguri', sans-serif;
     }
     .fa-spinner {
-  margin-right: 0.5rem;
+      margin-right: 0.5rem;
     }
 
     @media (max-width: 768px) {
@@ -877,34 +1046,34 @@
       margin-top: 1rem;
     }
     
-.update-status {
-  text-align: center;
-  color: var(--gray);
-  font-size: 0.9rem;
-  margin: -1rem 0 2rem;
-  font-family: 'Hind Siliguri', sans-serif;
-}
+    .update-status {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin: -1rem 0 2rem;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
 
-.update-notification {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  background: var(--primary);
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: 50px;
-  box-shadow: 0 4px 15px rgba(109,40,217,0.3);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  animation: slideIn 0.3s ease-out;
-  z-index: 9999;
-}
+    .update-notification {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(109,40,217,0.3);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: slideIn 0.3s ease-out;
+      z-index: 9999;
+    }
 
-@keyframes slideIn {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
-}
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
 
     /* PWA Specific Styles */
     @media all and (display-mode: standalone) {
@@ -995,8 +1164,116 @@
     
     <div class="banner-content">
       <h1>परम्परागत ज्योतिष विज्ञानद्वारा आफ्नो भविष्य उज्यालो बनाउनुहोस्</h1>
-      <p></p>
-      <button class="cta-button" id="consultationBtn">Explore Services</button>
+      <p>Authentic Vedic Astrology Services by Certified Astrologers</p>
+      <a href="#services" class="cta-button">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Promotional Ads Section -->
+  <section class="promo-section">
+    <div class="promo-container">
+      <div class="promo-header">
+        <h2>Special Astrology Packages</h2>
+        <p>Limited time offers to transform your life through Vedic wisdom</p>
+      </div>
+      
+      <div class="promo-cards">
+        <!-- Card 1 -->
+        <div class="promo-card">
+          <div class="promo-badge">Most Popular</div>
+          <div class="promo-image">
+            <img src="https://i.ibb.co/0jX1Y1W/astrology-consultation.jpg" alt="Comprehensive Horoscope Analysis">
+          </div>
+          <div class="promo-content">
+            <h3>Comprehensive Horoscope Analysis</h3>
+            <div class="promo-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(128 reviews)</span>
+            </div>
+            <p>Detailed analysis of your birth chart with 12-month predictions covering all aspects of life.</p>
+            <div class="testimonial">
+              "This reading gave me clarity about my career path and relationships. Highly recommended!"
+            </div>
+            <div class="promo-price">
+              <div>
+                <span class="original-price">₹2500</span>
+                <span class="price">₹1499</span>
+              </div>
+              <button class="promo-button" onclick="openConsultation('Comprehensive Horoscope Analysis')">
+                <i class="fas fa-calendar-check"></i> Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="promo-card">
+          <div class="promo-badge">New Offer</div>
+          <div class="promo-image">
+            <img src="https://i.ibb.co/7YQnJ7G/love-marriage.jpg" alt="Love & Marriage Compatibility">
+          </div>
+          <div class="promo-content">
+            <h3>Love & Marriage Compatibility</h3>
+            <div class="promo-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(94 reviews)</span>
+            </div>
+            <p>Detailed analysis of compatibility between you and your partner with remedial solutions.</p>
+            <div class="testimonial">
+              "The insights helped us understand each other better and strengthen our bond."
+            </div>
+            <div class="promo-price">
+              <div>
+                <span class="original-price">₹1800</span>
+                <span class="price">₹999</span>
+              </div>
+              <button class="promo-button" onclick="openConsultation('Love & Marriage Compatibility')">
+                <i class="fas fa-calendar-check"></i> Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="promo-card">
+          <div class="promo-badge">Best Value</div>
+          <div class="promo-image">
+            <img src="https://i.ibb.co/9W2Xb1Z/career-guidance.jpg" alt="Career Guidance Package">
+          </div>
+          <div class="promo-content">
+            <h3>Career Guidance Package</h3>
+            <div class="promo-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(156 reviews)</span>
+            </div>
+            <p>Identify your ideal career path, favorable timings for job changes, and business opportunities.</p>
+            <div class="testimonial">
+              "The career guidance was spot on! I got the promotion I was hoping for within 3 months."
+            </div>
+            <div class="promo-price">
+              <div>
+                <span class="original-price">₹3200</span>
+                <span class="price">₹1999</span>
+              </div>
+              <button class="promo-button" onclick="openConsultation('Career Guidance Package')">
+                <i class="fas fa-calendar-check"></i> Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1108,6 +1385,9 @@
             <option value="career">Career</option>
             <option value="marriage">Marriage</option>
             <option value="health">Health</option>
+            <option value="comprehensive">Comprehensive Horoscope</option>
+            <option value="love">Love & Marriage Compatibility</option>
+            <option value="career-package">Career Guidance Package</option>
           </select>
         </div>
 
@@ -1174,151 +1454,176 @@
 
   <script>
     // Mobile Menu Toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('active');
-});
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
 
-// Consultation Form Handling
-const consultationModal = document.getElementById('consultationModal');
-const closeModal = document.getElementById('closeModal');
-const consultationBtn = document.getElementById('consultationBtn');
+    // Consultation Form Handling
+    const consultationModal = document.getElementById('consultationModal');
+    const closeModal = document.getElementById('closeModal');
 
-consultationBtn.addEventListener('click', () => {
-  consultationModal.style.display = 'block';
-});
-
-closeModal.addEventListener('click', () => {
-  consultationModal.style.display = 'none';
-});
-
-window.addEventListener('click', (e) => {
-  if (e.target === consultationModal) {
-    consultationModal.style.display = 'none';
-  }
-});
-
-// Form Submission
-document.getElementById('astroForm').addEventListener('submit', (e) => {
-  e.preventDefault();
-  consultationModal.style.display = 'none';
-  alert('Thank you! Our astrologer will contact you shortly.');
-});
-
-// PWA Installation
-let deferredPrompt;
-const installButton = document.getElementById('installButton');
-const iosInstallModal = document.getElementById('iosInstallModal');
-const iosInstallClose = document.getElementById('iosInstallClose');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) return;
-  e.preventDefault();
-  deferredPrompt = e;
-  installButton.style.display = 'block';
-});
-
-installButton.addEventListener('click', async () => {
-  if(deferredPrompt) {
-    installButton.style.opacity = '0';
-    setTimeout(() => installButton.style.display = 'none', 300);
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    deferredPrompt = null;
-  }
-});
-
-// Rashi Auto-Update System
-const API_URL = 'https://api.jotishi.com/rashi-today';
-const UPDATE_INTERVAL = 3600000; // 1 hour
-let lastUpdateTimestamp = 0;
-
-async function fetchRashiData() {
-  try {
-    const response = await fetch(`${API_URL}?ts=${Date.now()}`);
-    if (!response.ok) throw new Error('API response error');
-    
-    const { data, timestamp } = await response.json();
-    
-    if (timestamp > lastUpdateTimestamp) {
-      lastUpdateTimestamp = timestamp;
-      localStorage.setItem('rashiData', JSON.stringify(data));
-      localStorage.setItem('lastUpdate', timestamp);
-      displayRashis(data);
-      showUpdateNotification('राशिफल अद्यावधिक गरियो');
-      updateStatusDisplay(timestamp);
+    function openConsultation(serviceType) {
+      consultationModal.style.display = 'block';
+      if(serviceType) {
+        document.getElementById('concern').value = serviceType.toLowerCase().replace(/ /g, '-');
+      }
     }
-    return true;
-  } catch (error) {
-    console.log('Using cached data:', error);
-    return false;
-  }
-}
 
-function displayRashis(rashis) {
-  const container = document.getElementById('rashiContainer');
-  container.innerHTML = rashis.map(rashi => `
-    <div class="rashi-card">
-      <div class="rashi-icon">
-        <img src="${rashi.icon}" alt="${rashi.name}" loading="lazy">
-      </div>
-      <h3>${rashi.name}</h3>
-      <p>${rashi.prediction}</p>
-      <div class="rashi-meta">
-        <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
-        <span>रंग: ${rashi.luckyColor}</span>
-      </div>
-      <div class="rashi-time">
-        <i class="fas fa-clock"></i> शुभ समय: ${rashi.time}
-      </div>
-    </div>
-  `).join('');
-}
+    closeModal.addEventListener('click', () => {
+      consultationModal.style.display = 'none';
+    });
 
-function setupAutoUpdates() {
-  const loadData = async () => {
-    const apiSuccess = await fetchRashiData();
-    if (!apiSuccess) loadLocalData();
-  };
-  
-  setInterval(fetchRashiData, UPDATE_INTERVAL);
-  window.addEventListener('online', fetchRashiData);
-  navigator.serviceWorker?.addEventListener('controllerchange', fetchRashiData);
-  loadData();
-}
+    window.addEventListener('click', (e) => {
+      if (e.target === consultationModal) {
+        consultationModal.style.display = 'none';
+      }
+    });
 
-function loadLocalData() {
-  const localData = JSON.parse(localStorage.getItem('rashiData')) || getLocalRashiData();
-  const lastUpdate = localStorage.getItem('lastUpdate') || Date.now();
-  displayRashis(localData);
-  updateStatusDisplay(lastUpdate);
-}
+    // Form Submission
+    document.getElementById('astroForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      consultationModal.style.display = 'none';
+      
+      // Show success message
+      const notification = document.createElement('div');
+      notification.className = 'update-notification';
+      notification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>Thank you! Our astrologer will contact you shortly.</span>
+      `;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 5000);
+    });
 
-function updateStatusDisplay(timestamp) {
-  const date = new Date(timestamp);
-  const options = { 
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true,
-    timeZone: 'Asia/Kathmandu'
-  };
-  document.getElementById('updateStatus').textContent = 
-    `अन्तिम अद्यावधिक: ${date.toLocaleDateString('ne-NP')} ${date.toLocaleTimeString('ne-NP', options)}`;
-}
+    // PWA Installation
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+    const iosInstallModal = document.getElementById('iosInstallModal');
+    const iosInstallClose = document.getElementById('iosInstallClose');
 
-function showUpdateNotification(message) {
-  const notification = document.createElement('div');
-  notification.className = 'update-notification';
-  notification.innerHTML = `
-    <i class="fas fa-sync-alt"></i>
-    <span>${message}</span>
-  `;
-  document.body.appendChild(notification);
-  setTimeout(() => notification.remove(), 5000);
-}
+    window.addEventListener('beforeinstallprompt', (e) => {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        // Show iOS instructions after 5 seconds
+        setTimeout(() => {
+          iosInstallModal.classList.add('active');
+        }, 5000);
+        return;
+      }
+      e.preventDefault();
+      deferredPrompt = e;
+      installButton.style.display = 'block';
+      setTimeout(() => {
+        installButton.style.opacity = '1';
+        installButton.style.transform = 'translateY(0)';
+      }, 300);
+    });
+
+    installButton.addEventListener('click', async () => {
+      if(deferredPrompt) {
+        installButton.style.opacity = '0';
+        setTimeout(() => installButton.style.display = 'none', 300);
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      }
+    });
+
+    iosInstallClose.addEventListener('click', () => {
+      iosInstallModal.classList.remove('active');
+    });
+
+    // Rashi Auto-Update System
+    const API_URL = 'https://api.jotishi.com/rashi-today';
+    const UPDATE_INTERVAL = 3600000; // 1 hour
+    let lastUpdateTimestamp = 0;
+
+    async function fetchRashiData() {
+      try {
+        const response = await fetch(`${API_URL}?ts=${Date.now()}`);
+        if (!response.ok) throw new Error('API response error');
+        
+        const { data, timestamp } = await response.json();
+        
+        if (timestamp > lastUpdateTimestamp) {
+          lastUpdateTimestamp = timestamp;
+          localStorage.setItem('rashiData', JSON.stringify(data));
+          localStorage.setItem('lastUpdate', timestamp);
+          displayRashis(data);
+          showUpdateNotification('राशिफल अद्यावधिक गरियो');
+          updateStatusDisplay(timestamp);
+        }
+        return true;
+      } catch (error) {
+        console.log('Using cached data:', error);
+        return false;
+      }
+    }
+
+    function displayRashis(rashis) {
+      const container = document.getElementById('rashiContainer');
+      container.innerHTML = rashis.map(rashi => `
+        <div class="rashi-card">
+          <div class="rashi-icon">
+            <img src="${rashi.icon}" alt="${rashi.name}" loading="lazy">
+          </div>
+          <h3>${rashi.name}</h3>
+          <p>${rashi.prediction}</p>
+          <div class="rashi-meta">
+            <span>भाग्यशाली नम्बर: ${rashi.luckyNumber}</span> | 
+            <span>रंग: ${rashi.luckyColor}</span>
+          </div>
+          <div class="rashi-time">
+            <i class="fas fa-clock"></i> शुभ समय: ${rashi.time}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function setupAutoUpdates() {
+      const loadData = async () => {
+        const apiSuccess = await fetchRashiData();
+        if (!apiSuccess) loadLocalData();
+      };
+      
+      setInterval(fetchRashiData, UPDATE_INTERVAL);
+      window.addEventListener('online', fetchRashiData);
+      navigator.serviceWorker?.addEventListener('controllerchange', fetchRashiData);
+      loadData();
+    }
+
+    function loadLocalData() {
+      const localData = JSON.parse(localStorage.getItem('rashiData')) || getLocalRashiData();
+      const lastUpdate = localStorage.getItem('lastUpdate') || Date.now();
+      displayRashis(localData);
+      updateStatusDisplay(lastUpdate);
+    }
+
+    function updateStatusDisplay(timestamp) {
+      const date = new Date(timestamp);
+      const options = { 
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+        timeZone: 'Asia/Kathmandu'
+      };
+      document.getElementById('updateStatus').textContent = 
+        `अन्तिम अद्यावधिक: ${date.toLocaleDateString('ne-NP')} ${date.toLocaleTimeString('ne-NP', options)}`;
+    }
+
+    function showUpdateNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'update-notification';
+      notification.innerHTML = `
+        <i class="fas fa-sync-alt"></i>
+        <span>${message}</span>
+      `;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 5000);
+    }
 
     // Function to get local Rashi data
     function getLocalRashiData() {
@@ -1422,95 +1727,108 @@ function showUpdateNotification(message) {
       ];
     }
 
-// Footer Search Functionality
-const footerSearch = document.getElementById('footerSearch');
-const searchButton = document.getElementById('searchButton');
-const searchResults = document.getElementById('searchResults');
+    // Footer Search Functionality
+    const footerSearch = document.getElementById('footerSearch');
+    const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
 
-// Sample search data - replace with your actual services
-const searchData = [
-  { title: "Birth Chart Reading", url: "service.html#birth-chart" },
-  { title: "Horoscope Matching", url: "service.html#horoscope" },
-  { title: "Remedial Guidance", url: "service.html#remedial" },
-  { title: "Marriage Compatibility", url: "service.html#marriage" },
-  { title: "Career Astrology", url: "service.html#career" },
-  { title: "Medical Astrology", url: "service.html#medical" },
-  { title: "Natal Astrology", url: "service.html#natal" },
-  { title: "Relationship Astrology", url: "service.html#relationship" }
-];
+    // Sample search data - replace with your actual services
+    const searchData = [
+      { title: "Birth Chart Reading", url: "service.html#birth-chart" },
+      { title: "Horoscope Matching", url: "service.html#horoscope" },
+      { title: "Remedial Guidance", url: "service.html#remedial" },
+      { title: "Marriage Compatibility", url: "service.html#marriage" },
+      { title: "Career Astrology", url: "service.html#career" },
+      { title: "Medical Astrology", url: "service.html#medical" },
+      { title: "Natal Astrology", url: "service.html#natal" },
+      { title: "Relationship Astrology", url: "service.html#relationship" }
+    ];
 
-function performSearch() {
-  const query = footerSearch.value.toLowerCase();
-  if (query.length < 2) {
-    searchResults.style.display = 'none';
-    return;
-  }
+    function performSearch() {
+      const query = footerSearch.value.toLowerCase();
+      if (query.length < 2) {
+        searchResults.style.display = 'none';
+        return;
+      }
 
-  const results = searchData.filter(item => 
-    item.title.toLowerCase().includes(query)
-  );
+      const results = searchData.filter(item => 
+        item.title.toLowerCase().includes(query)
+      );
 
-  if (results.length > 0) {
-    searchResults.innerHTML = results.map(item => 
-      `<a href="${item.url}">${item.title}</a>`
-    ).join('');
-    searchResults.style.display = 'block';
-  } else {
-    searchResults.innerHTML = '<div class="no-results">No services found</div>';
-    searchResults.style.display = 'block';
-  }
-}
+      if (results.length > 0) {
+        searchResults.innerHTML = results.map(item => 
+          `<a href="${item.url}">${item.title}</a>`
+        ).join('');
+        searchResults.style.display = 'block';
+      } else {
+        searchResults.innerHTML = '<div class="no-results">No services found</div>';
+        searchResults.style.display = 'block';
+      }
+    }
 
-footerSearch.addEventListener('input', performSearch);
-searchButton.addEventListener('click', performSearch);
+    footerSearch.addEventListener('input', performSearch);
+    searchButton.addEventListener('click', performSearch);
 
-// Close search results when clicking outside
-document.addEventListener('click', (e) => {
-  if (!footerSearch.contains(e.target) && !searchResults.contains(e.target)) {
-    searchResults.style.display = 'none';
-  }
-});
-
-// Service Worker Management
-const SW_VERSION = 'v4';
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(registration => {
-        console.log('SW registered:', registration);
-        setInterval(() => registration.update(), 3600000);
-      });
-  });
-
-  // Cleanup old caches
-  caches.keys().then(cacheNames => {
-    cacheNames.forEach(cacheName => {
-      if (cacheName !== 'jotishi-v4') {
-        caches.delete(cacheName);
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!footerSearch.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
       }
     });
-  });
-}
 
-// Initialization
-document.addEventListener('DOMContentLoaded', () => {
-  // Set current date
-  document.getElementById('currentDate').textContent = 
-    new Date().toLocaleDateString('ne-NP', { 
-      weekday: 'long', 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    // Service Worker Management
+    const SW_VERSION = 'v4';
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered:', registration);
+            setInterval(() => registration.update(), 3600000);
+          });
+      });
+
+      // Cleanup old caches
+      caches.keys().then(cacheNames => {
+        cacheNames.forEach(cacheName => {
+          if (cacheName !== 'jotishi-v4') {
+            caches.delete(cacheName);
+          }
+        });
+      });
+    }
+
+    // Offline Detection
+    window.addEventListener('offline', () => {
+      document.getElementById('offlineNotification').style.display = 'block';
     });
 
-  // Start systems
-  setupAutoUpdates();
-  
-  // Copyright year
-  document.getElementById('year').textContent = new Date().getFullYear();
-});
-    
-</script>
+    window.addEventListener('online', () => {
+      document.getElementById('offlineNotification').style.display = 'none';
+    });
+
+    // Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current date
+      document.getElementById('currentDate').textContent = 
+        new Date().toLocaleDateString('ne-NP', { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        });
+
+      // Start systems
+      setupAutoUpdates();
+      
+      // Copyright year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Check online status on load
+      if (!navigator.onLine) {
+        document.getElementById('offlineNotification').style.display = 'block';
+      }
+    });
+  </script>
 </body>
 </html>
