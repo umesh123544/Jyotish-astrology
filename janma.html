@@ -14,6 +14,7 @@
         referrerpolicy="no-referrer">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
 
   <style>
     :root {
@@ -339,6 +340,56 @@
       border: 1px solid #ddd;
       border-radius: 5px;
       font-size: 1rem;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
     }
 
     .submit-btn {
@@ -802,8 +853,13 @@
           </div>
           
           <div class="form-group">
-            <label for="dob">जन्म मिति</label>
+            <label for="dob">जन्म मिति (अंग्रेजी)</label>
             <input type="date" id="dob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob" class="nepali-datepicker" required>
           </div>
           
           <div class="form-group">
@@ -904,6 +960,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
   <script>
     // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
@@ -939,6 +996,33 @@
       }
     });
 
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      var nepaliDatePicker = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01"
+      });
+      nepaliDatePicker.init();
+      
+      // Sync between Nepali and English date
+      document.getElementById('nepali-dob').addEventListener('dateChange', function(e) {
+        console.log("Nepali date selected:", e.detail.formattedDate);
+        // Here you would convert Nepali date to English date
+        // For demo purposes, we're just showing the selected date
+        // document.getElementById('dob').value = convertNepaliToEnglish(e.detail.formattedDate);
+      });
+      
+      document.getElementById('dob').addEventListener('change', function() {
+        // Here you would convert English date to Nepali date
+        // For demo purposes, we're just showing the selected date
+        // document.getElementById('nepali-dob').value = convertEnglishToNepali(this.value);
+      });
+    });
+
     // Form Submission with API Integration
     document.getElementById('kundaliForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -947,13 +1031,14 @@
       const formData = {
         name: document.getElementById('name').value,
         dob: document.getElementById('dob').value,
+        nepaliDob: document.getElementById('nepali-dob').value,
         tob: document.getElementById('tob').value,
         pob: document.getElementById('pob').value,
         gender: document.getElementById('gender').value
       };
       
       // Validate inputs
-      if (!formData.name || !formData.dob || !formData.tob || !formData.pob || !formData.gender) {
+      if (!formData.name || !formData.dob || !formData.nepaliDob || !formData.tob || !formData.pob || !formData.gender) {
         alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
         return;
       }
@@ -996,7 +1081,8 @@
         data: {
           name: formData.name,
           birthDetails: {
-            date: formData.dob,
+            englishDate: formData.dob,
+            nepaliDate: formData.nepaliDob,
             time: formData.tob,
             place: formData.pob,
             gender: formData.gender === 'male' ? 'पुरुष' : 'महिला'
@@ -1015,13 +1101,13 @@
           rashi: 'वृश्चिक',
           nakshatra: 'अनुराधा',
           dashaPeriods: [
-            { name: 'चन्द्र दशा', start: '2015-06-15', end: '2025-06-15', influence: 'सामान्य' },
-            { name: 'मंगल दशा', start: '2025-06-16', end: '2032-06-15', influence: 'शुभ' },
-            { name: 'राहु दशा', start: '2032-06-16', end: '2050-06-15', influence: 'चुनौतीपूर्ण' }
+            { name: 'चन्द्र दशा', start: '२०७२-०३-१५', end: '२०८२-०३-१५', influence: 'सामान्य' },
+            { name: 'मंगल दशा', start: '२०८२-०३-१६', end: '२०८९-०३-१५', influence: 'शुभ' },
+            { name: 'राहु दशा', start: '२०८९-०३-१६', end: '२१०७-०३-१५', influence: 'चुनौतीपूर्ण' }
           ],
           predictions: {
-            career: 'तपाईंको करियरमा 2025 पछि ठूलो उन्नति हुनेछ। सरकारी नोकरी वा प्रशासनिक क्षेत्र उपयुक्त हुन सक्छ।',
-            marriage: 'विवाहको लागि 2026-2027 उत्तम समय हो। जीवनसाथी धनी र सहयोगी हुनेछ।',
+            career: 'तपाईंको करियरमा २०८२ पछि ठूलो उन्नति हुनेछ। सरकारी नोकरी वा प्रशासनिक क्षेत्र उपयुक्त हुन सक्छ।',
+            marriage: 'विवाहको लागि २०८३-२०८४ उत्तम समय हो। जीवनसाथी धनी र सहयोगी हुनेछ।',
             health: 'पाचन तन्त्र र स्नायु प्रणालीमा ध्यान दिनु आवश्यक छ।'
           },
           remedies: [
@@ -1048,7 +1134,8 @@
           <h2>${data.name} को जन्म कुण्डली</h2>
           
           <div class="basic-info">
-            <p><strong>जन्म मिति:</strong> ${data.birthDetails.date}</p>
+            <p><strong>जन्म मिति (अंग्रेजी):</strong> ${data.birthDetails.englishDate}</p>
+            <p><strong>जन्म मिति (नेपाली):</strong> ${data.birthDetails.nepaliDate}</p>
             <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
             <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
             <p><strong>लिङ्ग:</strong> ${data.birthDetails.gender}</p>
