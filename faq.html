@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQs - Jotishi Astrology</title>
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .close-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .close-btn:hover {
+      background: var(--primary-light);
+      transform: rotate(90deg);
+    }
+    
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 3rem;
+    }
+    
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .faq-header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .faq-header h1::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+    
+    .faq-header p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+    
+    .faq-item {
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .faq-item:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .faq-question {
+      padding: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--secondary);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-question::after {
+      content: '-';
+    }
+    
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      max-height: 500px;
+    }
+    
+    .faq-answer p {
+      color: var(--gray);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .close-btn {
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .faq-header h1 {
+        font-size: 2rem;
+      }
+      
+      .faq-question {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <button class="close-btn" onclick="window.history.back()">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="faq-container">
+    <div class="faq-header">
+      <h1>Frequently Asked Questions</h1>
+      <p>Find answers to common questions about our Vedic astrology services</p>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">What is Vedic astrology and how is it different from Western astrology?</div>
+      <div class="faq-answer">
+        <p>Vedic astrology, also known as Jyotish, is an ancient Indian system of astrology that dates back thousands of years. Unlike Western astrology which uses the tropical zodiac, Vedic astrology uses the sidereal zodiac which accounts for the precession of equinoxes. This makes Vedic astrology more accurate for predictive purposes.</p>
+        <p>Vedic astrology also places more emphasis on the Moon's position (Moon sign) rather than just the Sun sign, and uses a unique system of planetary periods (dashas) for timing events.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">How accurate are your astrology predictions?</div>
+      <div class="faq-answer">
+        <p>Our predictions are based on authentic Vedic astrological principles applied by experienced astrologers. While we strive for maximum accuracy, astrology is a probabilistic science rather than deterministic. The accuracy depends on several factors including:</p>
+        <p>- Correctness of birth details provided<br>
+           - Current planetary transits<br>
+           - Your karma and free will choices<br>
+           - Application of suggested remedies</p>
+        <p>Most clients report 80-90% accuracy in our readings when all factors align properly.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">What information do I need to provide for a consultation?</div>
+      <div class="faq-answer">
+        <p>For the most accurate reading, we need:</p>
+        <p>1. Your exact birth date (day, month, year)<br>
+           2. Exact birth time (as accurate as possible)<br>
+           3. Birth place (city and country)</p>
+        <p>If you don't know your exact birth time, we can still provide a reading but it will be less precise regarding timing of events.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">How long does a typical consultation take?</div>
+      <div class="faq-answer">
+        <p>Consultation duration depends on the service:</p>
+        <p>- Basic horoscope reading: 30-45 minutes<br>
+           - Detailed life analysis: 60-90 minutes<br>
+           - Marriage compatibility: 45-60 minutes<br>
+           - Yearly forecast: 30-45 minutes</p>
+        <p>We never rush consultations and ensure all your questions are properly addressed.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">What kinds of remedies do you suggest?</div>
+      <div class="faq-answer">
+        <p>Our remedies are based on classical Vedic texts and may include:</p>
+        <p>- Mantras (specific sacred chants)<br>
+           - Yantras (geometric energy diagrams)<br>
+           - Gemstone recommendations<br>
+           - Charitable acts<br>
+           - Rituals and pujas<br>
+           - Lifestyle adjustments<br>
+           - Color therapy</p>
+        <p>All remedies are personalized based on your unique birth chart.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Can astrology predict exact dates of future events?</div>
+      <div class="faq-answer">
+        <p>Vedic astrology can identify favorable and challenging periods with remarkable accuracy, but predicting exact dates is challenging because:</p>
+        <p>1. Human free will can alter outcomes<br>
+           2. Collective karma affects individual timing<br>
+           3. The precision depends on exact birth time accuracy</p>
+        <p>We typically provide time windows (like "between March-May 2025") rather than specific dates unless the astrological indicators are extremely strong.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">How often should I get an astrology consultation?</div>
+      <div class="faq-answer">
+        <p>Recommended frequency:</p>
+        <p>- Annual forecast: Once a year (around your birthday)<br>
+           - Major life decisions: Before making important choices<br>
+           - Challenging periods: When facing difficulties<br>
+           - Planetary transitions: During major dasha changes</p>
+        <p>For most people, 1-2 consultations per year are sufficient unless going through major life transitions.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">Is my personal information kept confidential?</div>
+      <div class="faq-answer">
+        <p>Absolutely. We maintain strict confidentiality:</p>
+        <p>- All consultations are private<br>
+           - Birth data is never shared with third parties<br>
+           - Records are securely stored<br>
+           - You can request data deletion anytime</p>
+        <p>Your trust is sacred to us, and we follow traditional astrological ethics of complete client confidentiality.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // FAQ Accordion Functionality
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close all other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+    
+    // Close button animation
+    const closeBtn = document.querySelector('.close-btn');
+    
+    closeBtn.addEventListener('mouseenter', () => {
+      closeBtn.style.transform = 'rotate(90deg)';
+    });
+    
+    closeBtn.addEventListener('mouseleave', () => {
+      closeBtn.style.transform = 'rotate(0)';
+    });
+  </script>
+</body>
+</html>
