@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Jotishi Astrology</title>
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .close-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .close-btn:hover {
+      background: var(--primary-light);
+      transform: rotate(90deg);
+    }
+    
+    .contact-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-top: 3rem;
+    }
+    
+    .contact-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .contact-header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .contact-header h1::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+    
+    .contact-header p {
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary-light);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-details h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-details p, .contact-details a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+      color: var(--primary);
+    }
+    
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    
+    .form-submit {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .form-submit:hover {
+      background: #e69009;
+      transform: translateY(-2px);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-light);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .close-btn {
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <button class="close-btn" onclick="window.history.back()">
+    <i class="fas fa-times"></i>
+  </button>
+  
+  <div class="contact-container">
+    <div class="contact-header">
+      <h1>Contact Our Astrologers</h1>
+      <p>Get in touch for personalized Vedic astrology consultations</p>
+    </div>
+    
+    <div class="contact-content">
+      <div class="contact-info">
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Phone Consultation</h3>
+            <a href="tel:+9779813197704">+977 9813197704</a>
+            <p>Available 10AM - 7PM (NPT), 6 days a week</p>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Email Us</h3>
+            <a href="mailto:contact@jotishi.com">contact@jotishi.com</a>
+            <p>Response within 24 hours</p>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="contact-details">
+            <h3>WhatsApp</h3>
+            <a href="https://wa.me/9813197704">+977 9813197704</a>
+            <p>Instant messaging for quick queries</p>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Visit Us</h3>
+            <p>Jyotish Bhavan, Kathmandu</p>
+            <p>Nepal</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone">
+        </div>
+        
+        <div class="form-group">
+          <label for="service">Service Interested In</label>
+          <select id="service" required>
+            <option value="">Select a service</option>
+            <option value="birth-chart">Birth Chart Analysis</option>
+            <option value="marriage">Marriage Compatibility</option>
+            <option value="career">Career Guidance</option>
+            <option value="health">Health Astrology</option>
+            <option value="yearly">Yearly Forecast</option>
+            <option value="other">Other Consultation</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" rows="4" required></textarea>
+        </div>
+        
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Form submission handling
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Here you would typically send the data to your server
+      console.log('Form submitted:', formData);
+      
+      // Show success message
+      alert('Thank you for your message! Our astrologer will contact you shortly.');
+      contactForm.reset();
+    });
+    
+    // Close button animation
+    const closeBtn = document.querySelector('.close-btn');
+    
+    closeBtn.addEventListener('mouseenter', () => {
+      closeBtn.style.transform = 'rotate(90deg)';
+    });
+    
+    closeBtn.addEventListener('mouseleave', () => {
+      closeBtn.style.transform = 'rotate(0)';
+    });
+  </script>
+</body>
+</html>
