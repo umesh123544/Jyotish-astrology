@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Vedic Astrology Sectors - Detailed information about different astrology specialties">
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- iOS specific PWA tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Jotishi">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png">
+  <link rel="apple-touch-startup-image" href="https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png" sizes="any">
+  <link rel="icon" href="https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/d0RC80F8/Picsart-25-05-19-21-01-16-017.png">
+  <title>Astrology Sectors | Jotishi - Vedic Astrology</title>
+  
+  <link rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .logo-container:hover {
+      transform: translateX(5px);
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .brand-name:hover {
+      color: var(--secondary);
+      text-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1001;
+    }
+
+    .hamburger:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      position: relative;
+    }
+
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .hamburger-inner {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hamburger-inner::before {
+      content: '';
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      content: '';
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(135deg);
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      transform: rotate(90deg);
+      top: 0;
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Navigation Links */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Page Banner */
+    .page-banner {
+      background: linear-gradient(135deg, rgba(109, 40, 217, 0.9), rgba(139, 92, 246, 0.9)), 
+                  url('https://i.ibb.co/NnTPRKX8/galaxy-wallpaper-warm-colors.jpg') center/cover;
+      padding: 8rem 5% 4rem;
+      text-align: center;
+      color: white;
+      margin-top: 70px;
+    }
+
+    .page-banner h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .page-breadcrumb {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      font-size: 1.1rem;
+    }
+
+    .page-breadcrumb li {
+      margin: 0 0.5rem;
+    }
+
+    .page-breadcrumb a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .page-breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sector Details Section */
+    .sector-details {
+      padding: 5rem 5%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .sector-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .sector-header h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .sector-header h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      background: var(--secondary);
+      bottom: -10px;
+      left: 25%;
+      border-radius: 2px;
+    }
+
+    .sector-header p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .sector-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .sector-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+    }
+
+    @media (max-width: 768px) {
+      .sector-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sector-image {
+      height: 100%;
+      min-height: 300px;
+      overflow: hidden;
+    }
+
+    .sector-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .sector-card:hover .sector-image img {
+      transform: scale(1.05);
+    }
+
+    .sector-info {
+      padding: 2rem;
+    }
+
+    .sector-info h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .sector-info p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .sector-features {
+      margin: 2rem 0;
+    }
+
+    .sector-features h4 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .sector-services {
+      list-style: none;
+    }
+
+    .sector-services li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .sector-services li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .sector-cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .sector-button {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+    }
+
+    .sector-button:hover {
+      background-color: #e69009;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    /* Install Button */
+    .install-button {
+      position: fixed;
+      bottom: 7rem;
+      right: 1rem;
+      background-color: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .install-button i {
+      margin-right: 8px;
+    }
+
+    .install-button:hover {
+      background-color: #e69009;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Footer Search */
+    .footer-section .search-container {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section #footerSearch {
+      flex: 1;
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px 0 0 8px;
+      font-size: 1rem;
+      background: #f1f5f9;
+      color: var(--dark);
+    }
+
+    .footer-section #searchButton {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0 1.2rem;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .footer-section #searchButton:hover {
+      background: #e69009;
+    }
+
+    .search-results {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .search-results a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1px solid #eee;
+      transition: background 0.2s ease;
+    }
+
+    .search-results a:hover {
+      background: #f8fafc;
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 5%;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      position: relative;
+    }
+
+    .footer-section h4::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #334155;
+    }
+
+    /* Offline Notification */
+    .offline-notification {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ef4444;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      display: none;
+    }
+
+    /* iOS Install Modal */
+    .ios-install-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 9999;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ios-install-modal.active {
+      display: flex;
+    }
+
+    .ios-install-modal h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .ios-install-steps {
+      text-align: left;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      line-height: 2;
+    }
+
+    .ios-install-close {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    /* PWA Specific Styles */
+    @media all and (display-mode: standalone) {
+      header {
+        padding-top: env(safe-area-inset-top);
+        padding-top: constant(safe-area-inset-top);
+      }
+      
+      body {
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-bottom: constant(safe-area-inset-bottom);
+      }
+      
+      .install-button {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Install Button -->
+  <button id="installButton" class="install-button">
+    <i class="fas fa-download"></i> Install App
+  </button>
+
+  <!-- iOS Install Instructions Modal -->
+  <div class="ios-install-modal" id="iosInstallModal">
+    <h2>Install Jotishi App</h2>
+    <div class="ios-install-steps">
+      <p>1. Tap the <strong>Share</strong> button <i class="fas fa-share-square"></i></p>
+      <p>2. Select <strong>"Add to Home Screen"</strong></p>
+      <p>3. Tap <strong>"Add"</strong> in the top right</p>
+    </div>
+    <img src="https://i.ibb.co/sJ3vWsvz/Picsart-25-05-17-01-07-39-140.png" width="80" height="80" style="border-radius: 16px; margin-bottom: 1rem;">
+    <p>Jotishi - Vedic Astrology</p>
+    <button class="ios-install-close" id="iosInstallClose">Got It!</button>
+  </div>
+
+  <!-- Offline Notification -->
+  <div id="offlineNotification" class="offline-notification">
+    You are currently offline
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="service.html">Services</a>
+        <a href="sector.html">Sectors</a>
+        <a href="#team">Astrologers</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Page Banner -->
+  <section class="page-banner">
+    <h1>Astrology Sectors</h1>
+    <ul class="page-breadcrumb">
+      <li><a href="index.html">Home</a></li>
+      <li>Sectors</li>
+    </ul>
+  </section>
+
+  <!-- Sector Details Section -->
+  <section class="sector-details">
+    <div class="sector-header">
+      <h2>Vedic Astrology Specializations</h2>
+      <p>Explore the different branches of Vedic astrology and discover how each can provide unique insights into your life's journey.</p>
+    </div>
+
+    <div class="sector-content">
+      <!-- Natal Astrology -->
+      <div class="sector-card">
+        <div class="sector-image">
+          <img src="https://i.ibb.co/3FJ9hQ6m/astrology-astronomy-background-constellation-1573133.jpg" alt="Natal Astrology">
+        </div>
+        <div class="sector-info">
+          <h3>Natal Astrology</h3>
+          <p>Natal astrology is the foundation of Vedic astrology, analyzing the positions of planets at the exact moment of your birth to reveal your life's blueprint.</p>
+          
+          <div class="sector-features">
+            <h4>Key Services</h4>
+            <ul class="sector-services">
+              <li>Comprehensive birth chart analysis</li>
+              <li>Planetary position interpretation</li>
+              <li>Dasha period predictions</li>
+              <li>Life path and purpose analysis</li>
+              <li>Strength and weakness assessment</li>
+            </ul>
+          </div>
+          
+          <div class="sector-cta">
+            <a href="service.html#natal" class="sector-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Relationship Astrology -->
+      <div class="sector-card">
+        <div class="sector-image">
+          <img src="https://i.ibb.co/ksXtyNzL/hands-indian-bride-groom-intertwined-together-making-authentic-wedding-ritual.jpg" alt="Relationship Astrology">
+        </div>
+        <div class="sector-info">
+          <h3>Relationship Astrology</h3>
+          <p>This branch examines compatibility between individuals, helping to understand relationship dynamics, challenges, and growth opportunities.</p>
+          
+          <div class="sector-features">
+            <h4>Key Services</h4>
+            <ul class="sector-services">
+              <li>Marriage compatibility analysis (Kundali Milan)</li>
+              <li>Love horoscope matching</li>
+              <li>Relationship problem solutions</li>
+              <li>Divorce remediation guidance</li>
+              <li>Family relationship analysis</li>
+            </ul>
+          </div>
+          
+          <div class="sector-cta">
+            <a href="service.html#relationship" class="sector-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career Astrology -->
+      <div class="sector-card">
+        <div class="sector-image">
+          <img src="https://i.ibb.co/6JJFVcc3/search-concept-670147-86243.jpg" alt="Career Astrology">
+        </div>
+        <div class="sector-info">
+          <h3>Career Astrology</h3>
+          <p>Career astrology helps identify your ideal profession, favorable timings for job changes, and business opportunities based on planetary influences.</p>
+          
+          <div class="sector-features">
+            <h4>Key Services</h4>
+            <ul class="sector-services">
+              <li>Career path analysis</li>
+              <li>Business success timing</li>
+              <li>Financial growth prediction</li>
+              <li>Job change guidance</li>
+              <li>Remedies for career obstacles</li>
+            </ul>
+          </div>
+          
+          <div class="sector-cta">
+            <a href="service.html#career" class="sector-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical Astrology -->
+      <div class="sector-card">
+        <div class="sector-image">
+          <img src="https://i.ibb.co/6sQj1H2m/ayurveda-ayurvedic-herbs-herbal-medicine-ayurvedic-medicine-1158381.jpg" alt="Medical Astrology">
+        </div>
+        <div class="sector-info">
+          <h3>Medical Astrology</h3>
+          <p>Medical astrology examines the connection between planetary positions and health, helping to identify potential health issues and preventive measures.</p>
+          
+          <div class="sector-features">
+            <h4>Key Services</h4>
+            <ul class="sector-services">
+              <li>Health issue analysis</li>
+              <li>Remedial health solutions</li>
+              <li>Preventive care guidance</li>
+              <li>Chronic condition analysis</li>
+              <li>Healing timing predictions</li>
+            </ul>
+          </div>
+          
+          <div class="sector-cta">
+            <a href="service.html#medical" class="sector-button">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Quick Search</h4>
+        <div class="search-container">
+          <input type="text" id="footerSearch" placeholder="Search services..." aria-label="Search services">
+          <button id="searchButton" aria-label="Search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: contact@jotishi.com</p>
+        <p>Phone: +977-9813197704</p>
+        <p>Kathmandu, Nepal</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // PWA Installation
+    let deferredPrompt;
+    const installButton = document.getElementById('installButton');
+    const iosInstallModal = document.getElementById('iosInstallModal');
+    const iosInstallClose = document.getElementById('iosInstallClose');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        // Show iOS instructions after 5 seconds
+        setTimeout(() => {
+          iosInstallModal.classList.add('active');
+        }, 5000);
+        return;
+      }
+      e.preventDefault();
+      deferredPrompt = e;
+      installButton.style.display = 'block';
+      setTimeout(() => {
+        installButton.style.opacity = '1';
+        installButton.style.transform = 'translateY(0)';
+      }, 300);
+    });
+
+    installButton.addEventListener('click', async () => {
+      if(deferredPrompt) {
+        installButton.style.opacity = '0';
+        setTimeout(() => installButton.style.display = 'none', 300);
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      }
+    });
+
+    iosInstallClose.addEventListener('click', () => {
+      iosInstallModal.classList.remove('active');
+    });
+
+    // Footer Search Functionality
+    const footerSearch = document.getElementById('footerSearch');
+    const searchButton = document.getElementById('searchButton');
+    const searchResults = document.getElementById('searchResults');
+
+    // Sample search data - replace with your actual services
+    const searchData = [
+      { title: "Birth Chart Reading", url: "service.html#birth-chart" },
+      { title: "Horoscope Matching", url: "service.html#horoscope" },
+      { title: "Remedial Guidance", url: "service.html#remedial" },
+      { title: "Marriage Compatibility", url: "service.html#marriage" },
+      { title: "Career Astrology", url: "service.html#career" },
+      { title: "Medical Astrology", url: "service.html#medical" },
+      { title: "Natal Astrology", url: "service.html#natal" },
+      { title: "Relationship Astrology", url: "service.html#relationship" }
+    ];
+
+    function performSearch() {
+      const query = footerSearch.value.toLowerCase();
+      if (query.length < 2) {
+        searchResults.style.display = 'none';
+        return;
+      }
+
+      const results = searchData.filter(item => 
+        item.title.toLowerCase().includes(query)
+      );
+
+      if (results.length > 0) {
+        searchResults.innerHTML = results.map(item => 
+          `<a href="${item.url}">${item.title}</a>`
+        ).join('');
+        searchResults.style.display = 'block';
+      } else {
+        searchResults.innerHTML = '<div class="no-results">No services found</div>';
+        searchResults.style.display = 'block';
+      }
+    }
+
+    footerSearch.addEventListener('input', performSearch);
+    searchButton.addEventListener('click', performSearch);
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!footerSearch.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+      }
+    });
+
+    // Service Worker Management
+    const SW_VERSION = 'v4';
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered:', registration);
+            setInterval(() => registration.update(), 3600000);
+          });
+      });
+
+      // Cleanup old caches
+      caches.keys().then(cacheNames => {
+        cacheNames.forEach(cacheName => {
+          if (cacheName !== 'jotishi-v4') {
+            caches.delete(cacheName);
+          }
+        });
+      });
+    }
+
+    // Offline Detection
+    window.addEventListener('offline', () => {
+      document.getElementById('offlineNotification').style.display = 'block';
+    });
+
+    window.addEventListener('online', () => {
+      document.getElementById('offlineNotification').style.display = 'none';
+    });
+
+    // Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // Copyright year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Check online status on load
+      if (!navigator.onLine) {
+        document.getElementById('offlineNotification').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
