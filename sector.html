@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Explore Vedic Astrology Sectors - Detailed information about different astrology specialties">
-  
+
   <!-- PWA Meta Tags -->
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#6d28d9">
@@ -285,19 +285,18 @@
       text-decoration: underline;
     }
 
-    /* Sector Details Section */
-    .sector-details {
+    /* Astrology Sectors Section */
+    .astro-sectors {
+      background: #f8fafc;
       padding: 5rem 5%;
-      max-width: var(--max-width);
-      margin: 0 auto;
     }
 
-    .sector-header {
+    .section-title {
       text-align: center;
       margin-bottom: 3rem;
     }
 
-    .sector-header h2 {
+    .section-title h2 {
       font-size: 2.5rem;
       color: var(--primary);
       margin-bottom: 1rem;
@@ -305,7 +304,7 @@
       display: inline-block;
     }
 
-    .sector-header h2::after {
+    .section-title h2::after {
       content: '';
       position: absolute;
       width: 50%;
@@ -316,90 +315,82 @@
       border-radius: 2px;
     }
 
-    .sector-header p {
-      font-size: 1.2rem;
-      color: var(--gray);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .sector-content {
+    .sectors-container {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
     .sector-card {
       background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-    }
-
-    @media (max-width: 768px) {
-      .sector-card {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .sector-image {
-      height: 100%;
-      min-height: 300px;
-      overflow: hidden;
-    }
-
-    .sector-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .sector-card:hover .sector-image img {
-      transform: scale(1.05);
-    }
-
-    .sector-info {
       padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .sector-info h3 {
+    .sector-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .sector-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--secondary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
+    }
+
+    .sector-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .sector-card h3 {
       font-size: 1.8rem;
       color: var(--primary);
       margin-bottom: 1rem;
     }
 
-    .sector-info p {
+    .sector-card p {
       color: var(--gray);
       margin-bottom: 1.5rem;
       line-height: 1.7;
     }
 
-    .sector-features {
-      margin: 2rem 0;
-    }
-
-    .sector-features h4 {
-      font-size: 1.3rem;
-      color: var(--primary);
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--secondary);
-      padding-bottom: 0.5rem;
-      display: inline-block;
-    }
-
     .sector-services {
       list-style: none;
+      text-align: left;
+      margin-top: 1.5rem;
+      border-top: 1px solid #eee;
+      padding-top: 1.5rem;
     }
 
     .sector-services li {
       padding: 0.8rem 0;
       border-bottom: 1px solid #eee;
       position: relative;
-      padding-left: 2rem;
+      padding-left: 1.8rem;
     }
 
     .sector-services li:before {
@@ -410,30 +401,98 @@
       font-weight: bold;
     }
 
-    .sector-cta {
-      margin-top: 2rem;
-      text-align: center;
-    }
-
     .sector-button {
       display: inline-block;
-      background-color: var(--secondary);
+      background: var(--primary);
       color: white;
       border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
+      padding: 0.8rem 2rem;
       border-radius: 50px;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      margin-top: 1.5rem;
       text-decoration: none;
     }
 
     .sector-button:hover {
-      background-color: #e69009;
+      background: var(--primary-light);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    /* Consultation Form */
+    .consultation-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+    }
+
+    .consultation-form {
+      background: white;
+      width: 90%;
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      position: relative;
+      animation: modalSlide 0.3s ease-out;
+    }
+
+    @keyframes modalSlide {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-submit {
+      background: var(--secondary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     /* WhatsApp Float */
@@ -659,6 +718,27 @@
       margin-top: 1rem;
     }
 
+    .update-notification {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 15px rgba(109,40,217,0.3);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: slideIn 0.3s ease-out;
+      z-index: 9999;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+
     /* PWA Specific Styles */
     @media all and (display-mode: standalone) {
       header {
@@ -673,6 +753,14 @@
       
       .install-button {
         display: none !important;
+      }
+    }
+
+    /* iOS specific styles */
+    @supports (-webkit-touch-callout: none) {
+      .page-banner {
+        min-height: -webkit-fill-available;
+        height: -webkit-fill-available;
       }
     }
   </style>
@@ -723,10 +811,9 @@
       <div class="nav-links" id="navLinks">
         <a href="index.html">Home</a>
         <a href="service.html">Services</a>
-        <a href="sector.html">Sectors</a>
-        <a href="#team">Astrologers</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="sector.html" class="active">Sectors</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
       </div>
     </nav>
   </header>
@@ -740,119 +827,171 @@
     </ul>
   </section>
 
-  <!-- Sector Details Section -->
-  <section class="sector-details">
-    <div class="sector-header">
+  <!-- Astrology Sectors -->
+  <section class="astro-sectors">
+    <div class="section-title">
       <h2>Vedic Astrology Specializations</h2>
-      <p>Explore the different branches of Vedic astrology and discover how each can provide unique insights into your life's journey.</p>
+      <p>Explore the different branches of Vedic astrology and discover how each can provide unique insights</p>
     </div>
 
-    <div class="sector-content">
+    <div class="sectors-container">
       <!-- Natal Astrology -->
       <div class="sector-card">
-        <div class="sector-image">
-          <img src="https://i.ibb.co/3FJ9hQ6m/astrology-astronomy-background-constellation-1573133.jpg" alt="Natal Astrology">
+        <div class="sector-badge">Most Popular</div>
+        <div class="sector-icon">
+          <i class="fas fa-baby"></i>
         </div>
-        <div class="sector-info">
-          <h3>Natal Astrology</h3>
-          <p>Natal astrology is the foundation of Vedic astrology, analyzing the positions of planets at the exact moment of your birth to reveal your life's blueprint.</p>
-          
-          <div class="sector-features">
-            <h4>Key Services</h4>
-            <ul class="sector-services">
-              <li>Comprehensive birth chart analysis</li>
-              <li>Planetary position interpretation</li>
-              <li>Dasha period predictions</li>
-              <li>Life path and purpose analysis</li>
-              <li>Strength and weakness assessment</li>
-            </ul>
-          </div>
-          
-          <div class="sector-cta">
-            <a href="service.html#natal" class="sector-button">Learn More</a>
-          </div>
-        </div>
+        <h3>Natal Astrology</h3>
+        <p>Analyzes the positions of planets at your birth to reveal your life's blueprint and potential.</p>
+        <ul class="sector-services">
+          <li>Comprehensive birth chart analysis</li>
+          <li>Planetary position interpretation</li>
+          <li>Dasha period predictions</li>
+          <li>Life path and purpose analysis</li>
+          <li>Strength and weakness assessment</li>
+        </ul>
+        <a href="#consultation" class="sector-button" onclick="openConsultation('Natal Astrology')">Consult Now</a>
       </div>
 
       <!-- Relationship Astrology -->
       <div class="sector-card">
-        <div class="sector-image">
-          <img src="https://i.ibb.co/ksXtyNzL/hands-indian-bride-groom-intertwined-together-making-authentic-wedding-ritual.jpg" alt="Relationship Astrology">
+        <div class="sector-badge">Featured</div>
+        <div class="sector-icon">
+          <i class="fas fa-heart"></i>
         </div>
-        <div class="sector-info">
-          <h3>Relationship Astrology</h3>
-          <p>This branch examines compatibility between individuals, helping to understand relationship dynamics, challenges, and growth opportunities.</p>
-          
-          <div class="sector-features">
-            <h4>Key Services</h4>
-            <ul class="sector-services">
-              <li>Marriage compatibility analysis (Kundali Milan)</li>
-              <li>Love horoscope matching</li>
-              <li>Relationship problem solutions</li>
-              <li>Divorce remediation guidance</li>
-              <li>Family relationship analysis</li>
-            </ul>
-          </div>
-          
-          <div class="sector-cta">
-            <a href="service.html#relationship" class="sector-button">Learn More</a>
-          </div>
-        </div>
+        <h3>Relationship Astrology</h3>
+        <p>Examines compatibility between individuals to understand relationship dynamics.</p>
+        <ul class="sector-services">
+          <li>Marriage compatibility analysis</li>
+          <li>Love horoscope matching</li>
+          <li>Relationship problem solutions</li>
+          <li>Divorce remediation guidance</li>
+          <li>Family relationship analysis</li>
+        </ul>
+        <a href="#consultation" class="sector-button" onclick="openConsultation('Relationship Astrology')">Consult Now</a>
       </div>
 
       <!-- Career Astrology -->
       <div class="sector-card">
-        <div class="sector-image">
-          <img src="https://i.ibb.co/6JJFVcc3/search-concept-670147-86243.jpg" alt="Career Astrology">
+        <div class="sector-badge">Trending</div>
+        <div class="sector-icon">
+          <i class="fas fa-briefcase"></i>
         </div>
-        <div class="sector-info">
-          <h3>Career Astrology</h3>
-          <p>Career astrology helps identify your ideal profession, favorable timings for job changes, and business opportunities based on planetary influences.</p>
-          
-          <div class="sector-features">
-            <h4>Key Services</h4>
-            <ul class="sector-services">
-              <li>Career path analysis</li>
-              <li>Business success timing</li>
-              <li>Financial growth prediction</li>
-              <li>Job change guidance</li>
-              <li>Remedies for career obstacles</li>
-            </ul>
-          </div>
-          
-          <div class="sector-cta">
-            <a href="service.html#career" class="sector-button">Learn More</a>
-          </div>
-        </div>
+        <h3>Career Astrology</h3>
+        <p>Identifies your ideal profession and favorable timings for career moves.</p>
+        <ul class="sector-services">
+          <li>Career path analysis</li>
+          <li>Business success timing</li>
+          <li>Financial growth prediction</li>
+          <li>Job change guidance</li>
+          <li>Remedies for career obstacles</li>
+        </ul>
+        <a href="#consultation" class="sector-button" onclick="openConsultation('Career Astrology')">Consult Now</a>
       </div>
 
       <!-- Medical Astrology -->
       <div class="sector-card">
-        <div class="sector-image">
-          <img src="https://i.ibb.co/6sQj1H2m/ayurveda-ayurvedic-herbs-herbal-medicine-ayurvedic-medicine-1158381.jpg" alt="Medical Astrology">
+        <div class="sector-icon">
+          <i class="fas fa-heartbeat"></i>
         </div>
-        <div class="sector-info">
-          <h3>Medical Astrology</h3>
-          <p>Medical astrology examines the connection between planetary positions and health, helping to identify potential health issues and preventive measures.</p>
-          
-          <div class="sector-features">
-            <h4>Key Services</h4>
-            <ul class="sector-services">
-              <li>Health issue analysis</li>
-              <li>Remedial health solutions</li>
-              <li>Preventive care guidance</li>
-              <li>Chronic condition analysis</li>
-              <li>Healing timing predictions</li>
-            </ul>
-          </div>
-          
-          <div class="sector-cta">
-            <a href="service.html#medical" class="sector-button">Learn More</a>
-          </div>
+        <h3>Medical Astrology</h3>
+        <p>Examines the connection between planetary positions and health conditions.</p>
+        <ul class="sector-services">
+          <li>Health issue analysis</li>
+          <li>Remedial health solutions</li>
+          <li>Preventive care guidance</li>
+          <li>Chronic condition analysis</li>
+          <li>Healing timing predictions</li>
+        </ul>
+        <a href="#consultation" class="sector-button" onclick="openConsultation('Medical Astrology')">Consult Now</a>
+      </div>
+
+      <!-- Financial Astrology -->
+      <div class="sector-card">
+        <div class="sector-icon">
+          <i class="fas fa-coins"></i>
         </div>
+        <h3>Financial Astrology</h3>
+        <p>Predicts financial trends and helps with wealth accumulation strategies.</p>
+        <ul class="sector-services">
+          <li>Wealth potential analysis</li>
+          <li>Investment timing guidance</li>
+          <li>Business financial planning</li>
+          <li>Debt reduction remedies</li>
+          <li>Prosperity enhancement</li>
+        </ul>
+        <a href="#consultation" class="sector-button" onclick="openConsultation('Financial Astrology')">Consult Now</a>
+      </div>
+
+      <!-- Electional Astrology -->
+      <div class="sector-card">
+        <div class="sector-icon">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <h3>Electional Astrology</h3>
+        <p>Determines auspicious timings for important events and decisions.</p>
+        <ul class="sector-services">
+          <li>Wedding date selection</li>
+          <li>Business launch timing</li>
+          <li>Property purchase timing</li>
+          <li>Travel muhurta</li>
+          <li>Important ceremony timing</li>
+        </ul>
+        <a href="#consultation" class="sector-button" onclick="openConsultation('Electional Astrology')">Consult Now</a>
       </div>
     </div>
   </section>
+
+  <!-- Consultation Form -->
+  <div class="consultation-modal" id="consultationModal">
+    <div class="consultation-form">
+      <button class="close-modal" id="closeModal">&times;</button>
+      <div class="form-header">
+        <h3>Personalized Astrology Consultation</h3>
+        <p>Fill in your details for accurate predictions</p>
+      </div>
+      <form id="astroForm">
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" required>
+        </div>
+
+        <div class="form-group">
+          <label>Birth Details *</label>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+            <input type="date" id="birthDate" required>
+            <input type="time" id="birthTime" required>
+            <input type="text" id="birthPlace" placeholder="Birth Place" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="concern">Primary Concern *</label>
+          <select id="concern" required>
+            <option value="">Select Concern</option>
+            <option value="natal">Natal Astrology</option>
+            <option value="relationship">Relationship Astrology</option>
+            <option value="career">Career Astrology</option>
+            <option value="medical">Medical Astrology</option>
+            <option value="financial">Financial Astrology</option>
+            <option value="electional">Electional Astrology</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact Number *</label>
+          <input type="tel" id="contact" pattern="[0-9]{10}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Specific Questions</label>
+          <textarea id="message" rows="4"></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Submit for Analysis</button>
+      </form>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer id="contact">
@@ -895,6 +1034,43 @@
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       navLinks.classList.toggle('active');
+    });
+
+    // Consultation Form Handling
+    const consultationModal = document.getElementById('consultationModal');
+    const closeModal = document.getElementById('closeModal');
+
+    function openConsultation(serviceType) {
+      consultationModal.style.display = 'block';
+      if(serviceType) {
+        document.getElementById('concern').value = serviceType.toLowerCase().replace(/ /g, '-');
+      }
+    }
+
+    closeModal.addEventListener('click', () => {
+      consultationModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === consultationModal) {
+        consultationModal.style.display = 'none';
+      }
+    });
+
+    // Form Submission
+    document.getElementById('astroForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      consultationModal.style.display = 'none';
+      
+      // Show success message
+      const notification = document.createElement('div');
+      notification.className = 'update-notification';
+      notification.innerHTML = `
+        <i class="fas fa-check-circle"></i>
+        <span>Thank you! Our astrologer will contact you shortly.</span>
+      `;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 5000);
     });
 
     // PWA Installation
