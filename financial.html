@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>आर्थिक वृद्धि भविष्यवाणी - श्री जोतिषी</title>
+  <meta name="description" content="Authentic Vedic Financial Growth Prediction">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
+
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before {
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.1s;
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      top: 0;
+      transform: rotate(90deg);
+      transition: top 0.1s ease-out, transform 0.2s 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      top: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+        display: none;
+      }
+
+      .nav-links.active {
+        left: 0;
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Financial Growth Prediction Specific Styles */
+    .finance-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .finance-hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: url('https://i.ibb.co/VWQDXpvD/12-960x464.jpg') no-repeat center center/cover;
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .finance-hero h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    .finance-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: white;
+      background: rgba(0,0,0,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.3);
+      transform: rotate(90deg);
+    }
+
+    .finance-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .finance-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .finance-details, .finance-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .finance-features {
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .benefits-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .finance-results {
+      color: var(--dark);
+    }
+
+    .finance-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .finance-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .finance-aspects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .finance-card {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .aspect-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .aspect-score {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .aspect-details {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .prediction-item {
+      margin-bottom: 1rem;
+    }
+
+    .prediction-title {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: white;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .legal-notice a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .finance-hero {
+        min-height: 300px;
+        padding: 2rem 1rem;
+      }
+
+      .finance-hero h1 {
+        font-size: 2rem;
+      }
+
+      .finance-hero p {
+        font-size: 1rem;
+      }
+
+      .finance-aspects {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage.html">Marriage Matching</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="/finance.html" class="active">आर्थिक वृद्धि भविष्यवाणी</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Financial Growth Prediction Main Content -->
+  <main class="finance-main">
+    <section class="finance-hero">
+      <div class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+      
+      <h1>आर्थिक वृद्धि भविष्यवाणी</h1>
+      <p>तपाईंको जन्म कुण्डली अनुसार आर्थिक स्थिति, सम्पत्ति योग, र धन प्राप्तिको समयको विश्लेषण</p>
+    </section>
+
+    <div class="finance-content">
+      <div class="finance-details">
+        <h2>आर्थिक वृद्धि भविष्यवाणीको बारेमा</h2>
+        <p>आर्थिक वृद्धि भविष्यवाणीले तपाईंको जन्म कुण्डलीमा धन, सम्पत्ति, र आय सम्बन्धी ग्रहहरूको स्थिति, दशा, र योगहरूको अध्ययन गरेर तपाईंको आर्थिक भविष्यको विश्लेषण गर्छ। यसले तपाईंको जीवनमा धन प्राप्तिको उत्तम समय, निवेशका लागि उपयुक्त क्षेत्रहरू, र आर्थिक समस्याहरूको समाधानका उपायहरू सुझाव दिन्छ।</p>
+        
+        <div class="finance-features">
+          <h3>हाम्रो आर्थिक विश्लेषणमा समावेश छ:</h3>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+            <div>
+              <h4>धन योग विश्लेषण</h4>
+              <p>तपाईंको कुण्डलीमा धन सम्बन्धी विशेष योगहरूको अध्ययन</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+              <h4>आर्थिक उन्नतिको समय</h4>
+              <p>तपाईंको जीवनमा धन प्राप्ति र आर्थिक उन्नतिका उत्तम समयहरू</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-home"></i></div>
+            <div>
+              <h4>सम्पत्ति योग</h4>
+              <p>तपाईंको कुण्डलीमा सम्पत्ति प्राप्तिको योगहरूको विश्लेषण</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="benefits">
+          <h3>आर्थिक विश्लेषणको लाभ:</h3>
+          <ul class="benefits-list">
+            <li>धन प्राप्तिको उत्तम समयको जानकारी</li>
+            <li>निवेशका लागि उपयुक्त क्षेत्रहरूको सुझाव</li>
+            <li>आर्थिक समस्याहरूको समाधानका उपाय</li>
+            <li>सम्पत्ति प्राप्तिको सम्भावना र समय</li>
+            <li>आर्थिक स्थिरताका लागि विशेष योगहरूको विश्लेषण</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="finance-form">
+        <h2>आर्थिक विश्लेषणको लागि जानकारी दिनुहोस्</h2>
+        <form id="financeForm">
+          <div class="form-group">
+            <label for="name">पूरा नाम</label>
+            <input type="text" id="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob">जन्म मिति (अंग्रेजी)</label>
+            <input type="date" id="dob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob" class="nepali-datepicker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob">जन्म समय</label>
+            <input type="time" id="tob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob">जन्म स्थान</label>
+            <input type="text" id="pob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gender">लिङ्ग</label>
+            <select id="gender" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="male">पुरुष</option>
+              <option value="female">महिला</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="currentOccupation">हालको पेशा/व्यवसाय</label>
+            <input type="text" id="currentOccupation" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="financialConcerns">आर्थिक सम्बन्धी चिन्ता वा प्रश्नहरू</label>
+            <textarea id="financialConcerns"></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span id="submitText">आर्थिक विश्लेषण गर्नुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> प्रसंसकरण गर्दै...
+            </span>
+          </button>
+        </form>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="font-size: 0.9rem; color: #666;">हाम्रो सेवा १००% प्रामाणिक वैदिक ज्योतिषशास्त्रमा आधारित छ</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Financial Analysis Results Modal -->
+  <div id="financeResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="financeResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>श्री जोतिषी</h3>
+        <p>तपाईंको भविष्यको सटीक विश्लेषण र ज्योतिषीय सल्लाह। हाम्रो सेवाले तपाईंलाई जीवनका विभिन्न पक्षहरूमा मार्गदर्शन प्रदान गर्दछ।</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>द्रुत लिंकहरू</h3>
+        <a href="/"><i class="fas fa-home"></i> गृहपृष्ठ</a>
+        <a href="/services.html"><i class="fas fa-star"></i> सेवाहरू</a>
+        <a href="/marriage-matching.html"><i class="fas fa-heart"></i> विवाह मिलान</a>
+        <a href="/finance.html"><i class="fas fa-money-bill-wave"></i> आर्थिक विश्लेषण</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>ग्राहक सेवा</h3>
+        <a href="#faq"><i class="fas fa-question-circle"></i> प्रश्नहरू</a>
+        <a href="#privacy"><i class="fas fa-lock"></i> गोपनीयता नीति</a>
+        <a href="#terms"><i class="fas fa-file-alt"></i> सेवा सर्तहरू</a>
+        <a href="#refund"><i class="fas fa-exchange-alt"></i> फिर्ता नीति</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>हामीलाई सम्पर्क गर्नुहोस्</h3>
+        <p><i class="fas fa-map-marker-alt"></i> काठमाडौं, नेपाल</p>
+        <p><i class="fas fa-phone"></i> +९७७ ९८१३१९७७०४</p>
+        <p><i class="fas fa-envelope"></i> info@jotishi.com</p>
+        <p><i class="fas fa-clock"></i> सोम-शनि: ९:०० AM - ६:०० PM</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; <span id="current-year"></span> श्री जोतिषी. सर्वाधिकार सुरक्षित.
+    </div>
+  </footer>
+
+  <!-- Legal Notice -->
+  <div class="legal-notice">
+    <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
+  </div>
+
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Modal Handling
+    const modal = document.getElementById('financeResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      var nepaliDatePicker = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01"
+      });
+      nepaliDatePicker.init();
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('financeForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        nepaliDob: document.getElementById('nepali-dob').value,
+        tob: document.getElementById('tob').value,
+        pob: document.getElementById('pob').value,
+        gender: document.getElementById('gender').value,
+        currentOccupation: document.getElementById('currentOccupation').value,
+        financialConcerns: document.getElementById('financialConcerns').value
+      };
+      
+      // Validate inputs
+      if (!formData.name || !formData.dob || !formData.nepaliDob || !formData.tob || !formData.pob || !formData.gender || !formData.currentOccupation) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to generate financial analysis
+        const financeData = await analyzeFinance(formData);
+        
+        // Display the results
+        displayFinanceResults(financeData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error analyzing finance:', error);
+        alert('आर्थिक विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
+    });
+
+    // API Integration Function
+    async function analyzeFinance(formData) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          name: formData.name,
+          birthDetails: {
+            englishDate: formData.dob,
+            nepaliDate: formData.nepaliDob,
+            time: formData.tob,
+            place: formData.pob,
+            gender: formData.gender === 'male' ? 'पुरुष' : 'महिला'
+          },
+          currentOccupation: formData.currentOccupation,
+          concerns: formData.financialConcerns || 'नभएको',
+          planetaryPositions: [
+            { planet: 'सूर्य', position: '2 औं भाव', influence: 'धन अर्जन क्षमता र आय स्रोत' },
+            { planet: 'चन्द्रमा', position: '11 औं भाव', influence: 'लाभ र आकस्मिक आयको योग' },
+            { planet: 'मंगल', position: '8 औं भाव', influence: 'आकस्मिक धन प्राप्ति वा हानि' },
+            { planet: 'बुध', position: '10 औं भाव', influence: 'व्यवसायिक सफलता र आय' },
+            { planet: 'गुरु', position: '9 औं भाव', influence: 'भाग्य र धर्मार्थ कार्यबाट लाभ' },
+            { planet: 'शुक्र', position: '7 औं भाव', influence: 'वैवाहिक जीवनबाट आर्थिक लाभ' },
+            { planet: 'शनि', position: '4 औं भाव', influence: 'सम्पत्ति र स्थायी आयको योग' }
+          ],
+          financialYogas: [
+            'धन योग: धन प्राप्तिको उत्तम सम्भावना',
+            'राज योग: उच्च पद र प्रतिष्ठाबाट आय',
+            'विपत् योग: आर्थिक समस्याको सम्भावना'
+          ],
+          dashaAnalysis: [
+            { period: '२०७८-२०८८', dasha: 'चन्द्र', prediction: 'आकस्मिक लाभ र नयाँ आय स्रोत खुल्ने' },
+            { period: '२०८८-२०९४', dasha: 'मंगल', prediction: 'जोखिमपूर्ण निवेशबाट लाभ वा हानि' },
+            { period: '२०९४-२१११', dasha: 'राहु', prediction: 'अप्रत्याशित आय र अनौठो स्रोतबाट धन प्राप्ति' }
+          ],
+          remedies: [
+            'प्रत्येक शुक्रवार गायको दान गर्नुहोस्',
+            'शनिवारको दिन कालो तिलको तेल दान गर्नुहोस्',
+            'प्रतिदिन लक्ष्मी मन्त्र जप गर्नुहोस्',
+            'गुरुवारको दिन पीतलको सिक्का दान गर्नुहोस्'
+          ],
+          bestTimesFor: {
+            investments: '२०८१ असोज-कार्तिक',
+            propertyPurchase: '२०८२ वैशाख-जेठ',
+            businessStart: '२०८०-२०८१'
+          },
+          wealthPrediction: 'तपाईंको जन्म कुण्डलीमा मध्यम श्रेणीको धन योग छ। सावधानीपूर्वक निवेश गर्नुहोस् र उत्तम समयमा आर्थिक निर्णय लिनुहोस्।'
+        }
+      };
+    }
+
+    // Display Financial Results
+    function displayFinanceResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('financeResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="finance-results">
+          <h2>${data.name} को आर्थिक वृद्धि भविष्यवाणी</h2>
+          
+          <div class="basic-info">
+            <p><strong>जन्म मिति (अंग्रेजी):</strong> ${data.birthDetails.englishDate}</p>
+            <p><strong>जन्म मिति (नेपाली):</strong> ${data.birthDetails.nepaliDate}</p>
+            <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
+            <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
+            <p><strong>लिङ्ग:</strong> ${data.birthDetails.gender}</p>
+            <p><strong>हालको पेशा/व्यवसाय:</strong> ${data.currentOccupation}</p>
+            <p><strong>चिन्ता/प्रश्न:</strong> ${data.concerns}</p>
+          </div>
+          
+          <h3>ग्रह स्थितिहरू र आर्थिक प्रभाव</h3>
+          <div class="finance-aspects">
+            ${data.planetaryPositions.map(planet => `
+              <div class="finance-card">
+                <div class="aspect-name">${planet.planet}</div>
+                <div class="aspect-score">${planet.position}</div>
+                <div class="aspect-details">${planet.influence}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>तपाईंको कुण्डलीमा आर्थिक योगहरू</h3>
+          <ul class="benefits-list">
+            ${data.financialYogas.map(yoga => `<li>${yoga}</li>`).join('')}
+          </ul>
+          
+          <h3>दशा अनुसार आर्थिक भविष्यवाणी</h3>
+          <div class="prediction-item">
+            ${data.dashaAnalysis.map(dasha => `
+              <p><strong>${dasha.period} (${dasha.dasha} दशा):</strong> ${dasha.prediction}</p>
+            `).join('')}
+          </div>
+          
+          <h3>आर्थिक कार्यहरूको लागि उत्तम समयहरू</h3>
+          <div class="prediction-item">
+            <p><strong>निवेश:</strong> ${data.bestTimesFor.investments}</p>
+            <p><strong>सम्पत्ति खरिद:</strong> ${data.bestTimesFor.propertyPurchase}</p>
+            <p><strong>व्यवसाय सुरु गर्न:</strong> ${data.bestTimesFor.businessStart}</p>
+          </div>
+          
+          <h3>आर्थिक सफलताका लागि उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+          </ul>
+          
+          <h3>समग्र आर्थिक भविष्यवाणी</h3>
+          <p>${data.wealthPrediction}</p>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadFinanceReport('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadFinanceReport('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Download Finance Report Function
+    function downloadFinanceReport(format) {
+      alert(`आर्थिक विश्लेषण ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
+
+    // Close button functionality
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.location.href = 'service.html';
+    });
+  </script>
+</body>
+</html>
