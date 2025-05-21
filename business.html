@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>व्यवसाय सफलता समय - श्री जोतिषी</title>
+  <meta name="description" content="Vedic Astrology Business Success Timing Analysis">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
+
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before {
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.1s;
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      top: 0;
+      transform: rotate(90deg);
+      transition: top 0.1s ease-out, transform 0.2s 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      top: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+        display: none;
+      }
+
+      .nav-links.active {
+        left: 0;
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Business Success Timing Specific Styles */
+    .business-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .business-hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(rgba(109, 40, 217, 0.8), rgba(139, 92, 246, 0.8)), 
+                  url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .business-hero h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    .business-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: white;
+      background: rgba(0,0,0,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.3);
+      transform: rotate(90deg);
+    }
+
+    .business-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .business-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .business-details, .business-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .business-features {
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .benefits-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .business-results {
+      color: var(--dark);
+    }
+
+    .business-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .business-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .period-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .period-card {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .period-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .period-dates {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    .period-description {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: white;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .legal-notice a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .business-hero {
+        min-height: 300px;
+        padding: 2rem 1rem;
+      }
+
+      .business-hero h1 {
+        font-size: 2rem;
+      }
+
+      .business-hero p {
+        font-size: 1rem;
+      }
+
+      .period-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage.html">विवाह अनुकूलता</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="/business-timing.html" class="active">व्यवसाय सफलता समय</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Business Success Timing Main Content -->
+  <main class="business-main">
+    <section class="business-hero">
+      <div class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+      
+      <h1>व्यवसाय सफलता समय विश्लेषण</h1>
+      <p>तपाईंको जन्म कुण्डली अनुसार व्यवसायको उत्तम समय, अवसर र चुनौतीहरूको विश्लेषण</p>
+    </section>
+
+    <div class="business-content">
+      <div class="business-details">
+        <h2>व्यवसाय सफलताको समय विश्लेषण</h2>
+        <p>वैदिक ज्योतिषशास्त्रमा व्यवसाय सफलताको समय विश्लेषणको विशेष महत्व छ। ग्रहहरूको स्थिति, दशा र अन्तर्दशाले व्यवसायमा सफलता, असफलता, उत्तम समय र चुनौतीहरूको बारेमा जानकारी दिन्छ। यस पृष्ठमा हामी तपाईंको कुण्डली विश्लेषण गरेर व्यवसाय सफलताको उत्तम समय, उपायहरू र सावधानीहरू बताउनेछौं।</p>
+        
+        <div class="business-features">
+          <h3>हाम्रो व्यवसाय समय विश्लेषण सेवामा समावेश छ:</h3>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <div>
+              <h4>व्यवसाय उत्तम समय</h4>
+              <p>तपाईंको लागि उत्तम व्यवसाय सुरु गर्ने समयको विश्लेषण</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+            <div>
+              <h4>उपयुक्त व्यवसाय प्रकार</h4>
+              <p>तपाईंको कुण्डली अनुसार उपयुक्त व्यवसायको प्रकार</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-gem"></i></div>
+            <div>
+              <h4>ग्रह शान्ति उपाय</h4>
+              <p>व्यवसायमा सफलताका लागि ग्रह शान्ति उपायहरू</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="benefits">
+          <h3>हाम्रो सेवाको लाभ:</h3>
+          <ul class="benefits-list">
+            <li>व्यवसाय सुरु गर्न उत्तम समयको जानकारी</li>
+            <li>व्यवसायमा आउने सम्भावित चुनौतीहरूको पूर्वानुमान</li>
+            <li>व्यवसाय सफलताका लागि उपायहरू</li>
+            <li>आर्थिक लाभ बढाउने ग्रह स्थिति विश्लेषण</li>
+            <li>नयाँ परियोजना सुरु गर्न उत्तम मुहूर्त</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="business-form">
+        <h2>व्यवसाय समय विश्लेषणको लागि जानकारी दिनुहोस्</h2>
+        <form id="businessForm">
+          <div class="form-group">
+            <label for="name">तपाईंको पूरा नाम</label>
+            <input type="text" id="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob">जन्म मिति (अंग्रेजी)</label>
+            <input type="date" id="dob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob" class="nepali-datepicker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob">जन्म समय</label>
+            <input type="time" id="tob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob">जन्म स्थान</label>
+            <input type="text" id="pob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="businessType">व्यवसायको प्रकार</label>
+            <select id="businessType">
+              <option value="">छान्नुहोस् (यदि पहिले नै छ भने)</option>
+              <option value="manufacturing">उत्पादन</option>
+              <option value="trading">व्यापार</option>
+              <option value="service">सेवा</option>
+              <option value="agriculture">कृषि</option>
+              <option value="consultancy">सल्लाहकार</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="businessDetails">व्यवसायको विवरण (यदि नयाँ सुरु गर्न चाहनुहुन्छ भने)</label>
+            <textarea id="businessDetails"></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span id="submitText">विश्लेषण गर्नुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> विश्लेषण गर्दै...
+            </span>
+          </button>
+        </form>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="font-size: 0.9rem; color: #666;">हाम्रो सेवा १००% प्रामाणिक वैदिक ज्योतिषशास्त्रमा आधारित छ</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Business Timing Results Modal -->
+  <div id="businessResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="businessResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>श्री जोतिषी</h3>
+        <p>तपाईंको भविष्यको सटीक विश्लेषण र ज्योतिषीय सल्लाह। हाम्रो सेवाले तपाईंलाई जीवनका विभिन्न पक्षहरूमा मार्गदर्शन प्रदान गर्दछ।</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>द्रुत लिंकहरू</h3>
+        <a href="/"><i class="fas fa-home"></i> गृहपृष्ठ</a>
+        <a href="/services.html"><i class="fas fa-star"></i> सेवाहरू</a>
+        <a href="/marriage.html"><i class="fas fa-heart"></i> विवाह अनुकूलता</a>
+        <a href="/business-timing.html" class="active"><i class="fas fa-chart-line"></i> व्यवसाय सफलता समय</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>ग्राहक सेवा</h3>
+        <a href="#faq"><i class="fas fa-question-circle"></i> प्रश्नहरू</a>
+        <a href="#privacy"><i class="fas fa-lock"></i> गोपनीयता नीति</a>
+        <a href="#terms"><i class="fas fa-file-alt"></i> सेवा सर्तहरू</a>
+        <a href="#refund"><i class="fas fa-exchange-alt"></i> फिर्ता नीति</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>हामीलाई सम्पर्क गर्नुहोस्</h3>
+        <p><i class="fas fa-map-marker-alt"></i> काठमाडौं, नेपाल</p>
+        <p><i class="fas fa-phone"></i> +९७७ ९८१३१९७७०४</p>
+        <p><i class="fas fa-envelope"></i> info@jotishi.com</p>
+        <p><i class="fas fa-clock"></i> सोम-शनि: ९:०० AM - ६:०० PM</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; <span id="current-year"></span> श्री जोतिषी. सर्वाधिकार सुरक्षित.
+    </div>
+  </footer>
+
+  <!-- Legal Notice -->
+  <div class="legal-notice">
+    <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
+  </div>
+
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Modal Handling
+    const modal = document.getElementById('businessResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      var nepaliDatePicker = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01"
+      });
+      nepaliDatePicker.init();
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('businessForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        nepaliDob: document.getElementById('nepali-dob').value,
+        tob: document.getElementById('tob').value,
+        pob: document.getElementById('pob').value,
+        businessType: document.getElementById('businessType').value,
+        businessDetails: document.getElementById('businessDetails').value
+      };
+      
+      // Validate inputs
+      if (!formData.name || !formData.dob || !formData.nepaliDob || !formData.tob || !formData.pob) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to analyze business timing
+        const timingData = await analyzeBusinessTiming(formData);
+        
+        // Display the results
+        displayBusinessResults(timingData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error analyzing business timing:', error);
+        alert('व्यवसाय समय विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
+    });
+
+    // API Integration Function
+    async function analyzeBusinessTiming(formData) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          name: formData.name,
+          birthDetails: {
+            englishDate: formData.dob,
+            nepaliDate: formData.nepaliDob,
+            time: formData.tob,
+            place: formData.pob
+          },
+          businessType: formData.businessType || 'नखुलेको',
+          businessDetails: formData.businessDetails || 'नखुलेको',
+          planetaryAnalysis: [
+            {
+              planet: 'बृहस्पति',
+              position: '2nd house',
+              influence: 'शुभ',
+              description: 'बृहस्पतिको शुभ स्थितिले धन आर्जनको उत्तम समय देखाउँछ'
+            },
+            {
+              planet: 'शुक्र',
+              position: '10th house',
+              influence: 'मध्यम',
+              description: 'शुक्रले व्यवसायमा स्थिरता ल्याउँछ तर केही प्रयास आवश्यक छ'
+            },
+            {
+              planet: 'शनि',
+              position: '11th house',
+              influence: 'शुभ',
+              description: 'शनिले लाभको भावमा रहेकोले व्यवसायबाट लाभ हुनेछ'
+            }
+          ],
+          favorablePeriods: [
+            {
+              name: 'बृहस्पति महादशा',
+              start: '२०८०-०५-१५',
+              end: '२०८६-०५-१४',
+              description: 'यस अवधिमा नयाँ व्यवसाय सुरु गर्न उत्तम समय हो। धन आर्जनको विशेष योग छ।'
+            },
+            {
+              name: 'सूर्य अन्तर्दशा',
+              start: '२०८२-०१-१०',
+              end: '२०८२-०७-०९',
+              description: 'सरकारी सम्पर्क वा प्रशासनिक क्षेत्रमा व्यवसाय गर्न उत्तम समय'
+            },
+            {
+              name: 'चन्द्र अन्तर्दशा',
+              start: '२०८४-०३-२२',
+              end: '२०८४-०९-२१',
+              description: 'तरल पदार्थ, कृषि वा खाद्य सम्बन्धित व्यवसायका लागि उत्तम समय'
+            }
+          ],
+          businessRecommendations: [
+            'उत्पादन वा निर्माण सम्बन्धित व्यवसाय तपाईंको लागि उत्तम हुनेछ',
+            'हरियो रंगको प्रयोग व्यवसाय स्थलमा गर्नुहोस्',
+            'प्रत्येक गुरुवार पीतगणेशको पूजा गर्नुहोस्'
+          ],
+          remedies: [
+            'प्रत्येक गुरुवार पीले वस्त्र लगाउनुहोस् र केसर मिश्रित दुध पिउनुहोस्',
+            'पुखराज रत्न धारण गर्न सक्नुहुन्छ',
+            'प्रतिदिन 'ओम ग्रां ग्रीं ग्रौं सः गुरवे नमः' मन्त्रको 27 पटक जप गर्नुहोस्'
+          ],
+          precautions: [
+            '२०८१ को अन्त्यसम्म ठूलो निवेश गर्नबाट टाढा रहनुहोस्',
+            'साझेदारीमा व्यवसाय गर्दा विशेष सावधानी अपनाउनुहोस्',
+            'कालो रंगको प्रयोग व्यवसाय स्थलमा नगर्नुहोस्'
+          ],
+          auspiciousDates: [
+            {
+              date: '२०८०-०६-०५',
+              description: 'व्यापार सुरु गर्न उत्तम मुहूर्त'
+            },
+            {
+              date: '२०८०-०८-१२',
+              description: 'नयाँ परियोजना सुरु गर्न उत्तम समय'
+            },
+            {
+              date: '२०८१-०२-१८',
+              description: 'व्यवसाय विस्तार गर्न उत्तम मुहूर्त'
+            }
+          ]
+        }
+      };
+    }
+
+    // Display Business Results
+    function displayBusinessResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('businessResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="business-results">
+          <h2>${data.name} को व्यवसाय सफलता समय विश्लेषण</h2>
+          
+          <div class="basic-info">
+            <p><strong>जन्म मिति (नेपाली):</strong> ${data.birthDetails.nepaliDate}</p>
+            <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
+            <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
+            <p><strong>व्यवसाय प्रकार:</strong> ${data.businessType}</p>
+          </div>
+          
+          <h3>ग्रह विश्लेषण</h3>
+          <div class="period-grid">
+            ${data.planetaryAnalysis.map(planet => `
+              <div class="period-card">
+                <div class="period-name">${planet.planet}</div>
+                <div class="period-dates">${planet.position} (${planet.influence})</div>
+                <div class="period-description">${planet.description}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>उत्तम व्यवसाय अवधिहरू</h3>
+          <div class="period-grid">
+            ${data.favorablePeriods.map(period => `
+              <div class="period-card">
+                <div class="period-name">${period.name}</div>
+                <div class="period-dates">${period.start} देखि ${period.end} सम्म</div>
+                <div class="period-description">${period.description}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>व्यवसाय सुझावहरू</h3>
+          <ul class="remedies-list">
+            ${data.businessRecommendations.map(recommendation => `<li>${recommendation}</li>`).join('')}
+          </ul>
+          
+          <h3>उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+          </ul>
+          
+          <h3>सावधानीहरू</h3>
+          <ul class="remedies-list">
+            ${data.precautions.map(precaution => `<li>${precaution}</li>`).join('')}
+          </ul>
+          
+          <h3>शुभ मुहूर्तहरू</h3>
+          <div class="period-grid">
+            ${data.auspiciousDates.map(date => `
+              <div class="period-card">
+                <div class="period-name">${date.date}</div>
+                <div class="period-description">${date.description}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadBusinessReport('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadBusinessReport('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Download Business Report Function
+    function downloadBusinessReport(format) {
+      alert(`व्यवसाय विश्लेषण ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
+
+    // Close button functionality
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.location.href = 'service.html';
+    });
+  </script>
+</body>
+</html>
