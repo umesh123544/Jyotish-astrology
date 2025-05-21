@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>तलाक उपाय - श्री जोतिषी</title>
+  <meta name="description" content="Vedic Astrology Solutions for Marriage Problems and Divorce Prevention">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
+
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before {
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.1s;
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      top: 0;
+      transform: rotate(90deg);
+      transition: top 0.1s ease-out, transform 0.2s 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      top: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+        display: none;
+      }
+
+      .nav-links.active {
+        left: 0;
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Divorce Remedies Specific Styles */
+    .divorce-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .divorce-hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(rgba(109, 40, 217, 0.8), rgba(139, 92, 246, 0.8)), 
+                  url('https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .divorce-hero h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    .divorce-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: white;
+      background: rgba(0,0,0,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.3);
+      transform: rotate(90deg);
+    }
+
+    .divorce-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .divorce-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .divorce-details, .divorce-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .divorce-features {
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .benefits-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .divorce-results {
+      color: var(--dark);
+    }
+
+    .divorce-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .divorce-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .problem-card {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .problem-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .problem-severity {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
+
+    .problem-description {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: white;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .legal-notice a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .divorce-hero {
+        min-height: 300px;
+        padding: 2rem 1rem;
+      }
+
+      .divorce-hero h1 {
+        font-size: 2rem;
+      }
+
+      .divorce-hero p {
+        font-size: 1rem;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage.html">विवाह अनुकूलता</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="/divorce-remedies.html" class="active">तलाक उपाय</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Divorce Remedies Main Content -->
+  <main class="divorce-main">
+    <section class="divorce-hero">
+      <div class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+      
+      <h1>तलाक उपाय र समाधान</h1>
+      <p>ज्योतिषीय विश्लेषण र उपायहरूद्वारा विवाह समस्याहरूको समाधान</p>
+    </section>
+
+    <div class="divorce-content">
+      <div class="divorce-details">
+        <h2>तलाक र विवाह समस्याहरूको बारेमा</h2>
+        <p>वैदिक ज्योतिषशास्त्रमा विवाह समस्याहरू र तलाकको विशेष महत्व छ। ग्रहहरूको अशुभ स्थिति, कुण्डलीमा दोष, वा ग्रहदशाको प्रभावले विवाह जीवनमा समस्या उत्पन्न गर्न सक्छ। यस पृष्ठमा हामी तपाईंको विवाह समस्याहरूको कारण पत्ता लगाउने र उपयुक्त उपायहरू सुझाव गर्नेछौं।</p>
+        
+        <div class="divorce-features">
+          <h3>हाम्रो तलाक उपाय सेवामा समावेश छ:</h3>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-heart-broken"></i></div>
+            <div>
+              <h4>समस्याको मूल कारण</h4>
+              <p>कुण्डली विश्लेषण गरेर समस्याको मूल कारण पत्ता लगाउने</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-praying-hands"></i></div>
+            <div>
+              <h4>ज्योतिषीय उपाय</h4>
+              <p>ग्रह दोषहरू हटाउनका लागि प्रभावकारी उपायहरू</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-magic"></i></div>
+            <div>
+              <h4>मन्त्र र रत्न उपाय</h4>
+              <p>समस्याहरू समाधान गर्न मन्त्र, यन्त्र र रत्न उपायहरू</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="benefits">
+          <h3>हाम्रो सेवाको लाभ:</h3>
+          <ul class="benefits-list">
+            <li>विवाह समस्याहरूको वैज्ञानिक विश्लेषण</li>
+            <li>तलाक रोक्नका लागि प्रभावकारी उपायहरू</li>
+            <li>पति-पत्नी बीच प्रेम बढाउने उपाय</li>
+            <li>कुण्डलीमा विवाह दोषको समाधान</li>
+            <li>ग्रह शान्तिका लागि विशेष पूजा</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="divorce-form">
+        <h2>तलाक उपायको लागि जानकारी दिनुहोस्</h2>
+        <form id="divorceForm">
+          <div class="form-group">
+            <label for="name">तपाईंको पूरा नाम</label>
+            <input type="text" id="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob">जन्म मिति (अंग्रेजी)</label>
+            <input type="date" id="dob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob" class="nepali-datepicker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob">जन्म समय</label>
+            <input type="time" id="tob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob">जन्म स्थान</label>
+            <input type="text" id="pob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="spouseName">जीवनसाथीको नाम</label>
+            <input type="text" id="spouseName">
+          </div>
+          
+          <div class="form-group">
+            <label for="problemType">समस्याको प्रकार</label>
+            <select id="problemType" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="communication">संचार समस्या</option>
+              <option value="trust">विश्वासको समस्या</option>
+              <option value="finance">आर्थिक समस्या</option>
+              <option value="in-laws">सासु-ससुरा समस्या</option>
+              <option value="third_person">तेस्रो व्यक्तिको हस्तक्षेप</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="problemDetails">समस्याको विस्तृत विवरण</label>
+            <textarea id="problemDetails" required></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span id="submitText">उपाय पाउनुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> विश्लेषण गर्दै...
+            </span>
+          </button>
+        </form>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="font-size: 0.9rem; color: #666;">हाम्रो सेवा १००% प्रामाणिक वैदिक ज्योतिषशास्त्रमा आधारित छ</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Divorce Remedies Results Modal -->
+  <div id="divorceResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="divorceResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>श्री जोतिषी</h3>
+        <p>तपाईंको भविष्यको सटीक विश्लेषण र ज्योतिषीय सल्लाह। हाम्रो सेवाले तपाईंलाई जीवनका विभिन्न पक्षहरूमा मार्गदर्शन प्रदान गर्दछ।</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>द्रुत लिंकहरू</h3>
+        <a href="/"><i class="fas fa-home"></i> गृहपृष्ठ</a>
+        <a href="/services.html"><i class="fas fa-star"></i> सेवाहरू</a>
+        <a href="/marriage.html"><i class="fas fa-heart"></i> विवाह अनुकूलता</a>
+        <a href="/divorce-remedies.html" class="active"><i class="fas fa-heart-broken"></i> तलाक उपाय</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>ग्राहक सेवा</h3>
+        <a href="#faq"><i class="fas fa-question-circle"></i> प्रश्नहरू</a>
+        <a href="#privacy"><i class="fas fa-lock"></i> गोपनीयता नीति</a>
+        <a href="#terms"><i class="fas fa-file-alt"></i> सेवा सर्तहरू</a>
+        <a href="#refund"><i class="fas fa-exchange-alt"></i> फिर्ता नीति</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>हामीलाई सम्पर्क गर्नुहोस्</h3>
+        <p><i class="fas fa-map-marker-alt"></i> काठमाडौं, नेपाल</p>
+        <p><i class="fas fa-phone"></i> +९७७ ९८१३१९७७०४</p>
+        <p><i class="fas fa-envelope"></i> info@jotishi.com</p>
+        <p><i class="fas fa-clock"></i> सोम-शनि: ९:०० AM - ६:०० PM</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; <span id="current-year"></span> श्री जोतिषी. सर्वाधिकार सुरक्षित.
+    </div>
+  </footer>
+
+  <!-- Legal Notice -->
+  <div class="legal-notice">
+    <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि निर्णय लिनु अघि उचित विशेषज्ञसँग सल्लाह लिनुहोस्।</p>
+  </div>
+
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Modal Handling
+    const modal = document.getElementById('divorceResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      var nepaliDatePicker = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01"
+      });
+      nepaliDatePicker.init();
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('divorceForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        nepaliDob: document.getElementById('nepali-dob').value,
+        tob: document.getElementById('tob').value,
+        pob: document.getElementById('pob').value,
+        spouseName: document.getElementById('spouseName').value,
+        problemType: document.getElementById('problemType').value,
+        problemDetails: document.getElementById('problemDetails').value
+      };
+      
+      // Validate inputs
+      if (!formData.name || !formData.dob || !formData.nepaliDob || !formData.tob || !formData.pob || !formData.problemType || !formData.problemDetails) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to analyze divorce problems
+        const remediesData = await analyzeDivorceProblems(formData);
+        
+        // Display the results
+        displayDivorceResults(remediesData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error analyzing divorce problems:', error);
+        alert('समस्या विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
+    });
+
+    // API Integration Function
+    async function analyzeDivorceProblems(formData) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          name: formData.name,
+          birthDetails: {
+            englishDate: formData.dob,
+            nepaliDate: formData.nepaliDob,
+            time: formData.tob,
+            place: formData.pob
+          },
+          spouseName: formData.spouseName,
+          problemType: formData.problemType,
+          problemDetails: formData.problemDetails,
+          planetaryAnalysis: [
+            {
+              planet: 'शुक्र',
+              position: '7th house',
+              influence: 'Afflicted',
+              description: 'शुक्रको अशुभ स्थितिले विवाह जीवनमा समस्या उत्पन्न गरेको छ'
+            },
+            {
+              planet: 'मंगल',
+              position: '12th house',
+              influence: 'Negative',
+              description: 'मंगलको प्रभावले पति-पत्नी बीच झगडा बढाएको छ'
+            },
+            {
+              planet: 'राहु',
+              position: '4th house',
+              influence: 'Malefic',
+              description: 'राहुले घरको शान्ति भंग गरेको छ'
+            }
+          ],
+          kundaliDoshas: [
+            {
+              dosha: 'मंगल दोष',
+              severity: 'High',
+              description: 'कुण्डलीमा मंगल दोषले विवाह जीवनमा समस्या उत्पन्न गरेको छ'
+            },
+            {
+              dosha: 'काल सर्प दोष',
+              severity: 'Medium',
+              description: 'काल सर्प दोषले जीवनमा अशान्ति ल्याएको छ'
+            }
+          ],
+          remedies: [
+            'प्रत्येक शुक्रबार शुक्र ग्रहको शान्तिका लागि सफेद फूल, चिनी, चावल चढाउनुहोस्',
+            'मंगलवारको दिन हनुमानजीलाई सिन्दूर चढाउनुहोस् र हनुमान चालीसा पढ्नुहोस्',
+            'प्रतिदिन 'ओम नमः शिवाय' मन्त्रको 108 पटक जप गर्नुहोस्',
+            'पारस पत्थर वा मूंगा धारण गर्न सक्नुहुन्छ',
+            'विवाहित जोडीले एक अर्कालाई प्रत्येक दिन केसर मिश्रित दुध दिनुहोस्'
+          ],
+          mantras: [
+            {
+              mantra: 'ओम शुं शुक्राय नमः',
+              count: '108 times daily',
+              benefit: 'शुक्र ग्रह शान्ति'
+            },
+            {
+              mantra: 'ओं क्लीं कृष्णाय नमः',
+              count: '27 times daily',
+              benefit: 'पारिवारिक शान्ति'
+            }
+          ],
+          gemstones: [
+            {
+              name: 'हीरा',
+              metal: 'सुन',
+              finger: 'मध्यमा',
+              benefit: 'शुक्र ग्रह शान्ति'
+            },
+            {
+              name: 'मूंगा',
+              metal: 'सुन',
+              finger: 'अनामिका',
+              benefit: 'मंगल दोष निवारण'
+            }
+          ],
+          poojas: [
+            {
+              name: 'शुक्र शान्ति पूजा',
+              duration: '1 day',
+              benefit: 'विवाह जीवन सुधार'
+            },
+            {
+              name: 'काल सर्प दोष निवारण पूजा',
+              duration: '3 days',
+              benefit: 'कुण्डली दोष निवारण'
+            }
+          ],
+          predictions: {
+            shortTerm: 'अगले 3 महिनामा समस्या केही हदसम्म नियन्त्रणमा आउनेछ यदि उपायहरू पालना गरिन्छ भने',
+            longTerm: '1 वर्षभित्र विवाह सम्बन्धमा ठूलो सुधार आउनेछ यदि सबै उपायहरू नियमित रूपमा गरिन्छ भने'
+          }
+        }
+      };
+    }
+
+    // Display Divorce Results
+    function displayDivorceResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('divorceResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="divorce-results">
+          <h2>${data.name} को विवाह समस्या विश्लेषण</h2>
+          
+          <div class="basic-info">
+            <p><strong>जन्म मिति (नेपाली):</strong> ${data.birthDetails.nepaliDate}</p>
+            <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
+            <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
+            <p><strong>जीवनसाथीको नाम:</strong> ${data.spouseName || 'नखुलेको'}</p>
+            <p><strong>समस्याको प्रकार:</strong> ${getProblemTypeName(data.problemType)}</p>
+          </div>
+          
+          <h3>ग्रह विश्लेषण</h3>
+          <div class="problem-grid">
+            ${data.planetaryAnalysis.map(planet => `
+              <div class="problem-card">
+                <div class="problem-name">${planet.planet}</div>
+                <div class="problem-severity">${planet.influence} (${planet.position})</div>
+                <div class="problem-description">${planet.description}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>कुण्डली दोषहरू</h3>
+          <div class="problem-grid">
+            ${data.kundaliDoshas.map(dosha => `
+              <div class="problem-card">
+                <div class="problem-name">${dosha.dosha}</div>
+                <div class="problem-severity">${dosha.severity}</div>
+                <div class="problem-description">${dosha.description}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.remedies.map(remedy => `<li>${remedy}</li>`).join('')}
+          </ul>
+          
+          <h3>मन्त्रहरू</h3>
+          <div class="problem-grid">
+            ${data.mantras.map(mantra => `
+              <div class="problem-card">
+                <div class="problem-name">${mantra.mantra}</div>
+                <div class="problem-severity">${mantra.count}</div>
+                <div class="problem-description">${mantra.benefit}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>रत्न उपाय</h3>
+          <div class="problem-grid">
+            ${data.gemstones.map(gem => `
+              <div class="problem-card">
+                <div class="problem-name">${gem.name}</div>
+                <div class="problem-severity">${gem.metal} (${gem.finger} औंला)</div>
+                <div class="problem-description">${gem.benefit}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>पूजाहरू</h3>
+          <div class="problem-grid">
+            ${data.poojas.map(pooja => `
+              <div class="problem-card">
+                <div class="problem-name">${pooja.name}</div>
+                <div class="problem-severity">${pooja.duration}</div>
+                <div class="problem-description">${pooja.benefit}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>भविष्यवाणी</h3>
+          <div class="predictions">
+            <p><strong>छोटो समयमा:</strong> ${data.predictions.shortTerm}</p>
+            <p><strong>लामो समयमा:</strong> ${data.predictions.longTerm}</p>
+          </div>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadRemedies('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadRemedies('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Helper function to get problem type name
+    function getProblemTypeName(type) {
+      const types = {
+        'communication': 'संचार समस्या',
+        'trust': 'विश्वासको समस्या',
+        'finance': 'आर्थिक समस्या',
+        'in-laws': 'सासु-ससुरा समस्या',
+        'third_person': 'तेस्रो व्यक्तिको हस्तक्षेप',
+        'other': 'अन्य'
+      };
+      return types[type] || type;
+    }
+
+    // Download Remedies Function
+    function downloadRemedies(format) {
+      alert(`तलाक उपाय ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
+
+    // Close button functionality
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.location.href = 'service.html';
+    });
+  </script>
+</body>
+</html>
