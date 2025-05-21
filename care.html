@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>निवारक स्वास्थ्य मार्गदर्शन - श्री जोतिषी</title>
+  <meta name="description" content="Authentic Vedic Preventive Health Guidance">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#6d28d9">
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@500&family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.css">
+
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --primary-light: #8b5cf6;
+      --secondary: #f59e0b;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1rem 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .brand-name {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      letter-spacing: 1px;
+    }
+
+    .slogan {
+      font-family: 'Lobster', cursive;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.9);
+      margin-top: -3px;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+      bottom: -5px;
+      left: 0;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1001;
+    }
+
+    .hamburger-box {
+      width: 30px;
+      height: 24px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .hamburger-inner {
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--secondary);
+      left: 0;
+      transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger-inner::before {
+      top: -8px;
+    }
+
+    .hamburger-inner::after {
+      top: 8px;
+    }
+
+    .hamburger.active .hamburger-inner {
+      transform: rotate(225deg);
+      transition-delay: 0.1s;
+    }
+
+    .hamburger.active .hamburger-inner::before {
+      top: 0;
+      transform: rotate(90deg);
+      transition: top 0.1s ease-out, transform 0.2s 0.1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    .hamburger.active .hamburger-inner::after {
+      top: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(135deg, rgba(109, 40, 217, 0.98), rgba(139, 92, 246, 0.98));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 999;
+        display: none;
+      }
+
+      .nav-links.active {
+        left: 0;
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      .nav-links.active a {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 0.4s ease 0.1s;
+      }
+    }
+
+    /* Health Guidance Specific Styles */
+    .health-main {
+      margin-top: 100px;
+      padding: 2rem 5%;
+      max-width: var(--max-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .health-hero {
+      text-align: center;
+      padding: 4rem 0;
+      background: url('https://iili.io/3QNcEmP.jpg') no-repeat center center/cover;
+      color: white;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .health-hero h1 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease;
+    }
+
+    .health-hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 800px;
+      margin: 0 auto;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1.5rem;
+      color: white;
+      background: rgba(0,0,0,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.3);
+      transform: rotate(90deg);
+    }
+
+    .health-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .health-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .health-details, .health-form {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .health-features {
+      margin-top: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .feature-icon {
+      color: var(--secondary);
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Nepali Date Picker Styles */
+    .nepali-datepicker {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* Style for the datepicker popup */
+    .ndp-nepali-month-wrapper {
+      font-family: 'Poppins', sans-serif;
+      z-index: 1100 !important;
+    }
+
+    .ndp-nepali-month-wrapper table {
+      background: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ndp-nepali-month-wrapper th {
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+    }
+
+    .ndp-nepali-month-wrapper td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-day:hover {
+      background: var(--primary-light);
+      color: white;
+      cursor: pointer;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-selected {
+      background: var(--secondary);
+      color: white;
+      font-weight: bold;
+    }
+
+    .ndp-nepali-month-wrapper .ndp-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .benefits-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .benefits-list li {
+      padding: 0.5rem 0;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .benefits-list li:before {
+      content: "✓";
+      color: var(--secondary);
+      position: absolute;
+      left: 0;
+    }
+
+    /* Results Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 2000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    .health-results {
+      color: var(--dark);
+    }
+
+    .health-results h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-family: 'Hind Siliguri', sans-serif;
+    }
+
+    .health-results h3 {
+      color: var(--primary-light);
+      margin: 1.5rem 0 1rem;
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 0.5rem;
+    }
+
+    .health-aspects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .health-card {
+      background: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .aspect-name {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .aspect-score {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .aspect-details {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .prediction-item {
+      margin-bottom: 1rem;
+    }
+
+    .prediction-title {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .remedies-list {
+      padding-left: 1.5rem;
+    }
+
+    .remedies-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .download-options {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .download-btn {
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: white;
+      padding: 60px 20px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--secondary);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--secondary);
+    }
+
+    .footer-column p, 
+    .footer-column a {
+      color: #ccc;
+      margin-bottom: 15px;
+      display: block;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .footer-column a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+
+    .footer-column i {
+      margin-right: 10px;
+      color: var(--secondary);
+      width: 20px;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    /* Legal Notice */
+    .legal-notice {
+      background: #111;
+      color: #aaa;
+      padding: 20px;
+      font-size: 12px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .legal-notice a {
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 1000;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .footer-column h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .social-links {
+        justify-content: center;
+      }
+
+      .health-hero {
+        min-height: 300px;
+        padding: 2rem 1rem;
+      }
+
+      .health-hero h1 {
+        font-size: 2rem;
+      }
+
+      .health-hero p {
+        font-size: 1rem;
+      }
+
+      .health-aspects {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-container">
+        <div class="brand-name">श्री जोतिषी</div>
+        <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
+      </div>
+      
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      
+      <div class="nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/services.html">Services</a>
+        <a href="/marriage.html">Marriage Matching</a>
+        <a href="/janma.html">Janma Kundali</a>
+        <a href="/career.html">क्यारियर पथ विश्लेषण</a>
+        <a href="/health.html" class="active">निवारक स्वास्थ्य मार्गदर्शन</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Health Guidance Main Content -->
+  <main class="health-main">
+    <section class="health-hero">
+      <div class="close-btn" id="closeBtn">
+        <i class="fas fa-times"></i>
+      </div>
+      
+      <h1>निवारक स्वास्थ्य मार्गदर्शन</h1>
+      <p>तपाईंको जन्म कुण्डली अनुसार स्वास्थ्य सम्बन्धी जोखिमहरू र निवारक उपायहरूको विश्लेषण</p>
+    </section>
+
+    <div class="health-content">
+      <div class="health-details">
+        <h2>निवारक स्वास्थ्य मार्गदर्शनको बारेमा</h2>
+        <p>निवारक स्वास्थ्य मार्गदर्शनले तपाईंको जन्म कुण्डलीमा ग्रहहरूको स्थिति, दशा, र योगहरूको अध्ययन गरेर तपाईंको स्वास्थ्य सम्बन्धी सम्भावित जोखिमहरू, रोग प्रवृत्ति, र निवारक उपायहरू सुझाव दिन्छ। यसले तपाईंको शारीरिक, मानसिक, र भावनात्मक स्वास्थ्यको विश्लेषण गर्छ।</p>
+        
+        <div class="health-features">
+          <h3>हाम्रो स्वास्थ्य मार्गदर्शनमा समावेश छ:</h3>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-heartbeat"></i></div>
+            <div>
+              <h4>स्वास्थ्य जोखिम विश्लेषण</h4>
+              <p>तपाईंको ग्रह स्थिति अनुसार सम्भावित स्वास्थ्य समस्याहरू</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-calendar-check"></i></div>
+            <div>
+              <h4>संवेदनशील समय</h4>
+              <p>तपाईंको जीवनमा स्वास्थ्य समस्याको उच्च सम्भावना भएका समयहरू</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+            <div>
+              <h4>निवारक उपायहरू</h4>
+              <p>तपाईंको स्वास्थ्य संरक्षणका लागि ज्योतिषीय र आयुर्वेदिक उपायहरू</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="benefits">
+          <h3>निवारक स्वास्थ्य मार्गदर्शनको लाभ:</h3>
+          <ul class="benefits-list">
+            <li>सम्भावित स्वास्थ्य समस्याहरूको पूर्वानुमान</li>
+            <li>रोग प्रतिरोधात्मक क्षमता बढाउने उपायहरू</li>
+            <li>संवेदनशील अवधिमा विशेष सावधानीका लागि जानकारी</li>
+            <li>आयुर्वेदिक र ज्योतिषीय स्वास्थ्य उपायहरू</li>
+            <li>दीर्घायु र स्वस्थ जीवनशैलीका लागि मार्गदर्शन</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="health-form">
+        <h2>स्वास्थ्य विश्लेषणको लागि जानकारी दिनुहोस्</h2>
+        <form id="healthForm">
+          <div class="form-group">
+            <label for="name">पूरा नाम</label>
+            <input type="text" id="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dob">जन्म मिति (अंग्रेजी)</label>
+            <input type="date" id="dob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="nepali-dob">जन्म मिति (नेपाली)</label>
+            <input type="text" id="nepali-dob" class="nepali-datepicker" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="tob">जन्म समय</label>
+            <input type="time" id="tob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="pob">जन्म स्थान</label>
+            <input type="text" id="pob" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="gender">लिङ्ग</label>
+            <select id="gender" required>
+              <option value="">छान्नुहोस्</option>
+              <option value="male">पुरुष</option>
+              <option value="female">महिला</option>
+              <option value="other">अन्य</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="currentHealth">हालको स्वास्थ्य स्थिति (यदि कुनै समस्या छ भने)</label>
+            <input type="text" id="currentHealth">
+          </div>
+          
+          <div class="form-group">
+            <label for="healthConcerns">स्वास्थ्य सम्बन्धी चिन्ता वा प्रश्नहरू</label>
+            <textarea id="healthConcerns"></textarea>
+          </div>
+          
+          <button type="submit" class="submit-btn">
+            <span id="submitText">स्वास्थ्य विश्लेषण गर्नुहोस्</span>
+            <span id="submitSpinner" style="display: none;">
+              <i class="fas fa-spinner fa-spin"></i> प्रसंसकरण गर्दै...
+            </span>
+          </button>
+        </form>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+          <p style="font-size: 0.9rem; color: #666;">हाम्रो सेवा १००% प्रामाणिक वैदिक ज्योतिषशास्त्र र आयुर्वेदमा आधारित छ</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Health Analysis Results Modal -->
+  <div id="healthResultsModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div id="healthResultsContainer">
+        <!-- Results will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>श्री जोतिषी</h3>
+        <p>तपाईंको भविष्यको सटीक विश्लेषण र ज्योतिषीय सल्लाह। हाम्रो सेवाले तपाईंलाई जीवनका विभिन्न पक्षहरूमा मार्गदर्शन प्रदान गर्दछ।</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-column">
+        <h3>द्रुत लिंकहरू</h3>
+        <a href="/"><i class="fas fa-home"></i> गृहपृष्ठ</a>
+        <a href="/services.html"><i class="fas fa-star"></i> सेवाहरू</a>
+        <a href="/marriage-matching.html"><i class="fas fa-heart"></i> विवाह मिलान</a>
+        <a href="/health.html"><i class="fas fa-heartbeat"></i> स्वास्थ्य मार्गदर्शन</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>ग्राहक सेवा</h3>
+        <a href="#faq"><i class="fas fa-question-circle"></i> प्रश्नहरू</a>
+        <a href="#privacy"><i class="fas fa-lock"></i> गोपनीयता नीति</a>
+        <a href="#terms"><i class="fas fa-file-alt"></i> सेवा सर्तहरू</a>
+        <a href="#refund"><i class="fas fa-exchange-alt"></i> फिर्ता नीति</a>
+      </div>
+      
+      <div class="footer-column">
+        <h3>हामीलाई सम्पर्क गर्नुहोस्</h3>
+        <p><i class="fas fa-map-marker-alt"></i> काठमाडौं, नेपाल</p>
+        <p><i class="fas fa-phone"></i> +९७७ ९८१३१९७७०४</p>
+        <p><i class="fas fa-envelope"></i> info@jotishi.com</p>
+        <p><i class="fas fa-clock"></i> सोम-शनि: ९:०० AM - ६:०० PM</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; <span id="current-year"></span> श्री जोतिषी. सर्वाधिकार सुरक्षित.
+    </div>
+  </footer>
+
+  <!-- Legal Notice -->
+  <div class="legal-notice">
+    <p><strong>सूचना:</strong> यस वेबसाइटमा प्रदान गरिएका ज्योतिषीय सेवाहरू मनोरञ्जन र मार्गदर्शनका लागि मात्र हुन्। कृपया कुनै पनि चिकित्सा निर्णय लिनु अघि उचित चिकित्सकसँग सल्लाह लिनुहोस्।</p>
+  </div>
+
+  <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/nepalidatepicker@1.0.0/dist/nepaliDatePicker.min.js"></script>
+  <script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking links (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Copyright Year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Modal Handling
+    const modal = document.getElementById('healthResultsModal');
+    const modalClose = document.getElementById('modalClose');
+    
+    modalClose.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Initialize Nepali Date Picker
+    document.addEventListener('DOMContentLoaded', function() {
+      var nepaliDatePicker = new NepaliDatePicker({
+        ndpYear: true,
+        ndpMonth: true,
+        ndpYearCount: 100,
+        language: "nepali",
+        disableAfter: "2080-12-30",
+        disableBefore: "1960-01-01"
+      });
+      nepaliDatePicker.init();
+    });
+
+    // Form Submission with API Integration
+    document.getElementById('healthForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const formData = {
+        name: document.getElementById('name').value,
+        dob: document.getElementById('dob').value,
+        nepaliDob: document.getElementById('nepali-dob').value,
+        tob: document.getElementById('tob').value,
+        pob: document.getElementById('pob').value,
+        gender: document.getElementById('gender').value,
+        currentHealth: document.getElementById('currentHealth').value,
+        healthConcerns: document.getElementById('healthConcerns').value
+      };
+      
+      // Validate inputs
+      if (!formData.name || !formData.dob || !formData.nepaliDob || !formData.tob || !formData.pob || !formData.gender) {
+        alert('कृपया सबै आवश्यक जानकारी भर्नुहोस्!');
+        return;
+      }
+      
+      try {
+        // Show loading state
+        document.getElementById('submitText').style.display = 'none';
+        document.getElementById('submitSpinner').style.display = 'inline';
+        
+        // Call API to generate health analysis
+        const healthData = await analyzeHealth(formData);
+        
+        // Display the results
+        displayHealthResults(healthData);
+        
+        // Show the modal
+        modal.style.display = 'block';
+        
+      } catch (error) {
+        console.error('Error analyzing health:', error);
+        alert('स्वास्थ्य विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
+      } finally {
+        // Reset button state
+        document.getElementById('submitText').style.display = 'inline';
+        document.getElementById('submitSpinner').style.display = 'none';
+      }
+    });
+
+    // API Integration Function
+    async function analyzeHealth(formData) {
+      // In a real implementation, you would call your backend API here
+      // This is a mock implementation that simulates an API call
+      
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Mock response data - in a real app, this would come from your API
+      return {
+        success: true,
+        data: {
+          name: formData.name,
+          birthDetails: {
+            englishDate: formData.dob,
+            nepaliDate: formData.nepaliDob,
+            time: formData.tob,
+            place: formData.pob,
+            gender: formData.gender === 'male' ? 'पुरुष' : 'महिला'
+          },
+          currentHealth: formData.currentHealth || 'सामान्य',
+          concerns: formData.healthConcerns || 'नभएको',
+          planetaryPositions: [
+            { planet: 'सूर्य', position: '1 औं भाव', influence: 'हृदय र आँखाको स्वास्थ्यमा प्रभाव' },
+            { planet: 'चन्द्रमा', position: '6 औं भाव', influence: 'पाचन तन्त्र र मानसिक स्वास्थ्य' },
+            { planet: 'मंगल', position: '8 औं भाव', influence: 'दुर्घटना र शल्यक्रिया सम्बन्धी जोखिम' },
+            { planet: 'बुध', position: '3 औं भाव', influence: 'स्नायु तन्त्र र श्वासप्रश्वास सम्बन्धी स्वास्थ्य' },
+            { planet: 'गुरु', position: '12 औं भाव', influence: 'मोटापा र यकृत सम्बन्धी समस्या' },
+            { planet: 'शुक्र', position: '7 औं भाव', influence: 'मूत्राशय र प्रजनन स्वास्थ्य' },
+            { planet: 'शनि', position: '4 औं भाव', influence: 'जोर्नी र दाँत सम्बन्धी समस्या' }
+          ],
+          healthRiskAreas: [
+            'हृदय रक्तचाप सम्बन्धी समस्या',
+            'पाचन तन्त्र सम्बन्धी समस्या',
+            'मधुमेहको सम्भावना',
+            'मानसिक तनाव र अनिद्रा',
+            'जोर्नी दुखाई'
+          ],
+          dashaAnalysis: [
+            { period: '२०७८-२०८८', dasha: 'चन्द्र', prediction: 'पाचन तन्त्र सम्बन्धी समस्याको उच्च सम्भावना' },
+            { period: '२०८८-२०९४', dasha: 'मंगल', prediction: 'दुर्घटना वा शल्यक्रिया हुन सक्ने समय' },
+            { period: '२०९४-२१११', dasha: 'राहु', prediction: 'मानसिक स्वास्थ्यमा असर गर्न सक्ने समय' }
+          ],
+          preventiveMeasures: [
+            'प्रतिदिन सुबह १ गिलास गुनगुने पानीमा निम्बू र हल्दी मिसाएर पिउनुहोस्',
+            'सूर्य उदयको समयमा १५ मिनेट धूप सेक्नुहोस्',
+            'गुरुवारको दिन पहेँलो वस्त्र लगाउनुहोस् र पीतलको बर्तनमा खाना खानुहोस्',
+            'प्रतिदिन योग वा ध्यान गर्नुहोस्',
+            'तुलसीको पात र शहद मिसाएर सेवन गर्नुहोस्'
+          ],
+          bestTimesFor: {
+            healthCheckup: '२०८१ असोज-कार्तिक',
+            surgery: '२०८२ वैशाख-जेठ',
+            preventiveCare: '२०८०-२०८१'
+          },
+          dietaryRecommendations: [
+            'हरियो पातेदार सब्जी बढी मात्रामा सेवन गर्नुहोस्',
+            'तातो, तीखो र गरम मसला कम सेवन गर्नुहोस्',
+            'दूध र दहीको सेवन बढाउनुहोस्',
+            'प्रोसेस्ड खाना कम सेवन गर्नुहोस्'
+          ]
+        }
+      };
+    }
+
+    // Display Health Results
+    function displayHealthResults(response) {
+      if (!response.success || !response.data) {
+        throw new Error('Invalid response from server');
+      }
+      
+      const data = response.data;
+      const resultsContainer = document.getElementById('healthResultsContainer');
+      
+      // Create HTML for the results
+      resultsContainer.innerHTML = `
+        <div class="health-results">
+          <h2>${data.name} को निवारक स्वास्थ्य मार्गदर्शन</h2>
+          
+          <div class="basic-info">
+            <p><strong>जन्म मिति (अंग्रेजी):</strong> ${data.birthDetails.englishDate}</p>
+            <p><strong>जन्म मिति (नेपाली):</strong> ${data.birthDetails.nepaliDate}</p>
+            <p><strong>जन्म समय:</strong> ${data.birthDetails.time}</p>
+            <p><strong>जन्म स्थान:</strong> ${data.birthDetails.place}</p>
+            <p><strong>लिङ्ग:</strong> ${data.birthDetails.gender}</p>
+            <p><strong>हालको स्वास्थ्य स्थिति:</strong> ${data.currentHealth}</p>
+            <p><strong>चिन्ता/प्रश्न:</strong> ${data.concerns}</p>
+          </div>
+          
+          <h3>ग्रह स्थितिहरू र स्वास्थ्य प्रभाव</h3>
+          <div class="health-aspects">
+            ${data.planetaryPositions.map(planet => `
+              <div class="health-card">
+                <div class="aspect-name">${planet.planet}</div>
+                <div class="aspect-score">${planet.position}</div>
+                <div class="aspect-details">${planet.influence}</div>
+              </div>
+            `).join('')}
+          </div>
+          
+          <h3>तपाईंको लागि सम्भावित स्वास्थ्य जोखिमहरू</h3>
+          <ul class="benefits-list">
+            ${data.healthRiskAreas.map(risk => `<li>${risk}</li>`).join('')}
+          </ul>
+          
+          <h3>दशा अनुसार स्वास्थ्य भविष्यवाणी</h3>
+          <div class="prediction-item">
+            ${data.dashaAnalysis.map(dasha => `
+              <p><strong>${dasha.period} (${dasha.dasha} दशा):</strong> ${dasha.prediction}</p>
+            `).join('')}
+          </div>
+          
+          <h3>स्वास्थ्य संरक्षणका लागि उत्तम समयहरू</h3>
+          <div class="prediction-item">
+            <p><strong>नियमित स्वास्थ्य जाँच:</strong> ${data.bestTimesFor.healthCheckup}</p>
+            <p><strong>शल्यक्रिया गर्न:</strong> ${data.bestTimesFor.surgery}</p>
+            <p><strong>निवारक उपचार:</strong> ${data.bestTimesFor.preventiveCare}</p>
+          </div>
+          
+          <h3>स्वास्थ्य संरक्षणका लागि निवारक उपायहरू</h3>
+          <ul class="remedies-list">
+            ${data.preventiveMeasures.map(measure => `<li>${measure}</li>`).join('')}
+          </ul>
+          
+          <h3>आहार सम्बन्धी सुझावहरू</h3>
+          <ul class="remedies-list">
+            ${data.dietaryRecommendations.map(diet => `<li>${diet}</li>`).join('')}
+          </ul>
+          
+          <div class="download-options">
+            <button class="download-btn" onclick="downloadHealthReport('pdf')">
+              <i class="fas fa-file-pdf"></i> PDF डाउनलोड
+            </button>
+            <button class="download-btn" onclick="downloadHealthReport('image')">
+              <i class="fas fa-image"></i> इमेज डाउनलोड
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // Download Health Report Function
+    function downloadHealthReport(format) {
+      alert(`स्वास्थ्य मार्गदर्शन ${format} फारम्याटमा डाउनलोड गरिएको छ (यो एक डेमो मात्र हो)`);
+    }
+
+    // Close button functionality
+    document.getElementById('closeBtn').addEventListener('click', function() {
+      window.location.href = 'service.html';
+    });
+  </script>
+</body>
+</html>
