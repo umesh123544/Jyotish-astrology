@@ -238,7 +238,7 @@
     .business-hero {
       text-align: center;
       padding: 4rem 0;
-background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
       color: white;
       border-radius: 15px;
       margin-bottom: 3rem;
@@ -998,7 +998,7 @@ background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib
       nepaliDatePicker.init();
     });
 
-    // Form Submission with API Integration
+    // Form Submission with API Integration - FIXED VERSION
     document.getElementById('businessForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -1021,37 +1021,43 @@ background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib
       
       try {
         // Show loading state
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.disabled = true;
         document.getElementById('submitText').style.display = 'none';
         document.getElementById('submitSpinner').style.display = 'inline';
         
         // Call API to analyze business timing
-        const timingData = await analyzeBusinessTiming(formData);
+        const response = await analyzeBusinessTiming(formData);
         
         // Display the results
-        displayBusinessResults(timingData);
+        displayBusinessResults(response);
         
         // Show the modal
-        modal.style.display = 'block';
+        document.getElementById('businessResultsModal').style.display = 'block';
         
       } catch (error) {
         console.error('Error analyzing business timing:', error);
         alert('व्यवसाय समय विश्लेषण गर्दा त्रुटि भयो। कृपया पछि फेरि प्रयास गर्नुहोस्।');
       } finally {
         // Reset button state
+        const submitBtn = document.querySelector('.submit-btn');
+        submitBtn.disabled = false;
         document.getElementById('submitText').style.display = 'inline';
         document.getElementById('submitSpinner').style.display = 'none';
       }
     });
 
-    // API Integration Function
+    // API Integration Function - IMPROVED VERSION
     async function analyzeBusinessTiming(formData) {
       // In a real implementation, you would call your backend API here
       // This is a mock implementation that simulates an API call
       
-      // Simulate API delay
+      console.log("Form data received:", formData); // Debug log
+      
+      // Simulate API delay (2 seconds)
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Mock response data - in a real app, this would come from your API
+      // Return mock data with proper structure
       return {
         success: true,
         data: {
@@ -1137,14 +1143,20 @@ background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib
       };
     }
 
-    // Display Business Results
+    // Display Business Results - IMPROVED VERSION
     function displayBusinessResults(response) {
-      if (!response.success || !response.data) {
+      if (!response || !response.success || !response.data) {
+        console.error("Invalid response format:", response);
         throw new Error('Invalid response from server');
       }
       
       const data = response.data;
       const resultsContainer = document.getElementById('businessResultsContainer');
+      
+      if (!resultsContainer) {
+        console.error("Results container not found");
+        return;
+      }
       
       // Create HTML for the results
       resultsContainer.innerHTML = `
