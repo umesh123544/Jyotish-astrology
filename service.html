@@ -30,6 +30,7 @@
       --light: #f8fafc;
       --gray: #64748b;
       --max-width: 1200px;
+      --error: #ef4444;
     }
 
     * {
@@ -118,6 +119,24 @@
       background: var(--secondary);
       bottom: -5px;
       left: 0;
+    }
+
+    .admin-login {
+      margin-left: 1rem;
+    }
+
+    .admin-login a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .admin-login a:hover {
+      color: var(--secondary);
     }
 
     .hamburger {
@@ -229,6 +248,10 @@
         transform: translateX(0);
         transition: all 0.4s ease 0.1s;
       }
+      
+      .admin-login {
+        display: none;
+      }
     }
 
     /* Service Hero with Background Image */
@@ -255,7 +278,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 2;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
     }
 
     .service-hero h1,
@@ -462,6 +486,183 @@
       50% { transform: scale(1.1); }
       100% { transform: scale(1); }
     }
+    
+    /* Admin Login Modal */
+    .login-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+    
+    .login-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .login-container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 500px;
+      overflow: hidden;
+      position: relative;
+      transform: translateY(20px);
+      animation: slideUp 0.4s ease forwards;
+    }
+    
+    @keyframes slideUp {
+      to { transform: translateY(0); }
+    }
+    
+    .login-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      padding: 1.5rem;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+    
+    .login-header h2 {
+      font-family: 'Hind Siliguri', sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .login-header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+    
+    .login-form {
+      padding: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-light);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 12px;
+      top: 38px;
+      background: none;
+      border: none;
+      color: var(--gray);
+      cursor: pointer;
+    }
+    
+    .error-message {
+      color: var(--error);
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      display: none;
+    }
+    
+    .login-btn {
+      background: var(--secondary);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .login-btn:hover {
+      background: #e67e22;
+    }
+    
+    .login-footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    /* Mobile admin login link */
+    .mobile-admin-link {
+      display: none;
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      margin-top: 1rem;
+      border-radius: 8px;
+    }
+    
+    .mobile-admin-link a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-admin-link {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
@@ -472,19 +673,26 @@
         <span class="slogan">हजुरको भविष्य हजुरको हातमा</span>
       </div>
       
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">गृहपृष्ठ</a>
+        <a href="service.html" class="active">सेवाहरू</a>
+        <a href="sector.html">क्षेत्रहरू</a>
+        <a href="faq.html">सामान्य प्रश्नहरू</a>
+        <a href="contact.html">सम्पर्क</a>
+      </div>
+      
+      <div class="admin-login">
+        <a href="#" id="adminLoginLink">
+          <i class="fas fa-lock"></i>
+          प्रशासक लगइन
+        </a>
+      </div>
+      
       <button class="hamburger" id="hamburger" aria-label="मेनु">
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>
         </span>
       </button>
-      
-      <div class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="service.html" class="active">Services</a>
-        <a href="sector.html">Sector</a>
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-      </div>
     </nav>
   </header>
 
@@ -495,6 +703,7 @@
     </section>
 
     <div class="service-grid">
+      <!-- Service cards remain unchanged -->
       <div class="service-card" data-redirect="janma.html">
         <i class="service-icon fas fa-birthday-cake"></i>
         <h3>जन्म कुण्डली</h3>
@@ -639,11 +848,56 @@
     <div class="footer-bottom">
       <p>© <span id="year"></span> Jotishi Astrology. All rights reserved.</p>
     </div>
+    
+    <div class="mobile-admin-link">
+      <a href="#" id="mobileAdminLink">
+        <i class="fas fa-lock"></i>
+        प्रशासक लगइन
+      </a>
+    </div>
   </footer>
 
   <a href="https://wa.me/9813197704" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i>
   </a>
+  
+  <!-- Admin Login Modal -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-container">
+      <div class="login-header">
+        <button class="close-modal" id="closeModal" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <h2>प्रशासक लगइन</h2>
+        <p>कृपया प्रशासन प्यानलमा पहुँच गर्न आफ्नो प्रमाणहरू प्रविष्ट गर्नुहोस्</p>
+      </div>
+      
+      <form class="login-form" id="adminLoginForm">
+        <div class="form-group">
+          <label for="username">प्रयोगकर्ता नाम:</label>
+          <input type="text" id="username" class="form-control" placeholder="प्रयोगकर्ता नाम प्रविष्ट गर्नुहोस्" required>
+          <div class="error-message" id="usernameError">कृपया वैध प्रयोगकर्ता नाम प्रविष्ट गर्नुहोस्</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">पासवर्ड:</label>
+          <input type="password" id="password" class="form-control" placeholder="पासवर्ड प्रविष्ट गर्नुहोस्" required>
+          <button type="button" class="password-toggle" id="passwordToggle">
+            <i class="fas fa-eye"></i>
+          </button>
+          <div class="error-message" id="passwordError">कृपया वैध पासवर्ड प्रविष्ट गर्नुहोस्</div>
+        </div>
+        
+        <button type="submit" class="login-btn">
+          <i class="fas fa-sign-in-alt"></i> लगइन गर्नुहोस्
+        </button>
+      </form>
+      
+      <div class="login-footer">
+        <p>नोट: यो प्यानल प्रशासकहरूका लागि मात्र हो</p>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Service Worker Registration
@@ -753,6 +1007,91 @@
     document.addEventListener('click', (e) => {
       if (!footerSearch.contains(e.target) && !searchResults.contains(e.target)) {
         searchResults.style.display = 'none';
+      }
+    });
+    
+    // Admin Login Modal Functionality
+    const loginModal = document.getElementById('loginModal');
+    const adminLoginLink = document.getElementById('adminLoginLink');
+    const mobileAdminLink = document.getElementById('mobileAdminLink');
+    const closeModal = document.getElementById('closeModal');
+    const passwordToggle = document.getElementById('passwordToggle');
+    const passwordInput = document.getElementById('password');
+    const loginForm = document.getElementById('adminLoginForm');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+    
+    // Show modal
+    adminLoginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginModal.classList.add('active');
+    });
+    
+    mobileAdminLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      loginModal.classList.add('active');
+    });
+    
+    // Close modal
+    closeModal.addEventListener('click', () => {
+      loginModal.classList.remove('active');
+    });
+    
+    // Close modal when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === loginModal) {
+        loginModal.classList.remove('active');
+      }
+    });
+    
+    // Password toggle
+    passwordToggle.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      passwordToggle.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+    });
+    
+    // Form validation and submission
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      let isValid = true;
+      
+      // Reset errors
+      usernameError.style.display = 'none';
+      passwordError.style.display = 'none';
+      
+      // Validate username
+      if (username.length < 3) {
+        usernameError.style.display = 'block';
+        isValid = false;
+      }
+      
+      // Validate password
+      if (password.length < 6) {
+        passwordError.style.display = 'block';
+        isValid = false;
+      }
+      
+      if (isValid) {
+        // Simulate login process
+        document.querySelector('.login-btn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> लगइन हुँदै...';
+        document.querySelector('.login-btn').disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+          // Successful login
+          if (username === "admin" && password === "admin123") {
+            alert("लगइन सफल! प्रशासन प्यानलमा पुनर्निर्देशन गर्दै...");
+            window.location.href = "admin-dashboard.html";
+          } else {
+            alert("गलत प्रयोगकर्ता नाम वा पासवर्ड। कृपया पुन: प्रयास गर्नुहोस्।");
+            document.querySelector('.login-btn').innerHTML = '<i class="fas fa-sign-in-alt"></i> लगइन गर्नुहोस्';
+            document.querySelector('.login-btn').disabled = false;
+          }
+        }, 1500);
       }
     });
   </script>
